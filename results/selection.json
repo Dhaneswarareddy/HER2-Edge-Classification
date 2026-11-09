@@ -1,0 +1,119 @@
+{
+  "rule": "Step 4 (FYP3): choose the loss per model and the best model per tier, FP32 only.\n\nSame principles as FYP2/src/select_models.py, adapted because FYP3 stops before quantisation:\n  * every decision uses the VALIDATION split; test numbers are reported only;\n  * loss (CE vs CORN) is chosen only for models trained with both: higher val QWK (4 d.p.), ties ->\n    higher val macro-F1 (FYP2 used full-INT8 robustness here, which does not exist in FYP3);\n  * tier winner among BASELINE runs (the FYP2 pipeline reproduced): best val QWK; runs within\n    QWK_TOL of it are equivalent and the one with fewer parameters wins (FYP2 used Mac latency of the\n    quantised model, which is out of scope here).\n  * improvement variants are reported separately (\"best with improvements\"), chosen by the same rule.\n\nOutput: results/selection.json\n",
+  "chosen_loss_per_model": {
+    "ConvNeXtTiny": "ce",
+    "DenseNet121": "ce",
+    "EfficientNetB0": "ce",
+    "EfficientNetV2B0": "ce",
+    "MobileNetV2": "ce",
+    "MobileNetV3Large": "corn",
+    "MobileNetV3Small": "ce",
+    "NASNetMobile": "ce",
+    "ResNet50": "ce"
+  },
+  "ce_vs_corn": {
+    "models_compared": 3,
+    "corn_better": 1,
+    "ce_better": 2
+  },
+  "tier_winners_baseline": {
+    "heavy": {
+      "run": "DenseNet121__ce",
+      "model": "DenseNet121",
+      "loss": "ce",
+      "variant": "baseline",
+      "params": 7041604,
+      "val_qwk": 0.854320058274143,
+      "val_accuracy": 0.9078404401650619,
+      "val_macro_f1": 0.9009210149752911,
+      "test_qwk": 0.9098342763662941,
+      "test_accuracy": 0.941952506596306,
+      "test_macro_f1": 0.9273940043954831,
+      "equivalent_candidates": [
+        "DenseNet121__ce"
+      ]
+    },
+    "mid": {
+      "run": "EfficientNetV2B0__ce",
+      "model": "EfficientNetV2B0",
+      "loss": "ce",
+      "variant": "baseline",
+      "params": 5924436,
+      "val_qwk": 0.8692105046628352,
+      "val_accuracy": 0.8954607977991746,
+      "val_macro_f1": 0.8931936465552794,
+      "test_qwk": 0.9150322610844356,
+      "test_accuracy": 0.9261213720316622,
+      "test_macro_f1": 0.9223990901547516,
+      "equivalent_candidates": [
+        "EfficientNetV2B0__ce"
+      ]
+    },
+    "lite": {
+      "run": "MobileNetV3Large__corn",
+      "model": "MobileNetV3Large",
+      "loss": "corn",
+      "variant": "baseline",
+      "params": 2999235,
+      "val_qwk": 0.8252809443961497,
+      "val_accuracy": 0.8940852819807428,
+      "val_macro_f1": 0.885805092968985,
+      "test_qwk": 0.9233113354510459,
+      "test_accuracy": 0.9366754617414248,
+      "test_macro_f1": 0.921903595967188,
+      "equivalent_candidates": [
+        "MobileNetV3Large__corn"
+      ]
+    }
+  },
+  "tier_best_with_improvements": {
+    "heavy": {
+      "run": "DenseNet121__ce",
+      "model": "DenseNet121",
+      "loss": "ce",
+      "variant": "baseline",
+      "params": 7041604,
+      "val_qwk": 0.854320058274143,
+      "val_accuracy": 0.9078404401650619,
+      "val_macro_f1": 0.9009210149752911,
+      "test_qwk": 0.9098342763662941,
+      "test_accuracy": 0.941952506596306,
+      "test_macro_f1": 0.9273940043954831,
+      "equivalent_candidates": [
+        "DenseNet121__ce"
+      ]
+    },
+    "mid": {
+      "run": "EfficientNetV2B0__ce__hires",
+      "model": "EfficientNetV2B0",
+      "loss": "ce",
+      "variant": "hires",
+      "params": 5924436,
+      "val_qwk": 0.9345025376137421,
+      "val_accuracy": 0.9504814305364512,
+      "val_macro_f1": 0.9503045723604231,
+      "test_qwk": 0.9586510370576897,
+      "test_accuracy": 0.974934036939314,
+      "test_macro_f1": 0.9706292658856381,
+      "equivalent_candidates": [
+        "EfficientNetV2B0__ce__hires"
+      ]
+    },
+    "lite": {
+      "run": "MobileNetV3Small__ce__hires",
+      "model": "MobileNetV3Small",
+      "loss": "ce",
+      "variant": "hires",
+      "params": 941428,
+      "val_qwk": 0.865357448470994,
+      "val_accuracy": 0.8982118294360385,
+      "val_macro_f1": 0.893289290750272,
+      "test_qwk": 0.8740225300307404,
+      "test_accuracy": 0.9076517150395779,
+      "test_macro_f1": 0.8931108580987597,
+      "equivalent_candidates": [
+        "MobileNetV3Small__ce__hires"
+      ]
+    }
+  }
+}

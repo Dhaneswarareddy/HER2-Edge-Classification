@@ -1,0 +1,5 @@
+# Raspberry Pi OS 64-bit, Python 3.11. If ai-edge-litert has no wheel for your Python, replace it with tflite-runtime.
+numpy<2.0
+pillow>=10
+psutil
+ai-edge-litert

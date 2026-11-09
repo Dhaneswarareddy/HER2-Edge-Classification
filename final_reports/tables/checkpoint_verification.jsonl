@@ -1,0 +1,13 @@
+{"source": "BCI", "run": "DenseNet121__ce", "input": 224, "own_test_max_abs_diff": 5.364418029785156e-07, "external_max_abs_diff": 1.1981765746238437e-07, "cache_vs_fresh_max_diff": 0.0}
+{"source": "BCI", "run": "EfficientNetV2B0__ce", "input": 224, "own_test_max_abs_diff": 1.4007091522216797e-06, "external_max_abs_diff": 1.3418670654630205e-06, "cache_vs_fresh_max_diff": 0.0}
+{"source": "BCI", "run": "EfficientNetV2B0__ce__hires", "input": 448, "own_test_max_abs_diff": 2.384185791015625e-07, "external_max_abs_diff": 4.17679214492761e-07, "cache_vs_fresh_max_diff": 0.0}
+{"source": "BCI", "run": "EfficientNetV2B0__ce__init_fyp2", "input": 224, "own_test_max_abs_diff": 1.1920928955078125e-06, "external_max_abs_diff": 1.2185169983025546e-06, "cache_vs_fresh_max_diff": 0.0}
+{"source": "BCI", "run": "EfficientNetV2B0__ce__lowbatch", "input": 224, "own_test_max_abs_diff": 1.3709068298339844e-06, "external_max_abs_diff": 7.538330077938582e-07, "cache_vs_fresh_max_diff": 0.0}
+{"source": "BCI", "run": "EfficientNetV2B0__ce__mix_fyp2", "input": 224, "own_test_max_abs_diff": 1.3709068298339844e-06, "external_max_abs_diff": 7.239967345640252e-07, "cache_vs_fresh_max_diff": 0.0}
+{"source": "BCI", "run": "MobileNetV3Large__corn", "input": 224, "own_test_max_abs_diff": 1.125037670135498e-06, "external_max_abs_diff": 4.083681488076252e-06, "cache_vs_fresh_max_diff": 0.0}
+{"source": "BCI", "run": "MobileNetV3Small__ce", "input": 224, "own_test_max_abs_diff": 3.0994415283203125e-06, "external_max_abs_diff": 3.8031108856029228e-06, "cache_vs_fresh_max_diff": 0.0}
+{"source": "BCI", "run": "MobileNetV3Small__ce__hires", "input": 448, "own_test_max_abs_diff": 2.8014183044433594e-06, "external_max_abs_diff": 7.459445953150734e-07, "cache_vs_fresh_max_diff": 0.0}
+{"source": "BCI", "run": "MobileNetV3Small__ce__lowbatch", "input": 224, "own_test_max_abs_diff": 2.950429916381836e-06, "external_max_abs_diff": 2.0555101776231766e-06, "cache_vs_fresh_max_diff": 0.0}
+{"source": "FYP2", "run": "EfficientNetV2B0__ce", "input": 224, "own_test_max_abs_diff": 1.1920928955078125e-07, "external_max_abs_diff": 1.725102806104939e-06, "cache_vs_fresh_max_diff": 0.0}
+{"source": "FYP2", "run": "MobileNetV2__ce", "input": 224, "own_test_max_abs_diff": 1.1920928955078125e-07, "external_max_abs_diff": 1.936133956936814e-06, "cache_vs_fresh_max_diff": 0.0}
+{"source": "FYP2", "run": "ResNet50__ce", "input": 224, "own_test_max_abs_diff": 2.2737367544323206e-12, "external_max_abs_diff": 2.9392181399856554e-07, "cache_vs_fresh_max_diff": 0.0}

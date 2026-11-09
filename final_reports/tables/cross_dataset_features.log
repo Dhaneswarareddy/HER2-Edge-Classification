@@ -1,0 +1,39 @@
+                    dabc_mean  dabc_p90  dabc_frac030  hemc_mean  sat_mean  val_mean  bg_brightness  tissue_frac    sharpness  hf_share  blob_diam_px  blob_n  spectrum_median_freq  spectrum_p90_freq
+dataset      label                                                                                                                                                                                    
+BCI          0          0.089     0.168         0.011      0.083     9.965   203.638        206.720        0.541   730.568970     0.238         2.764   302.0                  14.0               64.0
+             1          0.092     0.197         0.018      0.020    13.121   236.153        230.304        0.701   554.344971     0.274         2.257   322.0                  22.0               69.0
+             2          0.119     0.250         0.053      0.025    11.976   172.816        174.619        0.587   609.640991     0.234         2.257   360.0                  20.0               65.0
+             3          0.493     1.711         0.389      0.026    37.786   170.242        187.936        0.807  2278.798096     0.162         2.257   231.5                   8.0               53.5
+FYP2 GAN     0          0.093     0.263         0.079      0.212     8.057   208.665        211.836        0.297  1536.193970     0.210         2.764   222.0                  20.0               64.0
+             1          0.085     0.216         0.050      0.037    13.724   212.300        213.188        0.763   628.002991     0.157         3.192   219.5                  16.5               57.5
+             2          0.435     1.015         0.426      0.154    21.475   203.647        218.071        0.522  2439.941895     0.103         3.192   222.5                   5.0               46.5
+             3          0.951     2.087         0.513      0.172    41.154   192.628        223.176        0.711  2411.763916     0.051         3.568   141.0                   3.0               30.0
+HER2-IHC-40x 0          0.052     0.133         0.010      0.288    15.197   232.759        241.105        0.473   133.460007     0.012        11.170    43.0                   7.0               19.0
+             1          0.162     0.335         0.130      0.110    21.300   231.402        241.121        0.733    68.455002     0.010        13.038    38.0                   3.0               15.0
+             2          0.312     0.783         0.361      0.174    40.004   217.605        234.064        0.808   254.028000     0.017        14.003    45.0                   6.0               21.0
+             3          1.292     3.123         0.664      0.088    79.979   197.472        239.264        0.801   766.348022     0.014         5.412    80.0                   4.0               20.0
+          features  fitted_on         model        applied_to  accuracy  balanced_accuracy   qwk  share_pred_3plus  mean_pred
+          DAB only  BCI train      logistic HER2-IHC-40x test     0.438              0.341 0.483             0.455      2.402
+          DAB only  BCI train      logistic          BCI test     0.620              0.428 0.464             0.220      2.175
+          DAB only  BCI train      logistic         FYP2 test     0.281              0.281 0.397             0.469      2.469
+          DAB only  BCI train random forest HER2-IHC-40x test     0.593              0.512 0.676             0.454      2.136
+          DAB only  BCI train random forest          BCI test     0.653              0.551 0.541             0.325      2.073
+          DAB only  BCI train random forest         FYP2 test     0.336              0.336 0.414             0.450      2.397
+          DAB only FYP2 train      logistic HER2-IHC-40x test     0.708              0.706 0.894             0.408      1.729
+          DAB only FYP2 train      logistic          BCI test     0.492              0.458 0.445             0.164      1.446
+          DAB only FYP2 train      logistic         FYP2 test     0.775              0.775 0.910             0.258      1.472
+          DAB only FYP2 train random forest HER2-IHC-40x test     0.614              0.661 0.865             0.410      1.858
+          DAB only FYP2 train random forest          BCI test     0.480              0.447 0.444             0.158      1.431
+          DAB only FYP2 train random forest         FYP2 test     0.800              0.800 0.920             0.269      1.486
+DAB + haematoxylin  BCI train      logistic HER2-IHC-40x test     0.675              0.449 0.745             0.528      2.013
+DAB + haematoxylin  BCI train      logistic          BCI test     0.635              0.460 0.503             0.230      2.119
+DAB + haematoxylin  BCI train      logistic         FYP2 test     0.283              0.283 0.312             0.550      2.531
+DAB + haematoxylin  BCI train random forest HER2-IHC-40x test     0.554              0.432 0.481             0.578      2.343
+DAB + haematoxylin  BCI train random forest          BCI test     0.656              0.562 0.550             0.293      1.992
+DAB + haematoxylin  BCI train random forest         FYP2 test     0.333              0.333 0.362             0.489      2.425
+DAB + haematoxylin FYP2 train      logistic HER2-IHC-40x test     0.892              0.831 0.959             0.411      1.543
+DAB + haematoxylin FYP2 train      logistic          BCI test     0.471              0.501 0.417             0.164      1.379
+DAB + haematoxylin FYP2 train      logistic         FYP2 test     0.872              0.872 0.949             0.264      1.511
+DAB + haematoxylin FYP2 train random forest HER2-IHC-40x test     0.826              0.795 0.942             0.411      1.620
+DAB + haematoxylin FYP2 train random forest          BCI test     0.471              0.482 0.424             0.160      1.402
+DAB + haematoxylin FYP2 train random forest         FYP2 test     0.917              0.917 0.967             0.261      1.494

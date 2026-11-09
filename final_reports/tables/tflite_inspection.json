@@ -1,0 +1,149 @@
+{
+ "fp32": {
+  "input_dtype": "float32",
+  "output_dtype": "float32",
+  "input_shape": [
+   1,
+   448,
+   448,
+   3
+  ],
+  "n_ops": 334,
+  "top_ops": [
+   [
+    "CONV_2D",
+    75
+   ],
+   [
+    "MUL",
+    73
+   ],
+   [
+    "LOGISTIC",
+    71
+   ],
+   [
+    "MEAN",
+    17
+   ],
+   [
+    "DEPTHWISE_CONV_2D",
+    16
+   ],
+   [
+    "SHAPE",
+    16
+   ],
+   [
+    "STRIDED_SLICE",
+    16
+   ],
+   [
+    "PACK",
+    16
+   ]
+  ],
+  "quantize_ops": 0,
+  "dequantize_ops": 0,
+  "max_abs_diff_vs_keras_48": 2.3245811462402344e-06,
+  "class_agreement_48": 1.0
+ },
+ "fp16": {
+  "input_dtype": "float32",
+  "output_dtype": "float32",
+  "input_shape": [
+   1,
+   448,
+   448,
+   3
+  ],
+  "n_ops": 521,
+  "top_ops": [
+   [
+    "DEQUANTIZE",
+    187
+   ],
+   [
+    "CONV_2D",
+    75
+   ],
+   [
+    "MUL",
+    73
+   ],
+   [
+    "LOGISTIC",
+    71
+   ],
+   [
+    "MEAN",
+    17
+   ],
+   [
+    "DEPTHWISE_CONV_2D",
+    16
+   ],
+   [
+    "SHAPE",
+    16
+   ],
+   [
+    "STRIDED_SLICE",
+    16
+   ]
+  ],
+  "quantize_ops": 0,
+  "dequantize_ops": 187,
+  "max_abs_diff_vs_keras_48": 0.013301312923431396,
+  "class_agreement_48": 1.0
+ },
+ "int8": {
+  "input_dtype": "float32",
+  "output_dtype": "float32",
+  "input_shape": [
+   1,
+   448,
+   448,
+   3
+  ],
+  "n_ops": 336,
+  "top_ops": [
+   [
+    "CONV_2D",
+    75
+   ],
+   [
+    "MUL",
+    73
+   ],
+   [
+    "LOGISTIC",
+    71
+   ],
+   [
+    "MEAN",
+    17
+   ],
+   [
+    "DEPTHWISE_CONV_2D",
+    16
+   ],
+   [
+    "SHAPE",
+    16
+   ],
+   [
+    "STRIDED_SLICE",
+    16
+   ],
+   [
+    "PACK",
+    16
+   ]
+  ],
+  "quantize_ops": 1,
+  "dequantize_ops": 1,
+  "max_abs_diff_vs_keras_48": 0.9921157956123352,
+  "class_agreement_48": 0.8958333333333334
+ }
+}

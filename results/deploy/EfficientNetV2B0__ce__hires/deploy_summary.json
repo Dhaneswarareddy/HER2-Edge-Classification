@@ -1,0 +1,73 @@
+{
+  "run": "EfficientNetV2B0__ce__hires",
+  "model": "EfficientNetV2B0",
+  "image_size": 448,
+  "params": 5924436,
+  "fp32_keras_val": {
+    "accuracy": 0.9504814305364512,
+    "macro_f1": 0.9503045723604231,
+    "qwk": 0.9345025376137421
+  },
+  "fp32_keras_test": {
+    "accuracy": 0.974934036939314,
+    "macro_f1": 0.9706292658856381,
+    "qwk": 0.9586510370576897
+  },
+  "variants": [
+    {
+      "run": "EfficientNetV2B0__ce__hires",
+      "variant": "fp32",
+      "status": "ok",
+      "note": "",
+      "size_mb": 22.36260986328125,
+      "mac_latency_ms": 71.34856248740107,
+      "agreement_with_fp32_keras": 1.0,
+      "val_acc_drop": 0.0,
+      "val_accuracy": 0.9504814305364512,
+      "val_macro_f1": 0.9503045723604231,
+      "val_qwk": 0.9345025376137421,
+      "test_accuracy": 0.974934036939314,
+      "test_macro_f1": 0.9706292658856381,
+      "test_qwk": 0.9586510370576897,
+      "val_confusion": "[[34, 0, 2, 0], [1, 161, 6, 4], [0, 5, 313, 3], [0, 4, 11, 183]]",
+      "test_confusion": "[[35, 0, 0, 1], [1, 166, 3, 3], [1, 1, 317, 4], [0, 2, 3, 221]]"
+    },
+    {
+      "run": "EfficientNetV2B0__ce__hires",
+      "variant": "fp16",
+      "status": "ok",
+      "note": "",
+      "size_mb": 11.269107818603516,
+      "mac_latency_ms": 75.54379146313295,
+      "agreement_with_fp32_keras": 1.0,
+      "val_acc_drop": 0.0,
+      "val_accuracy": 0.9504814305364512,
+      "val_macro_f1": 0.9503045723604231,
+      "val_qwk": 0.9345025376137421,
+      "test_accuracy": 0.974934036939314,
+      "test_macro_f1": 0.9706292658856381,
+      "test_qwk": 0.9586510370576897,
+      "val_confusion": "[[34, 0, 2, 0], [1, 161, 6, 4], [0, 5, 313, 3], [0, 4, 11, 183]]",
+      "test_confusion": "[[35, 0, 0, 1], [1, 166, 3, 3], [1, 1, 317, 4], [0, 2, 3, 221]]"
+    },
+    {
+      "run": "EfficientNetV2B0__ce__hires",
+      "variant": "int8",
+      "status": "degraded",
+      "note": "Agreement 0.928 < threshold 0.95",
+      "size_mb": 6.815299987792969,
+      "mac_latency_ms": 133.45125000341795,
+      "agreement_with_fp32_keras": 0.9284731774415406,
+      "val_acc_drop": 0.031636863823933936,
+      "val_accuracy": 0.9188445667125172,
+      "val_macro_f1": 0.9054701160935598,
+      "val_qwk": 0.8704936869802893,
+      "test_accuracy": 0.9327176781002638,
+      "test_macro_f1": 0.922022880877967,
+      "test_qwk": 0.9074713808248475,
+      "val_confusion": "[[33, 0, 2, 1], [2, 152, 12, 6], [3, 5, 310, 3], [2, 5, 18, 173]]",
+      "test_confusion": "[[35, 0, 0, 1], [3, 148, 20, 2], [3, 2, 315, 3], [1, 6, 10, 209]]"
+    }
+  ],
+  "note": "mac_latency_ms is measured on the host Mac CPU (TFLite XNNPACK). Raspberry Pi 4B inference was NOT performed \u2014 no physical hardware measurements. INT8 status='ok' requires agreement>=0.95 with FP32 Keras and val acc drop <0.05."
+}

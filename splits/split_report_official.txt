@@ -1,0 +1,58 @@
+Step 1 (FYP3): BCI IHC images -> 256 px cache, labels, leakage-safe train/val split.
+
+Mirrors FYP2/src/make_split.py, with three differences forced by the data:
+
+  * Labels come from the BCI filename convention 'NNNNN_{train|test}_{0|1+|2+|3+}.png'. Per the BCI
+    README this is the score of the whole slide (WSI) the tile came from, not of the tile itself.
+  * The OFFICIAL BCI test split (977 tiles) is the test set, so results are comparable with published
+    BCI work. Validation is 15% of the official training split.
+  * Tiles are 1024x1024. They are downsampled once to 256x256 (Lanczos) so the networks see the same
+    geometry as FYP2 (256 px source -> 224 px input).
+
+Leakage control is the same as FYP2: pHash (<= 12 bits) near-duplicate groups never straddle the
+train/val boundary. Near-duplicates between the official train and test splits cannot be moved; they
+are counted and flagged (column 'test_near_dup_of_train') so test metrics can be re-checked without them.
+There are no patient/slide IDs in BCI, so this split is NOT slide-independent: different tiles of one
+slide can sit in train and val.
+
+The patch-level 'her2_level_refined' column from BCI_metadata_pairs_refined.csv is merged in for
+analysis only (column 'refined_label'). It is never used for training or model selection.
+
+Outputs: data/ihc_256/{train,test}/*.png, splits/split_manifest.csv, splits/split_report.txt,
+         results/features/imagenet_effb0_bci.npz (frozen ImageNet embeddings, reused by the analysis)
+
+       Score_0  Score_1  Score_2  Score_3  total
+split                                           
+test        38      235      446      258    977
+train      172      781     1442      916   3311
+val         30      138      255      162    585
+All        240     1154     2143     1336   4873
+
+Leakage check: nearest-neighbour similarity of each eval tile to the TRAIN set
+(frozen ImageNet EfficientNetB0 cosine; pHash Hamming distance out of 64)
+  val  ->train  cos max=0.983 p99=0.978 median=0.908 | pHash min=14 median=18 | tiles with pHash<=12: 0
+  test ->train  cos max=0.986 p99=0.978 median=0.907 | pHash min=8 median=18 | tiles with pHash<=12: 15
+  train->train cos max=0.985 median=0.909
+
+Refined (patch-level) vs filename (slide-level) label agreement: 0.821 on 3509 tiles with a valid refined label
+refined   0.0  1.0   2.0  3.0
+filename                     
+0          82   15    19    0
+1           4  853    30    0
+2           5  385  1103   94
+3           0    7    68  844
+
+{
+  "n_images": 4873,
+  "phash_threshold": 12,
+  "linked_pairs": 104,
+  "n_groups": 4778,
+  "tiles_in_multi_tile_groups": 148,
+  "split_seed_offset": 0,
+  "test_tiles_near_dup_of_train": 26,
+  "val_to_train_median_cos": 0.9084511399269104,
+  "val_to_train_min_phash": 14,
+  "test_to_train_median_cos": 0.907216489315033,
+  "test_to_train_min_phash": 8,
+  "refined_agreement": 0.8213166144200627
+}

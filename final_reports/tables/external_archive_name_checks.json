@@ -1,0 +1,5 @@
+{
+ "wsi_train_test_shared_names": 0,
+ "patch_test_in_wsi_train": 1594,
+ "patch_train_in_wsi_test": 1409
+}

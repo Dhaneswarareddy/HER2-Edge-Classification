@@ -1,0 +1,47 @@
+Step 1b (FYP3): the main, leakage-controlled split, using FYP2's recipe with slide fragments as groups.
+
+Why not the official BCI split: tiles cut side by side from one slide share a continuous border.
+analysis_slides.py links such tiles (99.96% of links join tiles with the same slide label, against 33%
+for random pairs), and finds that 619 of the 977 official test tiles belong to slide fragments that
+also contain official training tiles. The official split is therefore not slide-independent.
+
+Why not FYP2's pHash groups: in BCI, pHash <= 12 links tiles of mostly background from different slides
+(39 of 53 pHash groups mix slide labels; even 6-bit pairs agree on label only 50% of the time), so they
+are not near-duplicates and would chain unrelated slides together.
+
+Recipe (as FYP2/src/make_split.py): StratifiedGroupKFold, 20 folds over all 4,873 tiles, groups = edge
+fragments; 3 folds test (15%), 3 folds val (15%), 14 folds train (70%); best of 50 seeds by how closely
+each split's class proportions match the whole dataset.
+
+Residual risk (cannot be removed without slide IDs): tiles of one slide that are not edge-connected
+(1,645 tiles have no accepted edge link) can still fall in different splits.
+
+Outputs: splits/split_manifest_grouped.csv, splits/split_report_grouped.txt
+
+       Score_0  Score_1  Score_2  Score_3  total
+split                                           
+test        36      173      323      226    758
+train      168      809     1499      912   3388
+val         36      172      321      198    727
+All        240     1154     2143     1336   4873
+
+Leakage check: nearest-neighbour similarity of each eval tile to the TRAIN set
+(frozen ImageNet EfficientNetB0 cosine) and accepted edge links across splits
+  accepted edge links crossing any split boundary: 0 (of 2763)
+  val  ->train  cos max=0.981 p99=0.971 median=0.901
+  test ->train  cos max=0.984 p99=0.976 median=0.892
+  train->train cos max=0.986 median=0.911
+  official-test tiles per grouped split: train 676, val 145, test 156
+
+Refined (patch-level) vs filename (slide-level) label agreement per split: train 0.817, val 0.822, test 0.841
+
+{
+  "n_images": 4873,
+  "n_fragments_multi_tile": 691,
+  "tiles_without_edge_link": 1645,
+  "split_seed_offset": 3,
+  "edge_links_crossing_splits": 0,
+  "val_to_train_median_cos": 0.901445746421814,
+  "test_to_train_median_cos": 0.8922941088676453,
+  "refined_agreement": 0.8213166144200627
+}

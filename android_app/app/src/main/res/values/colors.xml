@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="primary">#0D3B66</color>
+    <color name="primary_dark">#051B2E</color>
+    <color name="accent">#00A896</color>
+    <color name="background">#F4F7F6</color>
+    <color name="surface">#FFFFFF</color>
+    <color name="text_primary">#1A1A1A</color>
+    <color name="text_secondary">#666666</color>
+    <color name="divider">#E0E0E0</color>
+
+    <!-- HER2 Clinical Score Colors -->
+    <color name="score_0">#455A64</color>
+    <color name="score_1">#F57F17</color>
+    <color name="score_2">#E65100</color>
+    <color name="score_3">#C2185B</color>
+
+    <color name="status_negative">#2E7D32</color>
+    <color name="status_equivocal">#E65100</color>
+    <color name="status_positive">#C2185B</color>
+</resources>

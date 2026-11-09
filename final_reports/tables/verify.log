@@ -1,0 +1,173 @@
+{'source': 'BCI', 'run': 'DenseNet121__ce', 'input': 224, 'own_test_max_abs_diff': 5.364418029785156e-07, 'external_max_abs_diff': 1.1981765746238437e-07, 'cache_vs_fresh_max_diff': 0.0}
+{'source': 'BCI', 'run': 'EfficientNetV2B0__ce', 'input': 224, 'own_test_max_abs_diff': 1.4007091522216797e-06, 'external_max_abs_diff': 1.3418670654630205e-06, 'cache_vs_fresh_max_diff': 0.0}
+{'source': 'BCI', 'run': 'EfficientNetV2B0__ce__hires', 'input': 448, 'own_test_max_abs_diff': 2.384185791015625e-07, 'external_max_abs_diff': 4.17679214492761e-07, 'cache_vs_fresh_max_diff': 0.0}
+{'source': 'BCI', 'run': 'EfficientNetV2B0__ce__init_fyp2', 'input': 224, 'own_test_max_abs_diff': 1.1920928955078125e-06, 'external_max_abs_diff': 1.2185169983025546e-06, 'cache_vs_fresh_max_diff': 0.0}
+{'source': 'BCI', 'run': 'EfficientNetV2B0__ce__lowbatch', 'input': 224, 'own_test_max_abs_diff': 1.3709068298339844e-06, 'external_max_abs_diff': 7.538330077938582e-07, 'cache_vs_fresh_max_diff': 0.0}
+{'source': 'BCI', 'run': 'EfficientNetV2B0__ce__mix_fyp2', 'input': 224, 'own_test_max_abs_diff': 1.3709068298339844e-06, 'external_max_abs_diff': 7.239967345640252e-07, 'cache_vs_fresh_max_diff': 0.0}
+{'source': 'BCI', 'run': 'MobileNetV3Large__corn', 'input': 224, 'own_test_max_abs_diff': 1.125037670135498e-06, 'external_max_abs_diff': 4.083681488076252e-06, 'cache_vs_fresh_max_diff': 0.0}
+{'source': 'BCI', 'run': 'MobileNetV3Small__ce', 'input': 224, 'own_test_max_abs_diff': 3.0994415283203125e-06, 'external_max_abs_diff': 3.8031108856029228e-06, 'cache_vs_fresh_max_diff': 0.0}
+{'source': 'BCI', 'run': 'MobileNetV3Small__ce__hires', 'input': 448, 'own_test_max_abs_diff': 2.8014183044433594e-06, 'external_max_abs_diff': 7.459445953150734e-07, 'cache_vs_fresh_max_diff': 0.0}
+{'source': 'BCI', 'run': 'MobileNetV3Small__ce__lowbatch', 'input': 224, 'own_test_max_abs_diff': 2.950429916381836e-06, 'external_max_abs_diff': 2.0555101776231766e-06, 'cache_vs_fresh_max_diff': 0.0}
+{'source': 'FYP2', 'run': 'EfficientNetV2B0__ce', 'input': 224, 'own_test_max_abs_diff': 1.1920928955078125e-07, 'external_max_abs_diff': 1.725102806104939e-06, 'cache_vs_fresh_max_diff': 0.0}
+{'source': 'FYP2', 'run': 'MobileNetV2__ce', 'input': 224, 'own_test_max_abs_diff': 1.1920928955078125e-07, 'external_max_abs_diff': 1.936133956936814e-06, 'cache_vs_fresh_max_diff': 0.0}
+{'source': 'FYP2', 'run': 'ResNet50__ce', 'input': 224, 'own_test_max_abs_diff': 2.2737367544323206e-12, 'external_max_abs_diff': 2.9392181399856554e-07, 'cache_vs_fresh_max_diff': 0.0}
+INFO: Created TensorFlow Lite XNNPACK delegate for CPU.
+WARNING: Attempting to use a delegate that only supports static-sized tensors with a graph that has dynamic-sized tensors (tensor#234 is a dynamic-sized tensor).
+{
+ "fp32": {
+  "input_dtype": "float32",
+  "output_dtype": "float32",
+  "input_shape": [
+   1,
+   448,
+   448,
+   3
+  ],
+  "n_ops": 334,
+  "top_ops": [
+   [
+    "CONV_2D",
+    75
+   ],
+   [
+    "MUL",
+    73
+   ],
+   [
+    "LOGISTIC",
+    71
+   ],
+   [
+    "MEAN",
+    17
+   ],
+   [
+    "DEPTHWISE_CONV_2D",
+    16
+   ],
+   [
+    "SHAPE",
+    16
+   ],
+   [
+    "STRIDED_SLICE",
+    16
+   ],
+   [
+    "PACK",
+    16
+   ]
+  ],
+  "quantize_ops": 0,
+  "dequantize_ops": 0,
+  "max_abs_diff_vs_keras_48": 2.3245811462402344e-06,
+  "class_agreement_48": 1.0
+ },
+ "fp16": {
+  "input_dtype": "float32",
+  "output_dtype": "float32",
+  "input_shape": [
+   1,
+   448,
+   448,
+   3
+  ],
+  "n_ops": 521,
+  "top_ops": [
+   [
+    "DEQUANTIZE",
+    187
+   ],
+   [
+    "CONV_2D",
+    75
+   ],
+   [
+    "MUL",
+    73
+   ],
+   [
+    "LOGISTIC",
+    71
+   ],
+   [
+    "MEAN",
+    17
+   ],
+   [
+    "DEPTHWISE_CONV_2D",
+    16
+   ],
+   [
+    "SHAPE",
+    16
+   ],
+   [
+    "STRIDED_SLICE",
+    16
+   ]
+  ],
+  "quantize_ops": 0,
+  "dequantize_ops": 187,
+  "max_abs_diff_vs_keras_48": 0.013301312923431396,
+  "class_agreement_48": 1.0
+ },
+ "int8": {
+  "input_dtype": "float32",
+  "output_dtype": "float32",
+  "input_shape": [
+   1,
+   448,
+   448,
+   3
+  ],
+  "n_ops": 336,
+  "top_ops": [
+   [
+    "CONV_2D",
+    75
+   ],
+   [
+    "MUL",
+    73
+   ],
+   [
+    "LOGISTIC",
+    71
+   ],
+   [
+    "MEAN",
+    17
+   ],
+   [
+    "DEPTHWISE_CONV_2D",
+    16
+   ],
+   [
+    "SHAPE",
+    16
+   ],
+   [
+    "STRIDED_SLICE",
+    16
+   ],
+   [
+    "PACK",
+    16
+   ]
+  ],
+  "quantize_ops": 1,
+  "dequantize_ops": 1,
+  "max_abs_diff_vs_keras_48": 0.9921157956123352,
+  "class_agreement_48": 0.8958333333333334
+ }
+}
+variant split   status  size_mb  mac_latency_ms  accuracy  balanced_accuracy    qwk                       recall  stored_accuracy  stored_qwk
+   fp32   val       ok    22.36            71.3    0.9505             0.9450 0.9345 [0.944, 0.936, 0.975, 0.924]           0.9505      0.9345
+   fp32  test       ok    22.36            71.3    0.9749             0.9728 0.9587  [0.972, 0.96, 0.981, 0.978]           0.9749      0.9587
+   fp16   val       ok    11.27            75.5    0.9505             0.9450 0.9345 [0.944, 0.936, 0.975, 0.924]           0.9505      0.9345
+   fp16  test       ok    11.27            75.5    0.9749             0.9728 0.9587  [0.972, 0.96, 0.981, 0.978]           0.9749      0.9587
+   int8   val degraded     6.82           133.5    0.9188             0.9100 0.8705 [0.917, 0.884, 0.966, 0.874]           0.9188      0.8705
+   int8  test degraded     6.82           133.5    0.9327             0.9319 0.9075 [0.972, 0.855, 0.975, 0.925]           0.9327      0.9075
+fp32 confusion equals Keras predictions: val True test True
+ALLDONE
