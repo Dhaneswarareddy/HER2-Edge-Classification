@@ -23,8 +23,9 @@ Android phones and a Raspberry Pi 4B.
   `ANTIGRAVITY_*`, `CLAUDE_*.txt`, `FYP3_FINAL_AUDIT.md`, `REPORT_CORRECTIONS.md` (old), `results/REPORT*.md`,
   `results/metrics_all.csv`, `results/selection.json`, `deployment/benchmark_results/*.csv` without a `2026-11-10` date,
   and `final_report_figures/fig7_raspberry_pi4_hardware_benchmark.png` (superseded 31 Oct run).
-- **Phone power and E6/E7 have no results yet** (`experiments_v2/10_power/`, `experiments_v2/09_resolution_e6_e7/`).
-  Describe them only as next-semester work in progress.
+- **Phone power** (`experiments_v2/10_power/`) is measured but is next-semester material; quote it only from that
+  folder's README, with its limits. **E6/E7** (`experiments_v2/09_resolution_e6_e7/`) have no results yet; describe them
+  only as next-semester work in progress.
 - **Validation is the decision split.** BCI test numbers are reported once and were never used for selection.
   Validation figures are the fairer headline (primary model: val acc 0.950, QWK 0.935; test acc 0.975, QWK 0.959).
 - **The external test split (HER2-IHC-40x, 1,847 tiles) was examined before.** Never call it untouched or held out;
@@ -33,7 +34,7 @@ Android phones and a Raspberry Pi 4B.
 ## Wording to avoid
 
 "Clinically validated", "clinically ready", "generalises", "real-time whole-slide", "zero throttling" on phones,
-"energy-efficient" (no power result exists yet), "synthetic generalisation is a myth". This is research software and
+"energy-efficient" (only whole-phone fuel-gauge power exists; no comparison baseline), "synthetic generalisation is a myth". This is research software and
 not a medical device.
 
 ## Practical notes

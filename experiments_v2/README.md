@@ -48,7 +48,7 @@ results and limitations. Corrections to the existing reports are in `REPORT_CORR
 | 5 | AdaBN | Not done | 5 networks × 2 arms; development + exploratory test; clinical error profile | **Complete** |
 | 6 | Few-shot adaptation | Not done | 3 regimes × k ∈ {1, 5, 10, 20} × 5 draws, tuned on R_cal | **Complete** |
 | 7 | Ablation | Resolution / batch existed (E1, E2) | Frozen linear, frozen MLP and partial unfreezing trained; paired analysis incl. E1/E2 re-analysis | **Complete** |
-| 8 | Mobile / edge | Pi FP16 and phone latency existed, with unsupported claims | One protocol on Samsung M35, Realme 6 and Pi 4B (all precisions); app fixed (v1.1, bit-exact preprocessing); first on-device accuracy (758/758 agreement on both phones); Mac precision accuracy; screenshots recaptured | **Complete** (no power measured) |
+| 8 | Mobile / edge | Pi FP16 and phone latency existed, with unsupported claims | One protocol on Samsung M35, Realme 6 and Pi 4B (all precisions); app fixed (v1.1, bit-exact preprocessing); first on-device accuracy (758/758 agreement on both phones); Mac precision accuracy; screenshots recaptured | **Complete** (phone power added afterwards in `10_power/`; Pi power not measured) |
 
 ## B. Main results (actual values; details and CIs in each README)
 
@@ -156,7 +156,8 @@ Grad-CAM work runs on CPU, because tensorflow-metal hangs at 448 px on this Mac.
 5. **Tile-level analysis only.** No slide or patient aggregation, and no pathologist review of Grad-CAM maps or of
    the error taxonomy.
 6. **Illustrative costs.** Clinical cost weights are not validated utilities; only counts and rates are objective.
-7. **Edge limits.** No power was measured anywhere. Phone temperatures are battery temperatures. On-device accuracy
+7. **Edge limits.** Phone power comes from the battery fuel gauge (`10_power/`, one run per configuration); Pi power
+   was not measured. Phone temperatures are battery temperatures. On-device accuracy
    covers BCI tiles only.
 8. **Runs at the epoch cap.** Three ablation / E1 runs ended at the 45-epoch cap.
 
@@ -184,7 +185,9 @@ Grad-CAM work runs on CPU, because tensorflow-metal hangs at 448 px on this Mac.
 
 ## Still open
 
-1. **Power and energy** were not measured on any device; a meter is needed.
+1. **Power.** Phone power was measured afterwards from the battery fuel gauge (`10_power/`, next-semester
+   material). Pi power and an external-meter check of the phone values need a USB-C power meter.
 2. **App packaging.** The app's TFLite 2.16.1 library is not 16 KB page-aligned, which Android 15+ devices with 16 KB
    pages will need. A LiteRT upgrade would need re-validation with `08_edge/ondevice_validation.py`.
-3. **Not attempted:** E6 and E7 from `NEXT_EXPERIMENTS.md`, and slide-level aggregation.
+3. **E6 and E7** from `NEXT_EXPERIMENTS.md` started on 10 Nov 2026 (`09_resolution_e6_e7/`, running).
+   **Not attempted:** slide-level aggregation.

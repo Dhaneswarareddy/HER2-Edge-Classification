@@ -40,7 +40,7 @@ needed before anything in the next semester's part makes sense, and each part te
 |---|---|---|
 | Story | From synthetic to real tissue: a validated, leakage-controlled BCI classifier, what drives its accuracy, and how trustworthy it is in-domain | Does it work elsewhere? Cross-laboratory failure, its causes and fixes; then deployment, on-device verification, speed and energy |
 | Stages | A Data, B Model development, C In-domain evaluation | D Cross-laboratory generalisation, E Deployment and edge, F New experiments |
-| Status | All 14 steps complete | Steps 15–29 complete; Step 30 (phone power) measured 10 Nov; Steps 31–33 in progress or planned |
+| Status | All 14 steps complete | Steps 15–30 complete (Step 30, phone power, measured 10 Nov); Steps 31–32 running; Step 33 onward planned |
 | Headline result | 448 px EfficientNetV2B0: BCI test acc 0.975, QWK 0.959; resolution effect confirmed against a batch-matched control | Zero-shot collapse (bal. acc 0.26–0.38); 5 labelled tiles per class recover 0.78; app reproduces the model on 758/758 tiles; 81–337 ms per tile |
 
 E6 and E7 belong to Stage B by topic (they extend the resolution study), but they were started after the snapshot, so
@@ -258,7 +258,7 @@ Status: ✅ complete · 🔄 running · ⏳ planned. "Where" points to the evide
 - Phones are 2.4–4.1× faster than the Pi; FP16 is the right format; INT8 needs quantisation-aware training first.
 - Where: `deployment/CROSS_PLATFORM_EDGE_ANALYSIS.md`.
 
-**Step 30. Smartphone power and energy per inference** (10 Nov 2026) — see §4.
+**Step 30. Smartphone power and energy per inference** ✅ (10 Nov 2026) — see §4.
 
 ### Stage F — New experiments and future work (next semester)
 
@@ -275,11 +275,23 @@ Status: ✅ complete · 🔄 running · ⏳ planned. "Where" points to the evide
 - **What.** Whole-phone battery power on the Samsung Galaxy M35 5G and Realme 6 while the deployed 448 px FP16 model runs
   continuously (4 threads and 1 thread, 300 s each), against a screen-on idle baseline before and after. Read from
   each phone's own battery fuel gauge (no root, no external meter); USB unplugged; screen on at fixed brightness.
-- **Status at this snapshot.** Measured on 10 Nov 2026 (22:28–22:55); analysis pending. **No power or energy number
-  exists yet; nothing about phone power may be reported until `experiments_v2/10_power/outputs/` contains the
-  results.** This is next-semester work (Stage E).
-- **Known limits, decided before the analysis.** Whole-device power including the screen, not the CPU alone. The
-  Realme gauge updates about once a second; the Samsung's only about every 30 s, so Samsung values are coarser.
+- **Status: complete** (10 Nov 2026, 22:28–22:55; one run per configuration). Next-semester material (Stage E).
+- **Results** (deployed 448 px FP16; whole phone, screen on):
+
+  | | Samsung Galaxy M35 5G | Realme 6 |
+  |---|---|---|
+  | Idle, screen on | 0.74 W | 0.75 W |
+  | 4 threads: power (± SE) / added by inference | 4.75 W (± 0.41) / 4.01 W | 4.64 W (± 0.05) / 3.89 W |
+  | 4 threads: energy per tile, total / added | 0.47 J / 0.39 J | 0.73 J / 0.61 J |
+  | 1 thread: energy per tile, total / added | 0.69 J / 0.49 J | 0.84 J / 0.62 J |
+  | Sustained vs short-benchmark median latency, 4 threads | 99.1 vs 81.4 ms (+22%) | 151.6 vs 142.6 ms (+6%) |
+
+- **Findings.** Inference adds about 4 W at 4 threads; 4 threads costs no more energy per tile than 1 thread and
+  less in total. Under 5 minutes of continuous load on battery the Samsung is about 20% slower than in the short
+  benchmark (cause not established).
+- **Limits.** Whole-device power including the screen, from the phone's own fuel gauge, not an external meter. The
+  Realme gauge updates about once a second (SE 1–2%); the Samsung's only about every 30 s (SE about 9%). The charge
+  counter was too coarse to use. Details: `experiments_v2/10_power/README.md`.
 
 ### Steps 31–32 — E6 and E7 (`experiments_v2/09_resolution_e6_e7/`)
 
@@ -312,7 +324,7 @@ Status: ✅ complete · 🔄 running · ⏳ planned. "Where" points to the evide
 5. **Tile level only.** No slide or patient aggregation; no pathologist review of errors or Grad-CAM maps.
 6. **Clinical costs are illustrative**, not validated utilities.
 7. **Edge limits.** Phone temperatures are battery temperatures; no throttling flag exists on Android; phone power is
-   whole-device battery power from the fuel gauge (§4); Pi power was not measured; on-device accuracy covers BCI tiles
+   whole-device battery power from each phone's fuel gauge, one run per configuration (§4); Pi power was not measured; on-device accuracy covers BCI tiles
    only. The app's TFLite 2.16.1 library is not 16 KB page-aligned (both test phones use 4 KB pages).
 8. **Mac latency is not reproducible** under desktop load (two runs differ by up to 2.4×).
 9. **Earlier reports contained errors** that are corrected and itemised in `experiments_v2/REPORT_CORRECTIONS_v2.md`
@@ -338,7 +350,7 @@ Status: ✅ complete · 🔄 running · ⏳ planned. "Where" points to the evide
 | 42 | E Deployment | GPU / NNAPI delegates on the phones, with the same accuracy gate | Further speed-up | Re-validation with `ondevice_validation.py` |
 | 43 | E Deployment | LiteRT upgrade for 16 KB page alignment, then re-run on-device validation | Required on newer Android devices | App rebuild |
 | 44 | E Deployment | Raspberry Pi 4B power measurement | Pi energy per tile is unknown | USB-C inline power meter (e.g. FNIRSI FNB58) |
-| 45 | E Deployment | Phone power with an external meter or an in-app sampler at higher rate | Validate the fuel-gauge estimates (§4) | Meter or app change |
+| 45 | E Deployment | Phone power with an external meter or an in-app sampler, repeated runs, and the cause of the sustained-load slowdown | Validate the fuel-gauge estimates (§4) | Meter or app change |
 
 ---
 

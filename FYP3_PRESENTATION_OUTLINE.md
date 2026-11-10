@@ -233,7 +233,7 @@
   - On CPU, FP16 runs at FP32 speed (weights are expanded to FP32); FP16 only halves the file size (11.3 vs 22.4 MiB). The 224 px FP16 model is 4.8× (Samsung, 4 threads) to 5.3× (Realme, 8 threads) faster than 448 px.
   - **INT8 (rejected, speed only)**: 21.7 ms (Samsung, 4 threads), 34.3 ms (Realme, 8 threads), 104.1 ms (Pi, 4 threads). It fails the 0.95 agreement gate (0.928) and loses 10 points of 1+ recall (0.855); on the Pi it agrees with Keras on 109 of 120 reference tiles.
   - **Thermals**: phone values are battery temperatures (29.7 → 31.7 °C Samsung, 29.6 → 32.0 °C Realme, across 16 configurations each); Android exposes no throttle flag. Pi SoC ≤ 62.8 °C with `throttled=0x0` before and after every configuration.
-  - **Not measured**: power or energy on any device.
+  - **Power** (next-semester material): measured afterwards from each phone's battery fuel gauge; inference adds about 4 W at 4 threads, 0.39 J (Samsung) and 0.61 J (Realme) per tile above idle. Pi power not measured.
   - **Withdrawn 31 Oct claims**: Pi INT8 122.9 ms (never measured), phone "throttled=0x0", INT8 "46 FPS real-time", per-watt efficiency, and "pinned to A78 cores" / "A55 sync stall" explanations.
 - **Recommended Visuals**: `final_report_figures/fig7_smartphone_edge_benchmark.png` (10 Nov measurements) and `final_report_figures/fig8_quantization_and_agreement.png`.
 - **Speaker Script**:
@@ -268,7 +268,7 @@
   2. Synthetic Evaluation: FYP2 synthetic pretraining or mixing gave no measurable change on BCI; synthetic-trained networks did best on the colour-separable external set.
   3. Cross-Laboratory Adaptation: HARMONISE raises 224 px EfficientNetV2B0 balanced accuracy by +0.202 (0.301 → 0.503) but shifts errors to 2+ and breaks the 448 px model; AdaBN reaches about 0.52; 5 labelled tiles per class reach 0.782.
   4. Diagnostic Integrity: Exposed the QWK paradox and added a clinical error taxonomy; 1+/2+ separation remains unreliable.
-  5. Mobile & Edge Deployment: Android app v1.1 reproduces the validated predictions on 758/758 BCI test tiles on both phones (accuracy 0.975); median 448 px latency 81.4 ms (Samsung), 139.1 ms (Realme), 336.5 ms (Pi 4B). INT8 rejected; no power measured.
+  5. Mobile & Edge Deployment: Android app v1.1 reproduces the validated predictions on 758/758 BCI test tiles on both phones (accuracy 0.975); median 448 px latency 81.4 ms (Samsung), 139.1 ms (Realme), 336.5 ms (Pi 4B). INT8 rejected. Phone power (fuel gauge, next-semester material): about 4 W added at 4 threads, 0.39–0.61 J per tile above idle; Pi power not measured.
 - **Disclosures**: research software, not clinically validated; tile level only, no slide IDs; one training seed per configuration; the external test split was examined before, so external results are exploratory.
 - **Future Directions**: Slide-level aggregation with slide-identified data and pathologist review of errors and Grad-CAM maps; multi-seed training and a held-out third laboratory for unbiased external testing; small labelled sets per site with an acceptance protocol; a focus and brightness quality check before inference and power measurement on devices; hardware acceleration (Android NNAPI/GPU delegates, Coral/Hailo) with accuracy gates.
 - **Recommended Visual**: High-level summary flowchart depicting the pipeline from IHC tile to on-device prediction.

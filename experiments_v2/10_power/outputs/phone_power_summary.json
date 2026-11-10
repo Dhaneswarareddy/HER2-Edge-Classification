@@ -1,0 +1,70 @@
+{
+  "samsung_m35": {
+    "device": "Samsung Galaxy M35 5G",
+    "idle_power_mW": 737.0,
+    "idle_drift_mW": -63.7,
+    "unplugged_throughout": true,
+    "runs": {
+      "fp16_4t": {
+        "t_inf_ms": 98.12389999999999,
+        "median_ms": 99.064,
+        "invokes": 3044,
+        "short_benchmark_median_ms": 81.4,
+        "sustained_vs_short_median": 1.22,
+        "run_power_mW": 4747.9,
+        "run_power_se_mW": 412.2,
+        "added_power_mW": 4011.0,
+        "energy_total_mJ_per_inference": 465.9,
+        "energy_incremental_mJ_per_inference": 393.6,
+        "inferences_per_Wh_incremental": 9147
+      },
+      "fp16_1t": {
+        "t_inf_ms": 258.895,
+        "median_ms": 257.973,
+        "invokes": 1158,
+        "short_benchmark_median_ms": 214.9,
+        "sustained_vs_short_median": 1.2,
+        "run_power_mW": 2645.8,
+        "run_power_se_mW": 206.0,
+        "added_power_mW": 1908.8,
+        "energy_total_mJ_per_inference": 685.0,
+        "energy_incremental_mJ_per_inference": 494.2,
+        "inferences_per_Wh_incremental": 7285
+      }
+    }
+  },
+  "realme_6": {
+    "device": "Realme 6",
+    "idle_power_mW": 751.8,
+    "idle_drift_mW": 156.5,
+    "unplugged_throughout": true,
+    "runs": {
+      "fp16_4t": {
+        "t_inf_ms": 156.353,
+        "median_ms": 151.552,
+        "invokes": 1914,
+        "short_benchmark_median_ms": 142.6,
+        "sustained_vs_short_median": 1.06,
+        "run_power_mW": 4641.3,
+        "run_power_se_mW": 54.3,
+        "added_power_mW": 3889.4,
+        "energy_total_mJ_per_inference": 725.7,
+        "energy_incremental_mJ_per_inference": 608.1,
+        "inferences_per_Wh_incremental": 5920
+      },
+      "fp16_1t": {
+        "t_inf_ms": 301.699,
+        "median_ms": 301.461,
+        "invokes": 993,
+        "short_benchmark_median_ms": 301.7,
+        "sustained_vs_short_median": 1.0,
+        "run_power_mW": 2793.3,
+        "run_power_se_mW": 22.8,
+        "added_power_mW": 2041.5,
+        "energy_total_mJ_per_inference": 842.7,
+        "energy_incremental_mJ_per_inference": 615.9,
+        "inferences_per_Wh_incremental": 5845
+      }
+    }
+  }
+}

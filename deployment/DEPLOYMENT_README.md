@@ -14,7 +14,9 @@ The FYP3 edge deployment targets two complementary hardware platforms:
      **139.1 ms** (Realme, 8 threads).
    - On the full BCI test split, both phones reproduce the validated predictions on **758/758 tiles** (accuracy 0.975).
    - INT8 is 3–4× faster but failed the accuracy gate (agreement 0.928). It is labelled "speed test only".
-   - No power was measured. Android exposes no throttle flag; temperatures are battery temperatures.
+   - Phone power (measured afterwards, battery fuel gauge, whole device): inference adds about 4 W at 4 threads,
+     0.39 J (Samsung) and 0.61 J (Realme) per tile above idle (`experiments_v2/10_power/`). Pi power not measured.
+     Android exposes no throttle flag; temperatures are battery temperatures.
    - See `deployment/MOBILE_BENCHMARK_REPORT.md`.
 2. **Raspberry Pi 4 Model B Rev 1.4 (comparison baseline).** 4× Cortex-A72 at 1.8 GHz, 4 GB, Debian 13,
    `ai_edge_litert`.

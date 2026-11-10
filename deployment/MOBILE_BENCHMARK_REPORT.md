@@ -30,7 +30,7 @@ claims; see "What changed" at the end and `experiments_v2/REPORT_CORRECTIONS_v2.
 - The values below are **battery** temperatures, read with `dumpsys battery` before and after each configuration.
 - Android exposes no throttle flag, so throttling cannot be reported.
 
-**Power.** Not measured.
+**Power.** Not measured in this benchmark (plugged in). Measured separately on battery: §6.
 
 ## 2. Latency (median ms; p95 in brackets) and peak memory
 
@@ -105,3 +105,19 @@ Tiles: the full BCI grouped test split (758 original 1024 px tiles) and the 120 
 | "Android 16" (Samsung) | The phone now reports Android 17 after an OS update |
 
 The 31 Oct CSVs are kept in `deployment/benchmark_results/benchmark_samsung_m35.csv` and `benchmark_realme_6.csv`.
+
+## 6. Power and energy per tile (battery, measured 10 Nov 2026; `experiments_v2/10_power/`)
+
+Whole-phone power from the battery fuel gauge, USB unplugged, screen on, deployed 448 px FP16 model running continuously
+for 300 s; one run per configuration.
+
+| | Samsung Galaxy M35 5G | Realme 6 |
+|---|---|---|
+| Idle, screen on | 0.74 W | 0.75 W |
+| 4 threads: power (± SE) / added by inference | 4.75 W (± 0.41) / 4.01 W | 4.64 W (± 0.05) / 3.89 W |
+| 4 threads: energy per tile, total / added | 0.47 J / 0.39 J | 0.73 J / 0.61 J |
+| 1 thread: energy per tile, total / added | 0.69 J / 0.49 J | 0.84 J / 0.62 J |
+| Sustained vs short-benchmark median latency, 4 threads | 99.1 vs 81.4 ms (+22%) | 151.6 vs 142.6 ms (+6%) |
+
+The Samsung gauge updates only about every 30 s (SE about 9%); the Realme's about every second (SE 1–2%). Fuel-gauge
+values, not a calibrated meter.

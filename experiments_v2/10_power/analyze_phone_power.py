@@ -26,13 +26,19 @@ DEVICES = {"samsung_m35": "Samsung Galaxy M35 5G", "realme_6": "Realme 6"}
 # against the voltage and the charge-counter slope below; both estimates are written so the reader can verify).
 CUR_TO_MA = {"samsung_m35": 1e-3, "realme_6": 1.0}
 SKIP_S = 15
+# 10 Nov 2026 short benchmark (10 warm-up + 100 runs, plugged in; experiments_v2/08_edge/outputs/edge_latency_table.csv)
+SHORT_BENCH_MS = {"samsung_m35": {"4t": 81.4, "1t": 214.9}, "realme_6": {"4t": 142.6, "1t": 301.7}}
+# The charge-counter (coulomb) estimate is written for completeness but NOT used: over 5-min windows it is too coarse
+# (Samsung: 5 mAh steps, i.e. +/-35% at idle; Realme: the counter lags and even orders the phases inconsistently).
 
 
 def bench(path):
     txt = path.read_text(errors="replace")
     avg = re.search(r"Inference \(avg\): ([\d.e+]+)", txt)
     cnt = re.findall(r"count=(\d+)", txt)
-    return dict(t_inf_ms=float(avg.group(1)) / 1000 if avg else np.nan, invokes=int(cnt[-1]) if cnt else 0)
+    med = re.findall(r"median=([\d.]+)", txt)
+    return dict(t_inf_ms=float(avg.group(1)) / 1000 if avg else np.nan,          # mean: sets throughput / energy
+                median_ms=float(med[-1]) / 1000 if med else np.nan, invokes=int(cnt[-1]) if cnt else 0)
 
 
 def phase_stats(df, ph, dev):
@@ -50,6 +56,8 @@ def phase_stats(df, ph, dev):
                 mean_current_mA=round(i_ma.mean(), 1), sd_current_mA=round(i_ma.std(), 1),
                 mean_voltage_mV=round(d.voltage_mV.mean(), 1), mean_power_mW=round(p_mw.mean(), 1),
                 sd_power_mW=round(p_mw.std(), 1),
+                # standard error over *distinct* gauge readings (repeated samples of one reading are not independent)
+                se_power_mW=round(p_mw.std() / np.sqrt(max(d.current_raw.nunique(), 1)), 1),
                 coulomb_current_mA=round(dq_ma, 1) if q.iloc[0] != q.iloc[-1] else None,
                 coulomb_power_mW=round(dq_ma * d.voltage_mV.mean() / 1000, 1) if q.iloc[0] != q.iloc[-1] else None,
                 temp_C_start=d.temp_dC.iloc[0] / 10, temp_C_end=d.temp_dC.iloc[-1] / 10)
@@ -84,7 +92,11 @@ def main():
                 continue
             b = bench(d / f"bench_{t}.txt")
             p_run = stats[ph]["mean_power_mW"]
-            res["runs"][ph] = dict(**b, run_power_mW=p_run, added_power_mW=round(p_run - idle, 1),
+            short = SHORT_BENCH_MS[dev][t]
+            res["runs"][ph] = dict(**b, short_benchmark_median_ms=short,
+                                   sustained_vs_short_median=round(b["median_ms"] / short, 2),
+                                   run_power_mW=p_run, run_power_se_mW=stats[ph]["se_power_mW"],
+                                   added_power_mW=round(p_run - idle, 1),
                                    energy_total_mJ_per_inference=round(p_run * b["t_inf_ms"] / 1000, 1),
                                    energy_incremental_mJ_per_inference=round((p_run - idle) * b["t_inf_ms"] / 1000, 1),
                                    inferences_per_Wh_incremental=round(3.6e6 / ((p_run - idle) * b["t_inf_ms"] / 1000))

@@ -52,10 +52,13 @@ All values below were measured on 10 Nov 2026 with one protocol (`experiments_v2
    - Network time is 81–139 ms per tile.
    - In the app, the exact resize adds 145–211 ms per 1024 px tile.
    - The Pi is 2.4–4.1× slower, but usable for batch work.
-2. **There is no measured basis for thermal or energy advantages.**
+2. **Thermal and energy evidence is limited.**
    - Phone temperatures are battery temperatures.
    - The Pi stayed below 63 °C without throttling once powered by an official-rating supply.
-   - Power was not measured on any device.
+   - Phone power (fuel gauge, whole device, measured afterwards): inference adds about 4 W at 4 threads, 0.39 J
+     (Samsung) and 0.61 J (Realme) per tile above idle; under 5 min of continuous load the Samsung is about 20%
+     slower than in the short benchmark (`experiments_v2/10_power/`).
+   - Pi power was not measured, so no phone-vs-Pi energy comparison is possible.
 3. **FP16 is the right deployment format:** lossless, and half the file size. INT8 is not, until it passes the
    accuracy gate.
 4. **Before clinical-style use**, any device needs:

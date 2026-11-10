@@ -91,7 +91,8 @@ phones use 4 KB pages. A LiteRT upgrade would need re-validation.
 
 ## Not measured
 
-- Power or energy on any device.
+- Power in this experiment. Phone power was measured afterwards on battery in `../10_power/`; Pi power was not
+  measured.
 - Accuracy on the external domain on device. The model is not fit for that domain anyway.
 
 ## Mac latency (`outputs/mac_latency_run{1,2}.csv`)

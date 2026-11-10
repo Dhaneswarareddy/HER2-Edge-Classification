@@ -39,7 +39,7 @@
 > 6. **Edge measurements** (§14, re-measured 10 Nov 2026 with one protocol on all devices):
 >    - What was measured: network latency on Samsung Galaxy M35 5G, Realme 6 and Raspberry Pi 4B; on-device accuracy of
 >      the Android app; Mac-side accuracy of every exported precision.
->    - Not measured: power or energy on any device.
+>    - Power: phones measured later the same day from the battery fuel gauge (§14.6); Raspberry Pi not measured.
 >    - Android does not expose CPU throttling to a normal user; phone temperatures are **battery** temperatures.
 >    - The INT8 model failed the project's accuracy gate and is reported for speed only.
 
@@ -80,7 +80,8 @@ Realme 6 (accuracy 0.975).
 - Median network latency per 448 px tile is 81 ms (Samsung, 4 threads), 139 ms (Realme, 8 threads) and 337 ms
   (Raspberry Pi 4B, 4 threads), with no throttling observed.
 - The INT8 model is 3–4× faster but fails the accuracy gate (agreement 0.928), so it is not deployed.
-- No power was measured.
+- Phone power (battery fuel gauge, whole device, screen on): inference adds about 4 W at 4 threads, i.e. 0.39 J
+  (Samsung) and 0.61 J (Realme) per tile above idle. Raspberry Pi power was not measured.
 
 ---
 
@@ -524,7 +525,7 @@ earlier 31 October measurements, and the claims built on them, are superseded (s
   - CPU thermal zones are not readable without root.
   - The temperatures shown are battery temperatures.
   - No throttle flag exists on Android.
-- **Power.** No power or energy was measured on any device.
+- **Power.** Phones: measured separately from the battery fuel gauge (§14.6). Raspberry Pi: not measured.
 
 ### 14.2 Accuracy of the exported model (Mac, all 727 val + 758 test BCI tiles)
 
@@ -643,6 +644,29 @@ to be re-validated.
 | Pi 448 px FP16, 4 threads: 353.5 ms at 84.2 °C, `0x80008` | Re-measured with an official-rating supply: 336.5 ms at 61.8 °C, `0x0`. The old run hit the soft temperature limit (flags `0x80000`/`0x80008`) |
 | App "computes the same prediction as the validated model" | False for v1.0 (one-step resize). True for v1.1: 758/758 on both phones |
 | Samsung "Android 16" | The phone now reports Android 17 (the OS was updated); the 31 Oct run was on 16 |
+
+---
+
+### 14.6 Smartphone power and energy per tile (`experiments_v2/10_power`, 10 Nov 2026; next-semester material)
+
+Whole-phone battery power from each phone's own fuel gauge while the deployed 448 px FP16 model ran continuously for
+300 s (USB unplugged, screen on at fixed brightness), against a screen-on idle baseline measured before and after.
+
+| | Samsung Galaxy M35 5G | Realme 6 |
+|---|---|---|
+| Idle, screen on | 0.74 W | 0.75 W |
+| 4 threads: power (± SE) / added by inference | 4.75 W (± 0.41) / 4.01 W | 4.64 W (± 0.05) / 3.89 W |
+| 4 threads: energy per tile, total / added | 0.47 J / 0.39 J | 0.73 J / 0.61 J |
+| 1 thread: energy per tile, total / added | 0.69 J / 0.49 J | 0.84 J / 0.62 J |
+| Sustained vs short-benchmark median latency, 4 threads | 99.1 vs 81.4 ms (+22%) | 151.6 vs 142.6 ms (+6%) |
+
+- Four threads cost no more energy per tile than one, and less in total, because the screen and idle cost are spread
+  over more tiles.
+- Under 5 minutes of continuous load on battery, the Samsung is about 20% slower than in the short plugged-in
+  benchmark (1 thread: +20%; Realme: +6% and 0%). The cause was not established; CPU temperature and frequency are not
+  readable without root.
+- **Limits.** Whole-device power, not CPU power; fuel-gauge resolution, not a calibrated meter; one run per
+  configuration. The Samsung gauge updates only about every 30 s (SE about 9%); the Realme's about every second.
 
 ---
 
@@ -769,7 +793,7 @@ unsupervised method. Partial fine-tuning was non-monotone, because its 3-draw tu
    45-epoch cap.
 5. **The external test split was examined before.** All external results are exploratory, and their CIs are optimistic.
 6. **Edge measurements:**
-   - no power or energy measured;
+   - phone power comes from the battery fuel gauge (whole device, one run per configuration); Pi power not measured;
    - phone temperatures are battery temperatures;
    - on-device accuracy was measured on BCI tiles only.
 7. **1+/2+ separation remains unreliable,** both in-domain (label noise) and across laboratories.
@@ -795,7 +819,7 @@ unsupervised method. Partial fine-tuning was non-monotone, because its 3-draw tu
 - Slide-level aggregation with slide-identified data, and pathologist review of errors and Grad-CAM maps.
 - Multi-seed training and a held-out third laboratory for unbiased external testing.
 - Fine-tuning with small labelled sets per site, with an acceptance protocol.
-- A focus and brightness quality check before inference; power measurement on devices.
+- A focus and brightness quality check before inference; Pi power, and phone power with an external meter.
 - Hardware acceleration (Android NNAPI/GPU delegates, Coral/Hailo), with accuracy gates.
 
 ---
