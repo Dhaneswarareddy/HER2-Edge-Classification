@@ -1,0 +1,31 @@
+domain,split,a,b,scenario,delta_cost,ci95,ci_excludes_0
+BCI,val,EfficientNetV2B0__ce__hires,EfficientNetV2B0__ce,S2_workflow,-0.18844566712517197,"[-0.3074, -0.0738]",True
+BCI,val,EfficientNetV2B0__ce__hires,EfficientNetV2B0__ce,S1_quadratic,-0.08665749656121044,"[-0.1446, -0.0363]",True
+BCI,val,EfficientNetV2B0__ce__hires,EfficientNetV2B0__ce__lowbatch,S2_workflow,-0.437414030261348,"[-0.6088, -0.2736]",True
+BCI,val,EfficientNetV2B0__ce__hires,EfficientNetV2B0__ce__lowbatch,S1_quadratic,-0.14718019257221457,"[-0.2184, -0.0812]",True
+BCI,val,MobileNetV3Large__corn,MobileNetV3Large__ce,S2_workflow,-0.08665749656121047,"[-0.1657, -0.0099]",True
+BCI,val,MobileNetV3Large__corn,MobileNetV3Large__ce,S1_quadratic,-0.038514442916093516,"[-0.0823, 0.0012]",False
+BCI,val,DenseNet121__corn,DenseNet121__ce,S2_workflow,-0.048143053645116896,"[-0.1839, 0.0944]",False
+BCI,val,DenseNet121__corn,DenseNet121__ce,S1_quadratic,0.009628610729023379,"[-0.0504, 0.0741]",False
+BCI,val,EfficientNetV2B0__corn,EfficientNetV2B0__ce,S2_workflow,0.15130674002751027,"[0.0064, 0.2968]",True
+BCI,val,EfficientNetV2B0__corn,EfficientNetV2B0__ce,S1_quadratic,0.05226960110041268,"[-0.0214, 0.1258]",False
+BCI,test,EfficientNetV2B0__ce__hires,EfficientNetV2B0__ce,S2_workflow,-0.18865435356200527,"[-0.3328, -0.0907]",True
+BCI,test,EfficientNetV2B0__ce__hires,EfficientNetV2B0__ce,S1_quadratic,-0.06068601583113457,"[-0.1224, -0.0105]",True
+BCI,test,EfficientNetV2B0__ce__hires,EfficientNetV2B0__ce__lowbatch,S2_workflow,-0.341688654353562,"[-0.5379, -0.1856]",True
+BCI,test,EfficientNetV2B0__ce__hires,EfficientNetV2B0__ce__lowbatch,S1_quadratic,-0.09102902374670185,"[-0.1552, -0.0377]",True
+BCI,test,MobileNetV3Large__corn,MobileNetV3Large__ce,S2_workflow,-0.10817941952506599,"[-0.2535, 0.0028]",False
+BCI,test,MobileNetV3Large__corn,MobileNetV3Large__ce,S1_quadratic,-0.06464379947229552,"[-0.1353, -0.0111]",True
+BCI,test,DenseNet121__corn,DenseNet121__ce,S2_workflow,0.0712401055408971,"[-0.0139, 0.1736]",False
+BCI,test,DenseNet121__corn,DenseNet121__ce,S1_quadratic,0.04881266490765171,"[0.0055, 0.0998]",True
+BCI,test,EfficientNetV2B0__corn,EfficientNetV2B0__ce,S2_workflow,0.10158311345646437,"[-0.0122, 0.2153]",False
+BCI,test,EfficientNetV2B0__corn,EfficientNetV2B0__ce,S1_quadratic,0.03562005277044855,"[-0.0096, 0.0824]",False
+external,ext_test,DenseNet121__ce + stain_p99,DenseNet121__ce raw,S2_workflow,-2.602057390362751,"[-3.5426, -1.578]",True
+external,ext_test,DenseNet121__ce + stain_p99,DenseNet121__ce raw,S1_quadratic,-2.834325933946941,"[-3.7573, -1.9203]",True
+external,ext_test,EfficientNetV2B0__ce + stain_p99,EfficientNetV2B0__ce raw,S2_workflow,-2.4937736870600973,"[-3.0147, -1.9892]",True
+external,ext_test,EfficientNetV2B0__ce + stain_p99,EfficientNetV2B0__ce raw,S1_quadratic,-2.080129940443963,"[-2.5607, -1.6297]",True
+external,ext_test,EfficientNetV2B0__ce__hires + stain_p99,EfficientNetV2B0__ce__hires raw,S2_workflow,1.4851109907958855,"[1.0261, 1.9708]",True
+external,ext_test,EfficientNetV2B0__ce__hires + stain_p99,EfficientNetV2B0__ce__hires raw,S1_quadratic,0.7661072008662695,"[0.5181, 0.9905]",True
+external,ext_test,MobileNetV3Large__corn + stain_p99,MobileNetV3Large__corn raw,S2_workflow,-1.1851651326475365,"[-1.87, -0.471]",True
+external,ext_test,MobileNetV3Large__corn + stain_p99,MobileNetV3Large__corn raw,S1_quadratic,-1.165132647536546,"[-1.7789, -0.5684]",True
+external,ext_test,MobileNetV3Small__ce + stain_p99,MobileNetV3Small__ce raw,S2_workflow,-2.274499187872225,"[-2.8598, -1.6996]",True
+external,ext_test,MobileNetV3Small__ce + stain_p99,MobileNetV3Small__ce raw,S1_quadratic,-2.2880346507850566,"[-2.9315, -1.674]",True

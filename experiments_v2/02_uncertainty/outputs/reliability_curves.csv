@@ -1,0 +1,121 @@
+bin,n,confidence,accuracy,run,domain,probs
+0,0,,,EfficientNetV2B0__ce,BCI test,raw
+1,0,,,EfficientNetV2B0__ce,BCI test,raw
+2,0,,,EfficientNetV2B0__ce,BCI test,raw
+3,0,,,EfficientNetV2B0__ce,BCI test,raw
+4,0,,,EfficientNetV2B0__ce,BCI test,raw
+5,0,,,EfficientNetV2B0__ce,BCI test,raw
+6,2,0.44245657324790955,1.0,EfficientNetV2B0__ce,BCI test,raw
+7,4,0.5083514750003815,0.75,EfficientNetV2B0__ce,BCI test,raw
+8,9,0.5808315873146057,0.4444444444444444,EfficientNetV2B0__ce,BCI test,raw
+9,12,0.6339612156152725,0.5,EfficientNetV2B0__ce,BCI test,raw
+10,11,0.7006148533387617,0.45454545454545453,EfficientNetV2B0__ce,BCI test,raw
+11,19,0.7747753544857627,0.5263157894736842,EfficientNetV2B0__ce,BCI test,raw
+12,13,0.839069297680488,0.6923076923076923,EfficientNetV2B0__ce,BCI test,raw
+13,26,0.9055868960343875,0.6153846153846154,EfficientNetV2B0__ce,BCI test,raw
+14,662,0.9954236725125788,0.9773413897280967,EfficientNetV2B0__ce,BCI test,raw
+0,0,,,EfficientNetV2B0__ce,BCI test,temp_scaled
+1,0,,,EfficientNetV2B0__ce,BCI test,temp_scaled
+2,0,,,EfficientNetV2B0__ce,BCI test,temp_scaled
+3,0,,,EfficientNetV2B0__ce,BCI test,temp_scaled
+4,0,,,EfficientNetV2B0__ce,BCI test,temp_scaled
+5,3,0.37793879773843764,0.6666666666666666,EfficientNetV2B0__ce,BCI test,temp_scaled
+6,4,0.4410039112708735,1.0,EfficientNetV2B0__ce,BCI test,temp_scaled
+7,17,0.5020074290338086,0.4117647058823529,EfficientNetV2B0__ce,BCI test,temp_scaled
+8,25,0.5724708085399843,0.52,EfficientNetV2B0__ce,BCI test,temp_scaled
+9,16,0.6310007251210681,0.625,EfficientNetV2B0__ce,BCI test,temp_scaled
+10,19,0.7013186277485922,0.631578947368421,EfficientNetV2B0__ce,BCI test,temp_scaled
+11,27,0.764334581390162,0.6666666666666666,EfficientNetV2B0__ce,BCI test,temp_scaled
+12,45,0.8300199058551485,0.8888888888888888,EfficientNetV2B0__ce,BCI test,temp_scaled
+13,59,0.897160163458018,0.9322033898305084,EfficientNetV2B0__ce,BCI test,temp_scaled
+14,543,0.9906928066882077,0.996316758747698,EfficientNetV2B0__ce,BCI test,temp_scaled
+0,0,,,EfficientNetV2B0__ce__hires,BCI test,raw
+1,0,,,EfficientNetV2B0__ce__hires,BCI test,raw
+2,0,,,EfficientNetV2B0__ce__hires,BCI test,raw
+3,0,,,EfficientNetV2B0__ce__hires,BCI test,raw
+4,0,,,EfficientNetV2B0__ce__hires,BCI test,raw
+5,0,,,EfficientNetV2B0__ce__hires,BCI test,raw
+6,0,,,EfficientNetV2B0__ce__hires,BCI test,raw
+7,1,0.5314422249794006,0.0,EfficientNetV2B0__ce__hires,BCI test,raw
+8,6,0.562800407409668,0.6666666666666666,EfficientNetV2B0__ce__hires,BCI test,raw
+9,3,0.6351200540860494,0.3333333333333333,EfficientNetV2B0__ce__hires,BCI test,raw
+10,2,0.6971296966075897,0.5,EfficientNetV2B0__ce__hires,BCI test,raw
+11,6,0.7712132434050242,0.8333333333333334,EfficientNetV2B0__ce__hires,BCI test,raw
+12,7,0.8405122842107501,0.8571428571428571,EfficientNetV2B0__ce__hires,BCI test,raw
+13,19,0.8911131902744895,0.9473684210526315,EfficientNetV2B0__ce__hires,BCI test,raw
+14,714,0.9981519369518056,0.9859943977591037,EfficientNetV2B0__ce__hires,BCI test,raw
+0,0,,,EfficientNetV2B0__ce__hires,BCI test,temp_scaled
+1,0,,,EfficientNetV2B0__ce__hires,BCI test,temp_scaled
+2,0,,,EfficientNetV2B0__ce__hires,BCI test,temp_scaled
+3,0,,,EfficientNetV2B0__ce__hires,BCI test,temp_scaled
+4,0,,,EfficientNetV2B0__ce__hires,BCI test,temp_scaled
+5,0,,,EfficientNetV2B0__ce__hires,BCI test,temp_scaled
+6,4,0.44972521263196297,0.5,EfficientNetV2B0__ce__hires,BCI test,temp_scaled
+7,5,0.5040459046654484,0.6,EfficientNetV2B0__ce__hires,BCI test,temp_scaled
+8,3,0.5749078607587949,0.6666666666666666,EfficientNetV2B0__ce__hires,BCI test,temp_scaled
+9,5,0.6317613516904595,0.6,EfficientNetV2B0__ce__hires,BCI test,temp_scaled
+10,11,0.6932831863165294,0.8181818181818182,EfficientNetV2B0__ce__hires,BCI test,temp_scaled
+11,18,0.7535432220558818,1.0,EfficientNetV2B0__ce__hires,BCI test,temp_scaled
+12,18,0.8373993828123951,0.6666666666666666,EfficientNetV2B0__ce__hires,BCI test,temp_scaled
+13,29,0.901989376912391,0.9310344827586207,EfficientNetV2B0__ce__hires,BCI test,temp_scaled
+14,665,0.994364405442852,0.9969924812030075,EfficientNetV2B0__ce__hires,BCI test,temp_scaled
+0,0,,,EfficientNetV2B0__ce,external test (raw),raw
+1,0,,,EfficientNetV2B0__ce,external test (raw),raw
+2,0,,,EfficientNetV2B0__ce,external test (raw),raw
+3,0,,,EfficientNetV2B0__ce,external test (raw),raw
+4,0,,,EfficientNetV2B0__ce,external test (raw),raw
+5,12,0.3787995808333333,0.08333333333333333,EfficientNetV2B0__ce,external test (raw),raw
+6,34,0.4407748597058823,0.20588235294117646,EfficientNetV2B0__ce,external test (raw),raw
+7,56,0.5070542326785714,0.125,EfficientNetV2B0__ce,external test (raw),raw
+8,68,0.5684666402941178,0.11764705882352941,EfficientNetV2B0__ce,external test (raw),raw
+9,65,0.6373628138461539,0.15384615384615385,EfficientNetV2B0__ce,external test (raw),raw
+10,62,0.6953955370967742,0.12903225806451613,EfficientNetV2B0__ce,external test (raw),raw
+11,80,0.7682706245,0.075,EfficientNetV2B0__ce,external test (raw),raw
+12,87,0.8361108104597702,0.06896551724137931,EfficientNetV2B0__ce,external test (raw),raw
+13,135,0.9032877439259259,0.02962962962962963,EfficientNetV2B0__ce,external test (raw),raw
+14,1248,0.9909502259935897,0.6177884615384616,EfficientNetV2B0__ce,external test (raw),raw
+0,0,,,EfficientNetV2B0__ce,external test (raw),temp_scaled_on_R_cal
+1,0,,,EfficientNetV2B0__ce,external test (raw),temp_scaled_on_R_cal
+2,0,,,EfficientNetV2B0__ce,external test (raw),temp_scaled_on_R_cal
+3,2,0.2659447113790796,0.0,EfficientNetV2B0__ce,external test (raw),temp_scaled_on_R_cal
+4,347,0.3083525285566878,0.12103746397694524,EfficientNetV2B0__ce,external test (raw),temp_scaled_on_R_cal
+5,434,0.36660176708174336,0.055299539170506916,EfficientNetV2B0__ce,external test (raw),temp_scaled_on_R_cal
+6,243,0.4308966699208623,0.1728395061728395,EfficientNetV2B0__ce,external test (raw),temp_scaled_on_R_cal
+7,163,0.49984788377181566,0.5337423312883436,EfficientNetV2B0__ce,external test (raw),temp_scaled_on_R_cal
+8,161,0.5681457509871064,0.9006211180124224,EfficientNetV2B0__ce,external test (raw),temp_scaled_on_R_cal
+9,181,0.6317164226249318,0.9668508287292817,EfficientNetV2B0__ce,external test (raw),temp_scaled_on_R_cal
+10,134,0.6992431771639547,0.9776119402985075,EfficientNetV2B0__ce,external test (raw),temp_scaled_on_R_cal
+11,69,0.7683339046261145,1.0,EfficientNetV2B0__ce,external test (raw),temp_scaled_on_R_cal
+12,62,0.833002653533956,1.0,EfficientNetV2B0__ce,external test (raw),temp_scaled_on_R_cal
+13,51,0.8942299379290737,1.0,EfficientNetV2B0__ce,external test (raw),temp_scaled_on_R_cal
+14,0,,,EfficientNetV2B0__ce,external test (raw),temp_scaled_on_R_cal
+0,0,,,EfficientNetV2B0__ce,external test (stain_p99),raw
+1,0,,,EfficientNetV2B0__ce,external test (stain_p99),raw
+2,0,,,EfficientNetV2B0__ce,external test (stain_p99),raw
+3,0,,,EfficientNetV2B0__ce,external test (stain_p99),raw
+4,21,0.3111446609523809,0.3333333333333333,EfficientNetV2B0__ce,external test (stain_p99),raw
+5,71,0.3736325232394366,0.18309859154929578,EfficientNetV2B0__ce,external test (stain_p99),raw
+6,121,0.4355893489256198,0.3884297520661157,EfficientNetV2B0__ce,external test (stain_p99),raw
+7,169,0.5007774850295859,0.25443786982248523,EfficientNetV2B0__ce,external test (stain_p99),raw
+8,146,0.5640771713013698,0.3972602739726027,EfficientNetV2B0__ce,external test (stain_p99),raw
+9,124,0.633294811532258,0.27419354838709675,EfficientNetV2B0__ce,external test (stain_p99),raw
+10,113,0.702272894159292,0.2920353982300885,EfficientNetV2B0__ce,external test (stain_p99),raw
+11,106,0.7669004531132074,0.33962264150943394,EfficientNetV2B0__ce,external test (stain_p99),raw
+12,125,0.8357974147199999,0.336,EfficientNetV2B0__ce,external test (stain_p99),raw
+13,108,0.9029845157407408,0.4537037037037037,EfficientNetV2B0__ce,external test (stain_p99),raw
+14,743,0.9918405700000001,0.9313593539703903,EfficientNetV2B0__ce,external test (stain_p99),raw
+0,0,,,EfficientNetV2B0__ce,external test (stain_p99),temp_scaled_on_R_cal
+1,0,,,EfficientNetV2B0__ce,external test (stain_p99),temp_scaled_on_R_cal
+2,0,,,EfficientNetV2B0__ce,external test (stain_p99),temp_scaled_on_R_cal
+3,4,0.2622446428973138,0.25,EfficientNetV2B0__ce,external test (stain_p99),temp_scaled_on_R_cal
+4,206,0.30811569443473236,0.30097087378640774,EfficientNetV2B0__ce,external test (stain_p99),temp_scaled_on_R_cal
+5,351,0.36568662157418286,0.31054131054131057,EfficientNetV2B0__ce,external test (stain_p99),temp_scaled_on_R_cal
+6,288,0.4304579810578417,0.3229166666666667,EfficientNetV2B0__ce,external test (stain_p99),temp_scaled_on_R_cal
+7,182,0.4956233810573092,0.3076923076923077,EfficientNetV2B0__ce,external test (stain_p99),temp_scaled_on_R_cal
+8,76,0.5662334581806823,0.35526315789473684,EfficientNetV2B0__ce,external test (stain_p99),temp_scaled_on_R_cal
+9,71,0.6315511748181191,0.6338028169014085,EfficientNetV2B0__ce,external test (stain_p99),temp_scaled_on_R_cal
+10,65,0.7010146007522836,0.9846153846153847,EfficientNetV2B0__ce,external test (stain_p99),temp_scaled_on_R_cal
+11,96,0.7679379750214559,0.9375,EfficientNetV2B0__ce,external test (stain_p99),temp_scaled_on_R_cal
+12,148,0.8339082047247477,0.9932432432432432,EfficientNetV2B0__ce,external test (stain_p99),temp_scaled_on_R_cal
+13,166,0.9004552997516732,1.0,EfficientNetV2B0__ce,external test (stain_p99),temp_scaled_on_R_cal
+14,194,0.9683928016234837,1.0,EfficientNetV2B0__ce,external test (stain_p99),temp_scaled_on_R_cal

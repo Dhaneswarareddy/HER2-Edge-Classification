@@ -3,10 +3,14 @@
 Actual benchmark results from physical Raspberry Pi 4 Model B Rev 1.4 (Quad-core Cortex-A72 @ 1.80 GHz, 4 GB RAM, Debian GNU/Linux 13.7 aarch64, LiteRT 2.3.0, governor `performance`).
 
 ## Files
+- `benchmark_pi4_precisions_2026-11-10.csv`: **10 Nov 2026 re-measurement**, FP32/FP16/INT8 at 1/2/4 threads, official-rating supply, no throttling (see `PI4_BENCHMARK_REPORT.md` §0).
+- `benchmark_samsung_m35_2026-11-10.csv`, `benchmark_realme_6_2026-11-10.csv`: **10 Nov 2026 phone re-measurement** (see `MOBILE_BENCHMARK_REPORT.md`).
+- `edge_latency_table_2026-11-10.csv`: all three devices in one table.
+- `benchmark_samsung_m35.csv`, `benchmark_realme_6.csv`: 31 Oct phone run (superseded; its INT8 rows are speed-only, its temperatures are battery temperatures).
 - `benchmark_primary_pi4.csv`: Primary model (`EfficientNetV2B0__ce__hires`, 448 px FP16) across 1, 2, and 4 threads.
 - `benchmark_experimental_pi4.csv`: Experimental calibrated model (`EfficientNetV2B0__ce`, 224 px FP16 with frozen `stain_p99`) across 1, 2, and 4 threads.
 
-## Summary
+## Summary (31 Oct 2026 run; the 4-thread rows hit the soft temperature limit, `0x80008`)
 
 | Mode | Threads | Median Latency | P95 Latency | Throughput | Peak RAM | Agreement |
 |---|---|---|---|---|---|---|

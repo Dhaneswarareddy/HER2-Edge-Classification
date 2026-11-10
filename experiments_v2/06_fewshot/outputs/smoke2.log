@@ -1,0 +1,3 @@
+support pool per class [1366, 799, 222, 1113]
+tune partial k=10 seed=101 {'lr': 0.0001, 'steps': 30}: R_cal bal 0.880 f1 0.830 qwk 0.947 (22s)
+tune partial k=10 seed=102 {'lr': 0.0001, 'steps': 30}: R_cal bal 0.785 f1 0.760 qwk 0.902 (25s)

@@ -1,0 +1,103 @@
+{
+ "experiment": "04_robustness",
+ "runs": [
+  "EfficientNetV2B0__ce__hires",
+  "EfficientNetV2B0__ce"
+ ],
+ "conditions": [
+  [
+   "clean",
+   null
+  ],
+  [
+   "brightness",
+   0.85
+  ],
+  [
+   "brightness",
+   0.92
+  ],
+  [
+   "brightness",
+   1.08
+  ],
+  [
+   "brightness",
+   1.15
+  ],
+  [
+   "contrast",
+   0.8
+  ],
+  [
+   "contrast",
+   0.9
+  ],
+  [
+   "contrast",
+   1.1
+  ],
+  [
+   "contrast",
+   1.2
+  ],
+  [
+   "blur",
+   1
+  ],
+  [
+   "blur",
+   2
+  ],
+  [
+   "blur",
+   4
+  ],
+  [
+   "jpeg",
+   90
+  ],
+  [
+   "jpeg",
+   70
+  ],
+  [
+   "jpeg",
+   50
+  ],
+  [
+   "jpeg",
+   30
+  ],
+  [
+   "noise",
+   2
+  ],
+  [
+   "noise",
+   5
+  ],
+  [
+   "dab",
+   0.8
+  ],
+  [
+   "dab",
+   1.2
+  ],
+  [
+   "haem",
+   0.8
+  ],
+  [
+   "haem",
+   1.2
+  ]
+ ],
+ "split": "BCI test (report-only)",
+ "applied_at": "native 1024 px before the model's own resize pipeline",
+ "jpeg": "PIL default 4:2:0",
+ "noise_seed": "tile index",
+ "n_boot": 2000,
+ "device": "CPU"
+}

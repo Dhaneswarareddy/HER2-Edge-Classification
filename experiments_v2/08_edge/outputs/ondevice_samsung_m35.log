@@ -1,0 +1,56 @@
+Performing Streamed Install
+Success
+
+pushed 878 files in 6 s
+{
+ "device": "samsung_m35",
+ "serial": "RZCX90S4A9H",
+ "app_version": "versionName=1.1",
+ "threads": 4,
+ "model": "FP16 448 px",
+ "n_files": 878,
+ "wall_clock_s": 321,
+ "results": {
+  "test": {
+   "n": 758,
+   "accuracy": 0.974934036939314,
+   "balanced_accuracy": 0.9727650123195147,
+   "macro_f1": 0.9706292658856381,
+   "qwk": 0.9586510370576897,
+   "recall_0": 0.9722222222222222,
+   "recall_1+": 0.9595375722543352,
+   "recall_2+": 0.9814241486068112,
+   "recall_3+": 0.9778761061946902,
+   "agreement_with_keras": 1.0,
+   "max_abs_dp_vs_keras": 0.018251718721923826
+  },
+  "valref120": {
+   "n": 120,
+   "accuracy": 0.95,
+   "balanced_accuracy": 0.95,
+   "macro_f1": 0.9505211866724814,
+   "qwk": 0.9591836734693877,
+   "recall_0": 0.9666666666666667,
+   "recall_1+": 0.9666666666666667,
+   "recall_2+": 0.9333333333333333,
+   "recall_3+": 0.9333333333333333,
+   "agreement_with_keras": 1.0,
+   "max_abs_dp_vs_keras": 0.01994076454353333
+  }
+ },
+ "single_tile_timing_ms": {
+  "preprocess_ms": {
+   "median": 211.0,
+   "p95": 230.14999999999998
+  },
+  "inference_ms": {
+   "median": 132.0,
+   "p95": 195.14999999999998
+  },
+  "total_ms": {
+   "median": 348.0,
+   "p95": 410.0
+  }
+ },
+ "note": "timings are per tile inside the app (one pass each, not a controlled benchmark)"
+}

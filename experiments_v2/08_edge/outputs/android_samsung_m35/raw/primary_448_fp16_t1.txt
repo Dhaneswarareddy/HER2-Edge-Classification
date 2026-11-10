@@ -1,0 +1,29 @@
+INFO: STARTING!
+INFO: Log parameter values verbosely: [0]
+INFO: Min num runs: [100]
+INFO: Num threads: [1]
+INFO: Min warmup runs: [10]
+INFO: Report the peak memory footprint: [1]
+INFO: Graph: [/data/local/tmp/primary_448_fp16.tflite]
+INFO: Signature to run: []
+INFO: #threads used for CPU inference: [1]
+INFO: Use xnnpack: [1]
+INFO: Loaded model /data/local/tmp/primary_448_fp16.tflite
+INFO: XNNPACK delegate created.
+INFO: Explicitly applied XNNPACK delegate, and the model graph will be partially executed by the delegate w/ 17 delegate kernels.
+INFO: The input model file size (MB): 11.8165
+INFO: Initialized session in 53.64ms.
+INFO: Running benchmark for at least 10 iterations and at least 0.5 seconds but terminate if exceeding 150 seconds.
+INFO: count=10 first=260645 curr=214480 min=213843 max=260645 avg=218826 std=13942 p5=213843 median=214433 p95=260645
+
+INFO: Running benchmark for at least 100 iterations and at least 1 seconds but terminate if exceeding 150 seconds.
+INFO: count=100 first=214110 curr=215285 min=213718 max=260135 avg=217921 std=7061 p5=213820 median=214868 p95=232206
+
+INFO: Inference timings in us: Init: 53640, First inference: 260645, Warmup (avg): 218826, Inference (avg): 217921
+INFO: Note: as the benchmark tool itself affects memory footprint, the following is only APPROXIMATE to the actual memory footprint of the model at runtime. Take the information at your discretion.
+INFO: Memory footprint delta from the start of the tool (MB): init=64.3945 overall=120.523
+INFO: Overall peak memory footprint (MB) via periodic monitoring: 128.059
+INFO: Memory status at the end of exeution:
+INFO: - VmRSS              : 103 MB
+INFO: + RssAnnon           : 83 MB
+INFO: + RssFile + RssShmem : 20 MB

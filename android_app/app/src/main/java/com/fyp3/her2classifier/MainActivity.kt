@@ -15,6 +15,7 @@ import com.fyp3.her2classifier.databinding.ActivityMainBinding
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
+import java.io.File
 import java.io.InputStream
 import java.util.Locale
 
@@ -40,8 +41,53 @@ class MainActivity : AppCompatActivity() {
         setupClassifier()
         setupListeners()
 
+        if (intent.getBooleanExtra("validate", false)) {
+            runValidation()
+            return
+        }
         // Load initial reference tile (Score 0) on launch
         loadSampleTile("samples/sample_tile_class_0.png")
+    }
+
+    /**
+     * On-device validation (research use): classifies every PNG pushed to
+     *   /sdcard/Android/data/com.fyp3.her2classifier/files/validation/
+     * through the SAME path as the UI (PilResample + TFLite) and writes validation_<model>_t<threads>.csv next to it.
+     * Start with: adb shell am start -n com.fyp3.her2classifier/.MainActivity --ez validate true
+     *             [--es model int8] [--ei threads 4]
+     */
+    private fun runValidation() {
+        val useInt8 = intent.getStringExtra("model") == "int8"
+        val threads = intent.getIntExtra("threads", 4)
+        val modelPath = if (useInt8) "models/primary_hires_int8.tflite" else "models/primary_hires_fp16.tflite"
+        val dir = getExternalFilesDir("validation") ?: return
+        val outDir = getExternalFilesDir(null) ?: return
+        val tag = (if (useInt8) "int8" else "fp16") + "_t" + threads
+        val outFile = File(outDir, "validation_$tag.csv")
+        val doneFile = File(outDir, "validation_$tag.done")
+        doneFile.delete()
+        window.addFlags(android.view.WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON)
+        binding.tvPredictionStatus.text = "Validation mode: $tag"
+        lifecycleScope.launch(Dispatchers.Default) {
+            val clf = HER2Classifier(this@MainActivity, modelPath, threads)
+            val files = dir.listFiles { f -> f.name.endsWith(".png") }?.sortedBy { it.name } ?: emptyList()
+            outFile.printWriter().use { w ->
+                w.println("file,width,height,p0,p1,p2,p3,pred,preprocess_ms,inference_ms,total_ms")
+                files.forEachIndexed { i, f ->
+                    val bmp = BitmapFactory.decodeFile(f.absolutePath)
+                    val r = clf.classify(bmp)
+                    val p = r.probabilities
+                    w.println(String.format(Locale.US, "%s,%d,%d,%.8f,%.8f,%.8f,%.8f,%d,%d,%d,%d", f.name, bmp.width, bmp.height,
+                        p[0], p[1], p[2], p[3], r.predictedClassIndex, r.preprocessTimeMs, r.inferenceTimeMs, r.totalTimeMs))
+                    if (i % 20 == 0) withContext(Dispatchers.Main) {
+                        binding.tvClinicalAction.text = "Validated ${i + 1} / ${files.size} tiles"
+                    }
+                }
+            }
+            clf.close()
+            doneFile.writeText("${files.size}\n")
+            withContext(Dispatchers.Main) { binding.tvClinicalAction.text = "Validation finished: ${files.size} tiles -> ${outFile.name}" }
+        }
     }
 
     private fun detectHardwarePlatform() {
@@ -52,9 +98,9 @@ class MainActivity : AppCompatActivity() {
         } else if (model.contains("M35", ignoreCase = true) || model.contains("SM-M356B", ignoreCase = true)) {
             "Samsung Galaxy M35 5G | Exynos 1380 (4× A78 + 4× A55)"
         } else {
-            "$manufacturer $model | Edge AI Neural Engine"
+            "$manufacturer $model"
         }
-        binding.tvHardwareBadge.text = hardwareText
+        binding.tvHardwareBadge.text = "$hardwareText | CPU inference"
     }
 
     private fun setupClassifier() {
@@ -81,7 +127,7 @@ class MainActivity : AppCompatActivity() {
                 R.id.rb1Thread -> 1
                 R.id.rb2Threads -> 2
                 R.id.rb8Threads -> 8
-                else -> 4 // 4 threads optimal for 4x A78 big cores
+                else -> 4 // no core pinning: the OS scheduler chooses the cores
             }
             updateClassifierConfig()
         }
@@ -101,8 +147,11 @@ class MainActivity : AppCompatActivity() {
     private fun updateClassifierConfig() {
         try {
             classifier?.setModel(selectedModelPath, selectedThreads)
-            val modelName = if (selectedModelPath.contains("int8")) "INT8 Quantized (448px)" else "FP16 Primary (448px)"
-            binding.tvModelSpec.text = "Model: $modelName • Threads: $selectedThreads • TFLite XNNPACK"
+            val modelName = if (selectedModelPath.contains("int8")) "INT8 448px (speed test only)" else "FP16 448px (validated)"
+            binding.tvModelSpec.text = "Model: $modelName • Threads: $selectedThreads • TFLite XNNPACK (CPU)"
+            if (selectedModelPath.contains("int8")) {
+                Toast.makeText(this, "INT8 failed the accuracy gate (agreement with FP32 0.928 < 0.95). Use for speed tests only, not for scoring.", Toast.LENGTH_LONG).show()
+            }
             // Re-run classification on current bitmap if available
             currentBitmap?.let { runInference(it) }
         } catch (e: Exception) {
@@ -150,8 +199,11 @@ class MainActivity : AppCompatActivity() {
     private fun updateUiWithResult(result: ClassificationResult) {
         // Update Score Badge & Colors
         binding.tvPredictionScore.text = result.predictedLabel
-        binding.tvPredictionStatus.text = result.clinicalStatus
-        binding.tvClinicalAction.text = result.clinicalDetail
+        val int8 = result.modelName.contains("INT8")
+        binding.tvPredictionStatus.text = if (int8) "${result.clinicalStatus}  [INT8: NOT VALIDATED]" else result.clinicalStatus
+        binding.tvClinicalAction.text = if (int8)
+            "INT8 model failed the project's accuracy gate (1+ recall 0.86 vs 0.96). Speed demonstration only. " + result.clinicalDetail
+        else result.clinicalDetail
 
         val badgeColor = when (result.predictedClassIndex) {
             0 -> ContextCompat.getColor(this, R.color.score_0)
@@ -181,11 +233,9 @@ class MainActivity : AppCompatActivity() {
         binding.pbScore3.progress = p3.toInt().coerceIn(0, 100)
         binding.tvScore3.text = String.format(Locale.US, "%.1f%%", p3)
 
-        // Update Latency and Throughput
-        val latencyMs = result.inferenceTimeMs.coerceAtLeast(1)
-        val throughputFps = 1000.0 / latencyMs
-        binding.tvLatency.text = String.format(Locale.US, "%d ms", latencyMs)
-        binding.tvThroughput.text = String.format(Locale.US, "%.1f FPS", throughputFps)
+        // Single-tile timings (one measurement, not a benchmark; see experiments_v2/08_edge for benchmarks)
+        binding.tvLatency.text = String.format(Locale.US, "%d ms", result.inferenceTimeMs)
+        binding.tvThroughput.text = String.format(Locale.US, "%d ms", result.totalTimeMs)
     }
 
     override fun onDestroy() {

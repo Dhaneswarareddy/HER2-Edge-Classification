@@ -1,5 +1,8 @@
 # FYP3: the FYP2 pipeline reproduced on real HER2 IHC (BCI)
 
+> **Stale (note added 10 Nov 2026).** This report predates the E1–E5 runs, HARMONISE and `experiments_v2`; it covers 16 of the 20 grouped runs. Use `FYP3_FINAL_REPORT.md` and `experiments_v2/README.md` for current results (`experiments_v2/REPORT_CORRECTIONS_v2.md`, item 25).
+
+
 A separate experiment. FYP2 remains the main project and was not modified; its results and weights were only read.
 
 ## 0. Findings (final, 30 Oct 2026)

@@ -1,0 +1,11 @@
+EfficientNetV2B0__ce: fresh vs stored  raw 3.61e-06  stain_p99 7.11e-07
+EfficientNetV2B0__ce adabn: 59 BN layers re-estimated (mean |change| 0.2421); 15 dropout layers off
+EfficientNetV2B0__ce adabn_p99: 59 BN layers re-estimated (mean |change| 0.2807); 15 dropout layers off
+TEST EfficientNetV2B0__ce raw        acc 0.448 bal 0.301 f1 0.235 qwk 0.108 recall [0.011, 0.184, 0.009, 1.0]
+TEST EfficientNetV2B0__ce stain_p99  acc 0.571 bal 0.503 f1 0.448 qwk 0.593 recall [0.301, 0.177, 0.568, 0.967]
+TEST EfficientNetV2B0__ce adabn      acc 0.683 bal 0.522 f1 0.521 qwk 0.704 recall [0.704, 0.282, 0.198, 0.903]
+TEST EfficientNetV2B0__ce adabn_p99  acc 0.670 bal 0.486 f1 0.479 qwk 0.702 recall [0.723, 0.168, 0.144, 0.908]
+DEV  EfficientNetV2B0__ce adabn      bal 0.432 f1 0.403 qwk 0.583
+DEV  EfficientNetV2B0__ce adabn_p99  bal 0.403 f1 0.370 qwk 0.529
+DEV  EfficientNetV2B0__ce raw        bal 0.298 f1 0.203 qwk 0.080
+DEV  EfficientNetV2B0__ce stain_p99  bal 0.505 f1 0.437 qwk 0.495

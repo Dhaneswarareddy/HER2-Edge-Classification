@@ -16,6 +16,7 @@ data class ClassificationResult(
     val clinicalStatus: String,
     val clinicalDetail: String,
     val probabilities: FloatArray,
+    val preprocessTimeMs: Long,
     val inferenceTimeMs: Long,
     val totalTimeMs: Long,
     val threadCount: Int,
@@ -79,32 +80,23 @@ class HER2Classifier(
     fun classify(bitmap: Bitmap): ClassificationResult {
         val totalStartTime = SystemClock.uptimeMillis()
 
-        // 1. Resize bitmap to input size (448x448)
-        val resizedBitmap = if (bitmap.width != inputSize || bitmap.height != inputSize) {
-            Bitmap.createScaledBitmap(bitmap, inputSize, inputSize, true)
-        } else {
-            bitmap
-        }
+        // 1. Validated FYP3 preprocessing, bit-exact with training/evaluation (PIL):
+        //    native tile -> LANCZOS 512 -> BILINEAR 448 (see PilResample.kt). Earlier versions used a single
+        //    Bitmap.createScaledBitmap(1024 -> 448), which differs from the validated path.
+        val w = bitmap.width
+        val h = bitmap.height
+        val argb = IntArray(w * h)
+        bitmap.getPixels(argb, 0, w, 0, 0, w, h)
+        val rgb = PilResample.fyp3Preprocess(argb, w, h)
 
-        // 2. Convert to float32 ByteBuffer [1, 448, 448, 3] in range [0.0, 255.0]
+        // 2. float32 tensor [1, 448, 448, 3] in [0, 255] (the model's own layers rescale)
         val inputBuffer = ByteBuffer.allocateDirect(1 * inputSize * inputSize * channelCount * pixelBytes).apply {
             order(ByteOrder.nativeOrder())
             rewind()
         }
-
-        val intValues = IntArray(inputSize * inputSize)
-        resizedBitmap.getPixels(intValues, 0, resizedBitmap.width, 0, 0, resizedBitmap.width, resizedBitmap.height)
-
-        for (pixelValue in intValues) {
-            // Extract RGB (0..255)
-            val r = ((pixelValue shr 16) and 0xFF).toFloat()
-            val g = ((pixelValue shr 8) and 0xFF).toFloat()
-            val b = (pixelValue and 0xFF).toFloat()
-
-            inputBuffer.putFloat(r)
-            inputBuffer.putFloat(g)
-            inputBuffer.putFloat(b)
-        }
+        for (v in rgb) inputBuffer.putFloat(v.toFloat())
+        inputBuffer.rewind()
+        val preprocessTimeMs = SystemClock.uptimeMillis() - totalStartTime
 
         // 3. Prepare output buffer [1, 4]
         val outputBuffer = Array(1) { FloatArray(classCount) }
@@ -131,20 +123,20 @@ class HER2Classifier(
         val predictedLabel = classLabels[maxIndex]
         val (clinicalStatus, clinicalDetail) = when (maxIndex) {
             0 -> Pair(
-                "Negative (Score 0)",
-                "No HER2 membrane staining or <10% membrane staining. Targeted therapy not indicated."
+                "HER2-negative (IHC 0)",
+                "ASCO/CAP: no staining, or incomplete faint/barely perceptible membrane staining in \u226410% of tumour cells."
             )
             1 -> Pair(
-                "Negative (Score 1+)",
-                "Faint / barely perceptible membrane staining in >10% tumor cells. Targeted therapy not indicated."
+                "HER2-negative, HER2-low (IHC 1+)",
+                "ASCO/CAP: incomplete faint/barely perceptible membrane staining in >10% of tumour cells. HER2-low status may be relevant for therapy (e.g. trastuzumab deruxtecan); pathologist confirmation required."
             )
             2 -> Pair(
-                "Equivocal (Score 2+)",
-                "Weak-to-moderate complete membrane staining in >10% tumor cells. Reflex dual-probe FISH/CISH mandatory per ASCO/CAP guidelines."
+                "Equivocal (IHC 2+)",
+                "ASCO/CAP: weak-to-moderate complete membrane staining in >10% of tumour cells. Reflex in situ hybridisation (ISH) required."
             )
             3 -> Pair(
-                "Positive (Score 3+)",
-                "Circumferential, intense membrane staining in >10% tumor cells. Eligible for anti-HER2 targeted therapy (Trastuzumab/Pertuzumab)."
+                "HER2-positive (IHC 3+)",
+                "ASCO/CAP: complete, intense circumferential membrane staining in >10% of tumour cells."
             )
             else -> Pair("Unknown", "Uncertain prediction")
         }
@@ -155,10 +147,11 @@ class HER2Classifier(
             clinicalStatus = clinicalStatus,
             clinicalDetail = clinicalDetail,
             probabilities = probabilities,
+            preprocessTimeMs = preprocessTimeMs,
             inferenceTimeMs = inferenceTimeMs,
             totalTimeMs = totalTimeMs,
             threadCount = threadCount,
-            modelName = if (modelFileName.contains("int8")) "INT8 Quantized (448px)" else "FP16 Primary (448px)"
+            modelName = if (modelFileName.contains("int8")) "INT8 448px (FAILED accuracy gate: speed test only)" else "FP16 448px (validated)"
         )
     }
 

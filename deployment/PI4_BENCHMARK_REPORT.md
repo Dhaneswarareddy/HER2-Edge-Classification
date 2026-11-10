@@ -11,6 +11,44 @@
 
 ---
 
+## 0. Re-measurement, 10 November 2026 (supersedes the latency/thermal results below)
+
+`experiments_v2/08_edge/pi_bundle/pi_precision_benchmark.py`; raw logs in `experiments_v2/08_edge/outputs/pi4/`;
+CSV `deployment/benchmark_results/benchmark_pi4_precisions_2026-11-10.csv`.
+
+**Setup.**
+- Same Pi: Raspberry Pi 4 Model B Rev 1.4, Debian 13, `ai_edge_litert` 2.5.4.
+- Powered by an official-rating supply. Before the supply change the Pi reported `throttled=0x50000` (under-voltage
+  and throttling had occurred since boot); after the change and a reboot it reported `0x0`.
+- Governor `performance` for the run, then restored to `ondemand`.
+
+**Protocol.**
+- A fresh process per configuration.
+- 10 warm-up and 100 timed invokes on the 120 preprocessed BCI-validation reference tiles.
+- `vcgencmd` temperature, clock and throttle read before and after.
+- 60 s cool-down between configurations.
+
+| Precision | 1 thread | 2 threads | 4 threads | Peak RSS (process) | Agreement with Mac, same precision | Agreement with Keras | Accuracy, 120 tiles |
+|---|---|---|---|---|---|---|---|
+| FP32 | 755.0 ms | 435.7 ms | 334.5 ms | 202 MB | 120/120 | 120/120 | 0.950 |
+| **FP16 (deployed)** | 761.8 ms | 437.0 ms | **336.5 ms** | 250 MB | 120/120 | 120/120 | 0.950 |
+| INT8 (rejected) | 361.3 ms | 187.9 ms | 104.1 ms | 151 MB | **114/120** | **109/120** | **0.892** |
+
+**Observations.**
+- SoC temperature stayed at or below 62.8 °C, ARM clock at 1.8 GHz, and `throttled=0x0` before and after every
+  configuration.
+- The 31 Oct 4-thread result (353.5 ms at 84.2 °C, `0x80008`) was thermally limited. With a proper supply, 4 threads
+  is the fastest setting and does not throttle.
+- **Pi INT8 had never been measured before.** The final report's former "122.9 ms / 8.14 FPS" had no measurement
+  behind it. The measured value is 104.1 ms at 4 threads.
+- INT8 is not deployable. It agrees with Keras on 109 of 120 tiles, and its predictions differ from the Mac INT8
+  predictions on 6 of 120 tiles: INT8 results are platform-dependent.
+- No power was measured.
+
+> The sections below are the **31 October 2026 run**, kept as recorded. Its thread recommendation ("2 threads to
+> avoid the thermal trip") is superseded by §0. Its Keras-agreement note for the experimental 224 px model (98.3%,
+> 2 tiles flipped) is correct and is confirmed by `benchmark_experimental_pi4.csv`.
+
 ## 1. Hardware and Software Specifications
 
 | Specification | Details |

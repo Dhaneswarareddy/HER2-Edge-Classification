@@ -64,7 +64,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="2dp"
-                        android:text="Model: EfficientNetV2-B0 (448×448) • TFLite XNNPACK"
+                        android:text="Model: EfficientNetV2-B0 448 px • TFLite XNNPACK (CPU)"
                         android:textColor="@color/text_secondary"
                         android:textSize="11sp" />
                 </LinearLayout>
@@ -101,6 +101,8 @@
                         android:layout_marginTop="6dp">
 
                         <RadioButton
+                            android:textColor="@color/text_primary"
+                            android:buttonTint="@color/accent"
                             android:id="@+id/rbFp16"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
@@ -110,11 +112,13 @@
                             android:textSize="12sp" />
 
                         <RadioButton
+                            android:textColor="@color/text_primary"
+                            android:buttonTint="@color/accent"
                             android:id="@+id/rbInt8"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
-                            android:text="INT8 (Fast)"
+                            android:text="INT8 (speed test only)"
                             android:textSize="12sp" />
                     </RadioGroup>
 
@@ -134,6 +138,8 @@
                         android:layout_marginTop="4dp">
 
                         <RadioButton
+                            android:textColor="@color/text_primary"
+                            android:buttonTint="@color/accent"
                             android:id="@+id/rb1Thread"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
@@ -142,6 +148,8 @@
                             android:textSize="12sp" />
 
                         <RadioButton
+                            android:textColor="@color/text_primary"
+                            android:buttonTint="@color/accent"
                             android:id="@+id/rb2Threads"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
@@ -150,16 +158,20 @@
                             android:textSize="12sp" />
 
                         <RadioButton
+                            android:textColor="@color/text_primary"
+                            android:buttonTint="@color/accent"
                             android:id="@+id/rb4Threads"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="1.2"
                             android:checked="true"
-                            android:text="4T (A78)"
+                            android:text="4T"
                             android:textStyle="bold"
                             android:textSize="12sp" />
 
                         <RadioButton
+                            android:textColor="@color/text_primary"
+                            android:buttonTint="@color/accent"
                             android:id="@+id/rb8Threads"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
@@ -338,7 +350,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="16dp"
-                        android:text="Multinomial Class Probabilities"
+                        android:text="Class probabilities (softmax, not a calibrated certainty)"
                         android:textColor="@color/text_primary"
                         android:textSize="12sp"
                         android:textStyle="bold" />
@@ -500,7 +512,7 @@
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="Inference Latency"
+                                android:text="Network latency"
                                 android:textColor="@color/text_secondary"
                                 android:textSize="11sp" />
 
@@ -523,7 +535,7 @@
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="Throughput"
+                                android:text="Total incl. resize"
                                 android:textColor="@color/text_secondary"
                                 android:textSize="11sp" />
 
@@ -531,7 +543,7 @@
                                 android:id="@+id/tvThroughput"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="-- FPS"
+                                android:text="-- ms"
                                 android:textColor="@color/accent"
                                 android:textSize="16sp"
                                 android:textStyle="bold" />

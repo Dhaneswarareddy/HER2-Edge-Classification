@@ -1,17 +1,17 @@
 <resources>
     <string name="app_name">HER2 Edge Classifier</string>
-    <string name="header_subtitle">Real-Time Mobile Histopathology Screening</string>
-    <string name="hardware_info">Samsung Galaxy M35 5G | Exynos 1380 (4× A78 + 4× A55)</string>
-    <string name="select_sample_title">Reference Clinical Tiles (BCI Benchmark)</string>
+    <string name="header_subtitle">Research prototype · tile-level HER2 IHC</string>
+    <string name="hardware_info">Device: detecting…</string>
+    <string name="select_sample_title">Reference tiles (BCI validation split)</string>
     <string name="tile_score_0">Score 0</string>
     <string name="tile_score_1">Score 1+</string>
     <string name="tile_score_2">Score 2+</string>
     <string name="tile_score_3">Score 3+</string>
     <string name="btn_custom_image">Select Custom Image / Gallery</string>
     <string name="inference_result_title">Diagnostic Classification</string>
-    <string name="latency_label">Inference Latency:</string>
-    <string name="throughput_label">Throughput:</string>
-    <string name="threads_title">Execution Threads (big.LITTLE Affinity):</string>
+    <string name="latency_label">Network latency:</string>
+    <string name="throughput_label">Total incl. resize:</string>
+    <string name="threads_title">CPU threads (no core pinning):</string>
     <string name="model_selection_title">Edge Model Precision:</string>
-    <string name="clinical_disclaimer">Notice: Research evaluation prototype. Not approved as a standalone medical device. Equivocal (Score 2+) predictions require confirmatory FISH testing per ASCO/CAP guidelines.</string>
+    <string name="clinical_disclaimer">Research prototype, not a medical device. Tile-level prediction only, validated on BCI-style staining (BCI test accuracy 0.975). On another laboratory\'s slides (HER2-IHC-40x) balanced accuracy fell close to chance (0.29), so results on slides from other sites are not reliable. All scores require pathologist review; 2+ requires reflex ISH.</string>
 </resources>

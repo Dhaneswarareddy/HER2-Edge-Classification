@@ -397,7 +397,7 @@ ax2.grid(True)
 ax2.legend(loc="upper right", framealpha=0.9)
 despine(ax2)
 
-ax2.text(0.65, 0.25, "At 50% coverage:\n79% of true 2+ cases get\ndiscarded from automated flow!\nUnusable for clinical triage.",
+ax2.text(0.62, 0.25, "Target 50% coverage (realised 44%):\n79% of true 2+ tiles referred\n(development R_eval tiles)",
          fontsize=8.5, bbox=dict(boxstyle="round,pad=0.3", fc="#ffebee", ec="#e63946", lw=1))
 
 fig.suptitle("Figure 6: HARMONISE-2 Statistical Reliability & Confidence Dynamics", fontweight="bold", y=0.98)
@@ -535,30 +535,33 @@ mac_lat = [test_dep.loc[test_dep["variant"] == v, "mac_latency_ms"].values[0] fo
 # Size comparison
 colors_v = ["#3a86ff", "#06d6a0", "#ffbe0b"]
 bars1 = ax1.bar(var_names, sizes, color=colors_v, width=0.5, edgecolor="#333333", lw=1)
-ax1.set_ylabel("Model File Size (MB)")
+ax1.set_ylabel("Model File Size (MiB)")
 ax1.set_title("A: Model Compression Ratio", loc="left", fontweight="bold")
 ax1.set_ylim(0, 30)
 ax1.grid(True, axis="y")
 despine(ax1)
 
 for b, s in zip(bars1, sizes):
-    ax1.text(b.get_x() + b.get_width()/2, s + 0.8, f"{s:.2f} MB\n({s/sizes[0]*100:.0f}%)", ha="center", fontsize=8.5, fontweight="bold")
+    ax1.text(b.get_x() + b.get_width()/2, s + 0.8, f"{s:.2f} MiB\n({s/sizes[0]*100:.0f}%)", ha="center", fontsize=8.5, fontweight="bold")
 
-# Agreement comparison
-# In deployment on Pi 4B: agreement with Mac TFLite is exactly 100.0% (120/120 tiles)
-agreements = [100.0, 100.0, 98.3]
+# Agreement with Keras on all 727 BCI validation tiles, measured by experiments_v2/08_edge/mac_prepare.py
+# (previously hard-coded as [100, 100, 98.3]; the INT8 value had no measurement behind it)
+_prec = pd.read_csv(ROOT / "experiments_v2/08_edge/outputs/precision_accuracy.csv").set_index("precision")
+agreements = [100.0 * _prec.loc[v, "val_agreement_with_keras"] for v in variants]
 bars2 = ax2.bar(var_names, agreements, color=colors_v, width=0.5, edgecolor="#333333", lw=1)
 ax2.set_ylabel("Prediction Concordance (%)")
-ax2.set_title("B: Edge Runtime Parity vs Host Framework", loc="left", fontweight="bold")
-ax2.set_ylim(90, 102)
+ax2.set_title("B: Agreement with Keras (BCI val, 727 tiles)", loc="left", fontweight="bold")
+ax2.set_ylim(80, 104)
+ax2.axhline(95.0, color="#d62728", linestyle="--", lw=1.0, label="Deployment gate (95%)")
+ax2.legend(loc="lower left", fontsize=8)
 ax2.grid(True, axis="y")
 despine(ax2)
 
 for b, a in zip(bars2, agreements):
     ax2.text(b.get_x() + b.get_width()/2, a + 0.4, f"{a:.1f}%", ha="center", fontsize=8.5, fontweight="bold")
 
-ax2.annotate("Zero drift across platforms!\n(Mac TFLite vs Pi 4B TFLite: 100.0%)",
-             xy=(1, 100.0), xytext=(0.2, 93),
+ax2.annotate("FP16 = FP32 on all 727 val tiles;\nINT8 fails the 95% gate (rejected)",
+             xy=(2, agreements[2]), xytext=(0.0, 86),
              arrowprops=dict(facecolor="#06d6a0", shrink=0.05, width=1.2, headwidth=5),
              fontweight="bold", color="#0b525b", fontsize=8.5,
              bbox=dict(boxstyle="round,pad=0.3", fc="#e8f5e9", ec="#06d6a0", lw=1))

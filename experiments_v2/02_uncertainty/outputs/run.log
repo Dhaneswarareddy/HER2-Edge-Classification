@@ -1,0 +1,56 @@
+| run | target_coverage | coverage | accuracy_all | accuracy_kept | accuracy_gain_ci95 | share_2+_referred | share_errors_referred | error_auroc |
+|---|---|---|---|---|---|---|---|---|
+| EfficientNetV2B0__ce | 0.500 | 0.566 | 0.926 | 1.000 | [0.0489, 0.1117] | 0.514 | 1.000 | 0.932 |
+| EfficientNetV2B0__ce | 0.700 | 0.748 | 0.926 | 0.995 | [0.0442, 0.1044] | 0.276 | 0.946 | 0.932 |
+| EfficientNetV2B0__ce | 0.800 | 0.859 | 0.926 | 0.980 | [0.0352, 0.0829] | 0.142 | 0.768 | 0.932 |
+| EfficientNetV2B0__ce | 0.900 | 0.925 | 0.926 | 0.959 | [0.0199, 0.0518] | 0.062 | 0.482 | 0.932 |
+| EfficientNetV2B0__ce | 0.950 | 0.970 | 0.926 | 0.940 | [0.0065, 0.0256] | 0.022 | 0.214 | 0.932 |
+| EfficientNetV2B0__ce__hires | 0.500 | 0.603 | 0.975 | 1.000 | [0.0133, 0.0414] | 0.421 | 1.000 | 0.955 |
+| EfficientNetV2B0__ce__hires | 0.700 | 0.769 | 0.975 | 1.000 | [0.0133, 0.0414] | 0.226 | 1.000 | 0.955 |
+| EfficientNetV2B0__ce__hires | 0.800 | 0.851 | 0.975 | 0.998 | [0.0123, 0.0391] | 0.115 | 0.947 | 0.955 |
+| EfficientNetV2B0__ce__hires | 0.900 | 0.937 | 0.975 | 0.989 | [0.0053, 0.0261] | 0.037 | 0.579 | 0.955 |
+| EfficientNetV2B0__ce__hires | 0.950 | 0.976 | 0.975 | 0.984 | [0.0028, 0.018] | 0.009 | 0.368 | 0.955 |
+| run | split | probs | T | ece | nll | brier | accuracy | mean_confidence |
+|---|---|---|---|---|---|---|---|---|
+| EfficientNetV2B0__ce | val | raw | 1.000 | 0.061 | 0.350 | 0.169 | 0.895 | 0.950 |
+| EfficientNetV2B0__ce | val | temp_scaled | 1.962 | 0.026 | 0.274 | 0.155 | 0.895 | 0.898 |
+| EfficientNetV2B0__ce | test | raw | 1.000 | 0.045 | 0.213 | 0.114 | 0.926 | 0.965 |
+| EfficientNetV2B0__ce | test | temp_scaled | 1.962 | 0.023 | 0.184 | 0.103 | 0.926 | 0.921 |
+| EfficientNetV2B0__ce__hires | val | raw | 1.000 | 0.029 | 0.167 | 0.076 | 0.950 | 0.975 |
+| EfficientNetV2B0__ce__hires | val | temp_scaled | 1.816 | 0.019 | 0.135 | 0.071 | 0.950 | 0.951 |
+| EfficientNetV2B0__ce__hires | test | raw | 1.000 | 0.017 | 0.091 | 0.042 | 0.975 | 0.986 |
+| EfficientNetV2B0__ce__hires | test | temp_scaled | 1.816 | 0.017 | 0.080 | 0.042 | 0.975 | 0.967 |
+| input | target_coverage | coverage | accuracy_all | accuracy_kept | share_2+_referred | share_errors_referred |
+|---|---|---|---|---|---|---|
+| raw | 0.500 | 0.509 | 0.448 | 0.794 | 0.495 | 0.810 |
+| raw | 0.700 | 0.690 | 0.448 | 0.605 | 0.288 | 0.506 |
+| raw | 0.800 | 0.777 | 0.448 | 0.543 | 0.153 | 0.356 |
+| raw | 0.900 | 0.888 | 0.448 | 0.487 | 0.072 | 0.175 |
+| raw | 0.950 | 0.937 | 0.448 | 0.469 | 0.045 | 0.098 |
+| stain_p99 | 0.500 | 0.530 | 0.571 | 0.800 | 0.748 | 0.753 |
+| stain_p99 | 0.700 | 0.705 | 0.571 | 0.678 | 0.505 | 0.472 |
+| stain_p99 | 0.800 | 0.806 | 0.571 | 0.639 | 0.279 | 0.322 |
+| stain_p99 | 0.900 | 0.903 | 0.571 | 0.599 | 0.144 | 0.156 |
+| stain_p99 | 0.950 | 0.953 | 0.571 | 0.587 | 0.027 | 0.083 |
+| run | input | probs | T | ece | nll | brier | accuracy | mean_confidence |
+|---|---|---|---|---|---|---|---|---|
+| EfficientNetV2B0__ce | raw | raw | 1.000 | 0.453 | 2.941 | 0.943 | 0.448 | 0.901 |
+| EfficientNetV2B0__ce | raw | temp_scaled_on_R_cal | 7.901 | 0.245 | 1.127 | 0.585 | 0.448 | 0.489 |
+| EfficientNetV2B0__ce | stain_p99 | raw | 1.000 | 0.205 | 1.130 | 0.568 | 0.571 | 0.775 |
+| EfficientNetV2B0__ce | stain_p99 | temp_scaled_on_R_cal | 2.889 | 0.099 | 0.908 | 0.481 | 0.571 | 0.582 |
+| MobileNetV3Small__ce | raw | raw | 1.000 | 0.424 | 3.424 | 0.869 | 0.508 | 0.931 |
+| MobileNetV3Small__ce | raw | temp_scaled_on_R_cal | 9.587 | 0.160 | 1.013 | 0.536 | 0.508 | 0.546 |
+| MobileNetV3Small__ce | stain_p99 | raw | 1.000 | 0.121 | 0.737 | 0.347 | 0.755 | 0.874 |
+| MobileNetV3Small__ce | stain_p99 | temp_scaled_on_R_cal | 2.120 | 0.071 | 0.605 | 0.310 | 0.755 | 0.755 |
+| MobileNetV3Large__corn | raw | raw | 1.000 | 0.534 | 5.790 | 1.078 | 0.423 | 0.957 |
+| MobileNetV3Large__corn | raw | temp_scaled_on_R_cal | 19.241 | 0.255 | 1.240 | 0.660 | 0.423 | 0.397 |
+| MobileNetV3Large__corn | stain_p99 | raw | 1.000 | 0.226 | 1.501 | 0.590 | 0.600 | 0.825 |
+| MobileNetV3Large__corn | stain_p99 | temp_scaled_on_R_cal | 3.505 | 0.074 | 0.929 | 0.483 | 0.600 | 0.610 |
+| DenseNet121__ce | raw | raw | 1.000 | 0.544 | 7.590 | 1.108 | 0.419 | 0.963 |
+| DenseNet121__ce | raw | temp_scaled_on_R_cal | 20.000 | 0.180 | 1.254 | 0.675 | 0.419 | 0.423 |
+| DenseNet121__ce | stain_p99 | raw | 1.000 | 0.281 | 2.340 | 0.658 | 0.624 | 0.906 |
+| DenseNet121__ce | stain_p99 | temp_scaled_on_R_cal | 5.365 | 0.073 | 1.019 | 0.548 | 0.624 | 0.560 |
+| EfficientNetV2B0__ce__hires | raw | raw | 1.000 | 0.421 | 2.884 | 0.936 | 0.435 | 0.856 |
+| EfficientNetV2B0__ce__hires | raw | temp_scaled_on_R_cal | 13.582 | 0.107 | 1.276 | 0.688 | 0.435 | 0.344 |
+| EfficientNetV2B0__ce__hires | stain_p99 | raw | 1.000 | 0.755 | 4.742 | 1.559 | 0.104 | 0.859 |
+| EfficientNetV2B0__ce__hires | stain_p99 | temp_scaled_on_R_cal | 20.000 | 0.208 | 1.398 | 0.762 | 0.104 | 0.312 |

@@ -1,3 +1,10 @@
+"""SUPERSEDED (10 Nov 2026). This script hard-coded values that were never measured (Pi INT8 122.9 ms, 81.5 C,
+'Stable (0x0)' phone states) and plotted INT8 as a deployment option. Running it would overwrite the corrected
+Figure 7. Use experiments_v2/08_edge/make_edge_figures.py, which reads only the 10 Nov 2026 measurements.
+The original code is kept below for the record (see experiments_v2/REPORT_CORRECTIONS_v2.md, item 41)."""
+import sys
+sys.exit("generate_smartphone_figures.py is superseded: run experiments_v2/08_edge/make_edge_figures.py instead")
+
 """
 Generate publication-quality mobile edge deployment figure for FYP3 Final Technical Report.
 Reads authoritative data from:

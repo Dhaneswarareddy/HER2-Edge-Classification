@@ -1,0 +1,8 @@
+{
+ "note": "existing src/analysis result: frozen ImageNet EfficientNetB0 (not V2) features + logistic regression, no augmentation; split as stored by that script",
+ "accuracy": 0.7651715039577837,
+ "macro_f1": 0.7075970980276318,
+ "qwk": 0.6984877055267855,
+ "silhouette": 0.005825813394039869,
+ "scatter_ratio": 0.05263789742843005
+}

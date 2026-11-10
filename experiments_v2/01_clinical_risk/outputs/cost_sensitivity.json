@@ -1,0 +1,39 @@
+{
+ "BCI_val_all_runs": {
+  "ConvNeXtTiny__ce": 0.0,
+  "DenseNet121__ce": 0.0,
+  "DenseNet121__corn": 0.0,
+  "EfficientNetB0__ce": 0.0,
+  "EfficientNetV2B0__ce": 0.0,
+  "EfficientNetV2B0__ce__hires": 1.0,
+  "EfficientNetV2B0__ce__init_fyp2": 0.0,
+  "EfficientNetV2B0__ce__lowbatch": 0.0,
+  "EfficientNetV2B0__ce__mix_fyp2": 0.0,
+  "EfficientNetV2B0__corn": 0.0,
+  "MobileNetV2__ce": 0.0,
+  "MobileNetV3Large__ce": 0.0,
+  "MobileNetV3Large__corn": 0.0,
+  "MobileNetV3Small__ce": 0.0,
+  "MobileNetV3Small__ce__cw": 0.0,
+  "MobileNetV3Small__ce__hires": 0.0,
+  "MobileNetV3Small__ce__lowbatch": 0.0,
+  "MobileNetV3Small__ce__ls": 0.0,
+  "NASNetMobile__ce": 0.0,
+  "ResNet50__ce": 0.0
+ },
+ "external_test_all_entries": {
+  "DenseNet121__ce raw": 0.0,
+  "DenseNet121__ce stain_p99": 0.0,
+  "EfficientNetV2B0__ce raw": 0.0,
+  "EfficientNetV2B0__ce stain_p99": 0.0,
+  "EfficientNetV2B0__ce__hires raw": 0.0,
+  "EfficientNetV2B0__ce__hires stain_p99": 0.0,
+  "MobileNetV3Large__corn raw": 0.0,
+  "MobileNetV3Large__corn stain_p99": 0.0,
+  "MobileNetV3Small__ce raw": 0.0,
+  "MobileNetV3Small__ce stain_p99": 0.0,
+  "FYP2 ResNet50__ce raw": 1.0,
+  "FYP2 MobileNetV2__ce raw": 0.0,
+  "FYP2 EfficientNetV2B0__ce raw": 0.0
+ }
+}

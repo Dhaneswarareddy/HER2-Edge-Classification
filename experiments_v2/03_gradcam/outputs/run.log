@@ -1,0 +1,129 @@
+  BCI_test_448: 64/758
+  BCI_test_448: 128/758
+  BCI_test_448: 192/758
+  BCI_test_448: 256/758
+  BCI_test_448: 320/758
+  BCI_test_448: 384/758
+  BCI_test_448: 448/758
+  BCI_test_448: 512/758
+  BCI_test_448: 576/758
+  BCI_test_448: 640/758
+  BCI_test_448: 704/758
+  BCI_test_448: 758/758
+  BCI_test_448: max |p - stored p| = 1.55e-06
+  ext_test_raw_448: 64/1847
+  ext_test_raw_448: 128/1847
+  ext_test_raw_448: 192/1847
+  ext_test_raw_448: 256/1847
+  ext_test_raw_448: 320/1847
+  ext_test_raw_448: 384/1847
+  ext_test_raw_448: 448/1847
+  ext_test_raw_448: 512/1847
+  ext_test_raw_448: 576/1847
+  ext_test_raw_448: 640/1847
+  ext_test_raw_448: 704/1847
+  ext_test_raw_448: 768/1847
+  ext_test_raw_448: 832/1847
+  ext_test_raw_448: 896/1847
+  ext_test_raw_448: 960/1847
+  ext_test_raw_448: 1024/1847
+  ext_test_raw_448: 1088/1847
+  ext_test_raw_448: 1152/1847
+  ext_test_raw_448: 1216/1847
+  ext_test_raw_448: 1280/1847
+  ext_test_raw_448: 1344/1847
+  ext_test_raw_448: 1408/1847
+  ext_test_raw_448: 1472/1847
+  ext_test_raw_448: 1536/1847
+  ext_test_raw_448: 1600/1847
+  ext_test_raw_448: 1664/1847
+  ext_test_raw_448: 1728/1847
+  ext_test_raw_448: 1792/1847
+  ext_test_raw_448: 1847/1847
+  ext_test_raw_448: max |p - stored p| = 1.43e-06
+  BCI_test_224: 64/758
+  BCI_test_224: 128/758
+  BCI_test_224: 192/758
+  BCI_test_224: 256/758
+  BCI_test_224: 320/758
+  BCI_test_224: 384/758
+  BCI_test_224: 448/758
+  BCI_test_224: 512/758
+  BCI_test_224: 576/758
+  BCI_test_224: 640/758
+  BCI_test_224: 704/758
+  BCI_test_224: 758/758
+  BCI_test_224: max |p - stored p| = 3.87e-06
+  ext_test_raw_224: 64/1847
+  ext_test_raw_224: 128/1847
+  ext_test_raw_224: 192/1847
+  ext_test_raw_224: 256/1847
+  ext_test_raw_224: 320/1847
+  ext_test_raw_224: 384/1847
+  ext_test_raw_224: 448/1847
+  ext_test_raw_224: 512/1847
+  ext_test_raw_224: 576/1847
+  ext_test_raw_224: 640/1847
+  ext_test_raw_224: 704/1847
+  ext_test_raw_224: 768/1847
+  ext_test_raw_224: 832/1847
+  ext_test_raw_224: 896/1847
+  ext_test_raw_224: 960/1847
+  ext_test_raw_224: 1024/1847
+  ext_test_raw_224: 1088/1847
+  ext_test_raw_224: 1152/1847
+  ext_test_raw_224: 1216/1847
+  ext_test_raw_224: 1280/1847
+  ext_test_raw_224: 1344/1847
+  ext_test_raw_224: 1408/1847
+  ext_test_raw_224: 1472/1847
+  ext_test_raw_224: 1536/1847
+  ext_test_raw_224: 1600/1847
+  ext_test_raw_224: 1664/1847
+  ext_test_raw_224: 1728/1847
+  ext_test_raw_224: 1792/1847
+  ext_test_raw_224: 1847/1847
+  ext_test_raw_224: max |p - stored p| = 3.61e-06
+  ext_test_p99_224: 64/1847
+  ext_test_p99_224: 128/1847
+  ext_test_p99_224: 192/1847
+  ext_test_p99_224: 256/1847
+  ext_test_p99_224: 320/1847
+  ext_test_p99_224: 384/1847
+  ext_test_p99_224: 448/1847
+  ext_test_p99_224: 512/1847
+  ext_test_p99_224: 576/1847
+  ext_test_p99_224: 640/1847
+  ext_test_p99_224: 704/1847
+  ext_test_p99_224: 768/1847
+  ext_test_p99_224: 832/1847
+  ext_test_p99_224: 896/1847
+  ext_test_p99_224: 960/1847
+  ext_test_p99_224: 1024/1847
+  ext_test_p99_224: 1088/1847
+  ext_test_p99_224: 1152/1847
+  ext_test_p99_224: 1216/1847
+  ext_test_p99_224: 1280/1847
+  ext_test_p99_224: 1344/1847
+  ext_test_p99_224: 1408/1847
+  ext_test_p99_224: 1472/1847
+  ext_test_p99_224: 1536/1847
+  ext_test_p99_224: 1600/1847
+  ext_test_p99_224: 1664/1847
+  ext_test_p99_224: 1728/1847
+  ext_test_p99_224: 1792/1847
+  ext_test_p99_224: 1847/1847
+  ext_test_p99_224: max |p - stored p| = 1.53e-01
+| set | correct | dab_ratio | bg_ratio | top_dab_mass |
+|---|---|---|---|---|
+| BCI_test_224 | False | 1.084 | 0.966 | 0.114 |
+| BCI_test_224 | True | 1.092 | 0.908 | 0.114 |
+| BCI_test_448 | False | 1.302 | 0.912 | 0.139 |
+| BCI_test_448 | True | 1.153 | 0.859 | 0.127 |
+| ext_test_p99_224 | False | 1.107 | 0.948 | 0.113 |
+| ext_test_p99_224 | True | 1.216 | 0.706 | 0.129 |
+| ext_test_raw_224 | False | 1.094 | 0.884 | 0.113 |
+| ext_test_raw_224 | True | 1.199 | 0.710 | 0.126 |
+| ext_test_raw_448 | False | 1.053 | 0.966 | 0.106 |
+| ext_test_raw_448 | True | 1.325 | 0.657 | 0.145 |
+{'BCI_448': 1.5497207641601562e-06, 'ext_raw_448': 1.428475189246825e-06, 'BCI_224': 3.874301910400391e-06, 'ext_raw_224': 3.607054138210497e-06, 'ext_p99_224': 0.1525286947597504}

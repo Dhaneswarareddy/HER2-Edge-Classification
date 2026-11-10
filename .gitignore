@@ -32,3 +32,9 @@ android_app/app/*.iml
 ._*
 .Spotlight-V100
 .Trashes
+
+# experiments_v2 (added 10 Nov 2026): regenerable caches and duplicates
+experiments_v2/_cache/
+experiments_v2/07_ablation/runs_smoke/
+experiments_v2/08_edge/pi_bundle/tiles120.npz
+experiments_v2/08_edge/pi_bundle/models/

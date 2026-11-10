@@ -1,0 +1,76 @@
+figure,set,name,kind,label,pred,confidence,dab_ratio,bg_ratio
+fig_gradcam_bci448_per_class.png,BCI_test_448,train/00341_train_0.png,correct,0,0,1.0,1.2184783220291138,0.6615352794912269
+fig_gradcam_bci448_per_class.png,BCI_test_448,train/02950_train_0.png,wrong,0,3,0.90511816740036,2.4498353004455566,0.9118356408134056
+fig_gradcam_bci448_per_class.png,BCI_test_448,train/03227_train_1+.png,correct,1,1,1.0,1.0668803453445437,0.8979815419182249
+fig_gradcam_bci448_per_class.png,BCI_test_448,train/01621_train_1+.png,wrong,1,2,0.962646782398224,1.72191059589386,0.8005694025127776
+fig_gradcam_bci448_per_class.png,BCI_test_448,train/02346_train_2+.png,correct,2,2,1.0,0.961874783039093,
+fig_gradcam_bci448_per_class.png,BCI_test_448,train/03410_train_2+.png,wrong,2,0,0.9988532066345216,1.2822211980819702,0.8030721212735646
+fig_gradcam_bci448_per_class.png,BCI_test_448,train/00106_train_3+.png,correct,3,3,1.0,1.0767453908920288,0.73042359284584
+fig_gradcam_bci448_per_class.png,BCI_test_448,test/00777_test_3+.png,wrong,3,2,0.9937090873718262,3.0936439037323,0.316838942891533
+fig_gradcam_bci224_per_class.png,BCI_test_224,train/03757_train_0.png,correct,0,0,0.9999998807907104,2.1318540573120117,0.6173236743778574
+fig_gradcam_bci224_per_class.png,BCI_test_224,train/01031_train_0.png,wrong,0,1,0.9775010347366332,1.031407594680786,
+fig_gradcam_bci224_per_class.png,BCI_test_224,test/00097_test_1+.png,correct,1,1,1.0,1.003159523010254,0.99341313642887
+fig_gradcam_bci224_per_class.png,BCI_test_224,train/00657_train_1+.png,wrong,1,3,0.9903090596199036,1.1778390407562256,0.7296567266347734
+fig_gradcam_bci224_per_class.png,BCI_test_224,test/00904_test_2+.png,correct,2,2,1.0,1.970689058303833,0.8383795745376461
+fig_gradcam_bci224_per_class.png,BCI_test_224,train/00254_train_2+.png,wrong,2,1,0.9990435242652892,1.1468456983566284,0.8068528644285905
+fig_gradcam_bci224_per_class.png,BCI_test_224,train/00106_train_3+.png,correct,3,3,1.0,1.0306682586669922,0.8594135101050978
+fig_gradcam_bci224_per_class.png,BCI_test_224,train/02260_train_3+.png,wrong,3,2,0.9940273761749268,1.429202437400818,0.9677162757081528
+fig_gradcam_bci448_2plus.png,BCI_test_448,train/02346_train_2+.png,correct 2+,2,2,1.0,0.961874783039093,
+fig_gradcam_bci448_2plus.png,BCI_test_448,train/02199_train_2+.png,correct 2+,2,2,1.0,1.0463953018188477,0.8057595621391085
+fig_gradcam_bci448_2plus.png,BCI_test_448,train/00523_train_2+.png,correct 2+,2,2,1.0,1.108141303062439,0.9758666388201688
+fig_gradcam_bci448_2plus.png,BCI_test_448,train/03410_train_2+.png,missed 2+,2,0,0.9988532066345216,1.2822211980819702,0.8030721212735646
+fig_gradcam_bci448_2plus.png,BCI_test_448,test/00482_test_2+.png,missed 2+,2,3,0.977503538131714,1.522853970527649,0.5867208362338522
+fig_gradcam_bci448_2plus.png,BCI_test_448,test/00547_test_2+.png,missed 2+,2,3,0.9737537503242492,0.5530979037284851,1.2870945396241251
+fig_gradcam_bci448_2plus.png,BCI_test_448,train/02062_train_2+.png,missed 2+,2,3,0.9616263508796692,2.355316162109375,0.8689619649033768
+fig_gradcam_bci448_2plus.png,BCI_test_448,train/01716_train_2+.png,missed 2+,2,1,0.9585341811180116,1.0908325910568235,1.0642658575852626
+fig_gradcam_bci448_2plus.png,BCI_test_448,train/01478_train_2+.png,missed 2+,2,3,0.832514762878418,1.002310037612915,1.0794170069498643
+fig_gradcam_bci448_2plus.png,BCI_test_448,test/00777_test_3+.png,false 2+,3,2,0.9937090873718262,3.0936439037323,0.316838942891533
+fig_gradcam_bci448_2plus.png,BCI_test_448,train/01621_train_1+.png,false 2+,1,2,0.962646782398224,1.72191059589386,0.8005694025127776
+fig_gradcam_bci448_2plus.png,BCI_test_448,train/01049_train_1+.png,false 2+,1,2,0.9532129764556884,1.0478090047836304,0.9906360112659384
+fig_gradcam_ext224_p99_2plus.png,ext_test_p99_224,class_2+/her2-2+-score_test_173.png,correct 2+,2,2,0.9828656315803528,1.0899479389190674,0.9682805461656236
+fig_gradcam_ext224_p99_2plus.png,ext_test_p99_224,class_2+/her2-2+-score_test_119.png,correct 2+,2,2,0.9727503657341005,1.0856273174285889,0.8301817547627915
+fig_gradcam_ext224_p99_2plus.png,ext_test_p99_224,class_2+/her2-2+-score_test_08.png,correct 2+,2,2,0.9703696370124816,1.1716265678405762,0.9977447154732122
+fig_gradcam_ext224_p99_2plus.png,ext_test_p99_224,class_2+/her2-2+-score_test_48.png,missed 2+,2,3,0.9975008368492126,1.3361008167266846,0.6756463670604109
+fig_gradcam_ext224_p99_2plus.png,ext_test_p99_224,class_2+/her2-2+-score_test_40.png,missed 2+,2,1,0.9780369400978088,1.0184053182601929,0.9769345562920444
+fig_gradcam_ext224_p99_2plus.png,ext_test_p99_224,class_2+/her2-2+-score_test_28.png,missed 2+,2,1,0.9245476126670836,0.9414207339286804,1.0898533172216758
+fig_gradcam_ext224_p99_2plus.png,ext_test_p99_224,class_2+/her2-2+-score_test_32.png,missed 2+,2,3,0.8806307911872864,0.8250124454498291,1.3617523929559483
+fig_gradcam_ext224_p99_2plus.png,ext_test_p99_224,class_2+/her2-2+-score_test_35.png,missed 2+,2,1,0.830474317073822,0.977330446243286,1.0055986084405035
+fig_gradcam_ext224_p99_2plus.png,ext_test_p99_224,class_2+/her2-2+-score_test_44.png,missed 2+,2,1,0.8240960240364075,0.8846390247344971,1.0717754917257571
+fig_gradcam_ext224_p99_2plus.png,ext_test_p99_224,class_1+/her2-1+-score_test_37.png,false 2+,1,2,0.9925813674926758,1.0263440608978271,0.9859758283583948
+fig_gradcam_ext224_p99_2plus.png,ext_test_p99_224,class_3+/her2-2+-score_test_184.png,false 2+,3,2,0.9925572872161864,1.0867470502853394,0.6621097622257855
+fig_gradcam_ext224_p99_2plus.png,ext_test_p99_224,class_0/her2-0-score_test_648.png,false 2+,0,2,0.9841310381889344,0.8790938258171082,1.1439930034403791
+fig_gradcam_ext224_raw_per_class.png,ext_test_raw_224,class_0/her2-0-score_test_1420.png,correct,0,0,0.9471582174301147,1.0890454053878784,0.9542646102215327
+fig_gradcam_ext224_raw_per_class.png,ext_test_raw_224,class_0/her2-0-score_test_402.png,wrong,0,3,0.9998451471328736,1.2882367372512815,0.861561434646916
+fig_gradcam_ext224_raw_per_class.png,ext_test_raw_224,class_1+/her2-1+-score_test_290.png,correct,1,1,0.990273654460907,0.6280187964439392,1.1010334331655027
+fig_gradcam_ext224_raw_per_class.png,ext_test_raw_224,class_1+/her2-1+-score_test_42.png,wrong,1,3,0.9999961853027344,1.2442615032196045,0.8700106195488522
+fig_gradcam_ext224_raw_per_class.png,ext_test_raw_224,class_2+/her2-2+-score_test_104.png,correct,2,2,0.6844600439071655,0.8983137607574463,1.053174820358194
+fig_gradcam_ext224_raw_per_class.png,ext_test_raw_224,class_2+/her2-2+-score_test_48.png,wrong,2,3,0.9999994039535522,1.2231779098510742,0.6552699166650905
+fig_gradcam_ext224_raw_per_class.png,ext_test_raw_224,class_3+/her2-3+-score_test_999.png,correct,3,3,1.0,1.5419985055923462,0.5034133645085844
+fig_gradcam_ext224_p99_per_class.png,ext_test_p99_224,class_0/her2-0-score_test_250.png,correct,0,0,0.9640851616859436,1.4299452304840088,0.9602897115994182
+fig_gradcam_ext224_p99_per_class.png,ext_test_p99_224,class_0/her2-0-score_test_648.png,wrong,0,2,0.9841310381889344,0.8790938258171082,1.1439930034403791
+fig_gradcam_ext224_p99_per_class.png,ext_test_p99_224,class_1+/her2-1+-score_test_290.png,correct,1,1,0.978839874267578,0.5317171216011047,1.5699544902704274
+fig_gradcam_ext224_p99_per_class.png,ext_test_p99_224,class_1+/her2-1+-score_test_37.png,wrong,1,2,0.9925813674926758,1.0263440608978271,0.9859758283583948
+fig_gradcam_ext224_p99_per_class.png,ext_test_p99_224,class_2+/her2-2+-score_test_173.png,correct,2,2,0.9828656315803528,1.0899479389190674,0.9682805461656236
+fig_gradcam_ext224_p99_per_class.png,ext_test_p99_224,class_2+/her2-2+-score_test_48.png,wrong,2,3,0.9975008368492126,1.3361008167266846,0.6756463670604109
+fig_gradcam_ext224_p99_per_class.png,ext_test_p99_224,class_3+/her2-3+-score_test_886.png,correct,3,3,1.0,1.625910401344299,0.4275720958851858
+fig_gradcam_ext224_p99_per_class.png,ext_test_p99_224,class_3+/her2-2+-score_test_184.png,wrong,3,2,0.9925572872161864,1.0867470502853394,0.6621097622257855
+fig_gradcam_ext448_raw_per_class.png,ext_test_raw_448,class_0/her2-0-score_test_871.png,correct,0,0,0.9999599456787108,0.9261289238929749,1.0052077632109024
+fig_gradcam_ext448_raw_per_class.png,ext_test_raw_448,class_0/her2-0-score_test_190.png,wrong,0,3,0.9999812841415404,5.028522491455078,0.6505305634584018
+fig_gradcam_ext448_raw_per_class.png,ext_test_raw_448,class_1+/her2-1+-score_test_157.png,correct,1,1,0.987371563911438,0.8525920510292053,1.5175008294104062
+fig_gradcam_ext448_raw_per_class.png,ext_test_raw_448,class_1+/her2-1+-score_test_141.png,wrong,1,2,0.9998997449874878,1.0733612775802612,
+fig_gradcam_ext448_raw_per_class.png,ext_test_raw_448,class_2+/her2-2+-score_test_186.png,correct,2,2,0.4880421459674835,0.9910733699798584,
+fig_gradcam_ext448_raw_per_class.png,ext_test_raw_448,class_2+/her2-2+-score_test_33.png,wrong,2,3,0.999991774559021,1.6777513027191162,0.6062824035839556
+fig_gradcam_ext448_raw_per_class.png,ext_test_raw_448,class_3+/her2-3+-score_test_1054.png,correct,3,3,1.0,2.2713305950164795,0.5852450208680193
+fig_gradcam_ext448_raw_per_class.png,ext_test_raw_448,class_3+/her2-3+-score_test_60.png,wrong,3,1,0.9998738765716552,1.0136879682540894,
+fig_gradcam_bci448_background.png,BCI_test_448,test/00642_test_1+.png,high background attention,1,1,0.9639791250228882,0.7061969041824341,2.687241329442316
+fig_gradcam_bci448_background.png,BCI_test_448,test/00227_test_3+.png,high background attention,3,3,0.8259895443916321,0.7687821984291077,2.632275003813699
+fig_gradcam_bci448_background.png,BCI_test_448,train/03958_train_0.png,high background attention,0,0,0.9999924898147584,0.6182360649108887,1.8254149441067
+fig_gradcam_bci448_background.png,BCI_test_448,train/03411_train_1+.png,high background attention,1,1,0.9924833178520204,0.5602931380271912,1.6472811654180832
+fig_gradcam_bci448_background.png,BCI_test_448,train/01563_train_0.png,high background attention,0,0,0.9999960660934448,0.6065179109573364,1.4961620211167714
+fig_gradcam_bci448_background.png,BCI_test_448,train/03900_train_2+.png,high background attention,2,2,0.5448600649833679,0.935413122177124,1.4822868805597516
+fig_gradcam_ext448_raw_background.png,ext_test_raw_448,class_1+/her2-1+-score_test_239.png,high background attention,1,0,0.9703375697135924,0.6256828308105469,2.261472914911781
+fig_gradcam_ext448_raw_background.png,ext_test_raw_448,class_1+/her2-1+-score_test_409.png,high background attention,1,0,0.5900577902793884,0.7237446904182434,2.120705579796047
+fig_gradcam_ext448_raw_background.png,ext_test_raw_448,class_3+/her2-3+-score_test_1124.png,high background attention,3,3,0.992508828639984,0.793437123298645,2.109406763167856
+fig_gradcam_ext448_raw_background.png,ext_test_raw_448,class_1+/her2-1+-score_test_244.png,high background attention,1,0,0.5834245085716248,0.7590770125389099,2.1092879746819286
+fig_gradcam_ext448_raw_background.png,ext_test_raw_448,class_3+/her2-3+-score_test_1060.png,high background attention,3,3,0.8019846677780151,0.5789994597434998,2.0471005937817095
+fig_gradcam_ext448_raw_background.png,ext_test_raw_448,class_1+/her2-1+-score_test_168.png,high background attention,1,1,0.719944417476654,0.9325107336044312,2.0069172901458474

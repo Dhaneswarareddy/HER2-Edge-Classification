@@ -1,0 +1,42 @@
+  ext_test_p99_224: 64/1847
+  ext_test_p99_224: 128/1847
+  ext_test_p99_224: 192/1847
+  ext_test_p99_224: 256/1847
+  ext_test_p99_224: 320/1847
+  ext_test_p99_224: 384/1847
+  ext_test_p99_224: 448/1847
+  ext_test_p99_224: 512/1847
+  ext_test_p99_224: 576/1847
+  ext_test_p99_224: 640/1847
+  ext_test_p99_224: 704/1847
+  ext_test_p99_224: 768/1847
+  ext_test_p99_224: 832/1847
+  ext_test_p99_224: 896/1847
+  ext_test_p99_224: 960/1847
+  ext_test_p99_224: 1024/1847
+  ext_test_p99_224: 1088/1847
+  ext_test_p99_224: 1152/1847
+  ext_test_p99_224: 1216/1847
+  ext_test_p99_224: 1280/1847
+  ext_test_p99_224: 1344/1847
+  ext_test_p99_224: 1408/1847
+  ext_test_p99_224: 1472/1847
+  ext_test_p99_224: 1536/1847
+  ext_test_p99_224: 1600/1847
+  ext_test_p99_224: 1664/1847
+  ext_test_p99_224: 1728/1847
+  ext_test_p99_224: 1792/1847
+  ext_test_p99_224: 1847/1847
+  ext_test_p99_224: max |p - stored p| = 7.11e-07
+| set | correct | dab_ratio | bg_ratio | top_dab_mass |
+|---|---|---|---|---|
+| BCI_test_224 | False | 1.084 | 0.966 | 0.114 |
+| BCI_test_224 | True | 1.092 | 0.908 | 0.114 |
+| BCI_test_448 | False | 1.302 | 0.912 | 0.139 |
+| BCI_test_448 | True | 1.153 | 0.859 | 0.127 |
+| ext_test_p99_224 | False | 1.108 | 0.948 | 0.113 |
+| ext_test_p99_224 | True | 1.221 | 0.693 | 0.130 |
+| ext_test_raw_224 | False | 1.094 | 0.884 | 0.113 |
+| ext_test_raw_224 | True | 1.199 | 0.710 | 0.126 |
+| ext_test_raw_448 | False | 1.053 | 0.966 | 0.106 |
+| ext_test_raw_448 | True | 1.325 | 0.657 | 0.145 |

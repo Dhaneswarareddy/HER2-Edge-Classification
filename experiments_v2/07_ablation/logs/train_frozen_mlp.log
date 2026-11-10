@@ -1,0 +1,30 @@
+=== EfficientNetV2B0__ce__frozen_mlp  params=6,248,276 batch=32 ===
+  [head] ep   1 loss 1.0459 | val loss 1.0060 acc 0.5915 qwk 0.5159 f1 0.4848 | lr 1.00e-03 44s *
+  [head] ep   2 loss 0.9004 | val loss 0.9017 acc 0.6245 qwk 0.5109 f1 0.5090 | lr 1.00e-03 39s
+  [head] ep   3 loss 0.8320 | val loss 0.8816 acc 0.6437 qwk 0.4671 f1 0.5346 | lr 1.00e-03 39s
+  [head] ep   4 loss 0.7707 | val loss 0.8383 acc 0.6355 qwk 0.5347 f1 0.5737 | lr 1.00e-03 42s *
+  [head] ep   5 loss 0.7584 | val loss 0.8414 acc 0.6437 qwk 0.4400 f1 0.5589 | lr 1.00e-03 39s
+  [head] ep   6 loss 0.7509 | val loss 0.8061 acc 0.6616 qwk 0.5492 f1 0.5903 | lr 1.00e-03 38s *
+  [head] ep   7 loss 0.7300 | val loss 0.7914 acc 0.6575 qwk 0.4903 f1 0.5609 | lr 1.00e-03 38s
+  [head] ep   8 loss 0.7380 | val loss 0.7840 acc 0.7070 qwk 0.5801 f1 0.6076 | lr 1.00e-03 39s *
+  [head] ep   9 loss 0.7090 | val loss 0.7544 acc 0.7029 qwk 0.6064 f1 0.6369 | lr 1.00e-03 38s *
+  [head] ep  10 loss 0.7145 | val loss 0.7378 acc 0.7029 qwk 0.5209 f1 0.6225 | lr 1.00e-03 39s
+  [head] ep  11 loss 0.6599 | val loss 0.7476 acc 0.7056 qwk 0.5729 f1 0.6242 | lr 1.00e-03 42s
+  [head] ep  12 loss 0.6590 | val loss 0.7986 acc 0.6740 qwk 0.4741 f1 0.5796 | lr 1.00e-03 38s
+  [head] ep  13 loss 0.6403 | val loss 0.7498 acc 0.6960 qwk 0.5560 f1 0.6225 | lr 1.00e-03 39s
+  [head] ep  14 loss 0.6794 | val loss 0.7545 acc 0.6946 qwk 0.5475 f1 0.6316 | lr 1.00e-03 39s
+  [head] ep  15 loss 0.6322 | val loss 0.7354 acc 0.7208 qwk 0.6128 f1 0.6676 | lr 1.00e-03 39s *
+  [head] ep  16 loss 0.6108 | val loss 0.7833 acc 0.6850 qwk 0.5249 f1 0.6151 | lr 1.00e-03 39s
+  [head] ep  17 loss 0.6386 | val loss 0.7050 acc 0.7166 qwk 0.6186 f1 0.6706 | lr 1.00e-03 38s *
+  [head] ep  18 loss 0.5979 | val loss 0.9006 acc 0.6424 qwk 0.5687 f1 0.5934 | lr 1.00e-03 41s
+  [head] ep  19 loss 0.6199 | val loss 0.8009 acc 0.6919 qwk 0.5308 f1 0.6272 | lr 1.00e-03 39s
+  [head] ep  20 loss 0.6256 | val loss 0.7492 acc 0.7208 qwk 0.6116 f1 0.6673 | lr 1.00e-03 40s
+  [head] ep  21 loss 0.6443 | val loss 0.6856 acc 0.7318 qwk 0.6104 f1 0.6857 | lr 1.00e-03 40s
+  [head] ep  22 loss 0.6195 | val loss 0.7035 acc 0.7221 qwk 0.6039 f1 0.6649 | lr 1.00e-03 39s
+  [head] ep  23 loss 0.5943 | val loss 0.7316 acc 0.7070 qwk 0.5723 f1 0.6436 | lr 1.00e-03 38s
+  [head] ep  24 loss 0.6107 | val loss 0.7189 acc 0.7043 qwk 0.6051 f1 0.6580 | lr 1.00e-03 38s
+  [head] ep  25 loss 0.6216 | val loss 0.7212 acc 0.7166 qwk 0.6158 f1 0.6712 | lr 1.00e-03 39s
+  [head] ep  26 loss 0.6016 | val loss 0.7286 acc 0.7180 qwk 0.6118 f1 0.6783 | lr 1.00e-03 39s
+  [head] ep  27 loss 0.5852 | val loss 0.7117 acc 0.7180 qwk 0.5946 f1 0.6682 | lr 1.00e-03 40s
+  early stop (no val QWK improvement for 10 epochs)
+DONE frozen_mlp: best epoch 17 / 27  val qwk 0.6186 acc 0.7166 | test qwk 0.6280 acc 0.6992 (17.7 min)

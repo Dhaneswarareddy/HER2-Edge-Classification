@@ -1,0 +1,20 @@
+{
+ "experiment": "03_gradcam",
+ "layer": "top_activation",
+ "target": "predicted class",
+ "models": [
+  "EfficientNetV2B0__ce__hires",
+  "EfficientNetV2B0__ce"
+ ],
+ "bg_rule": "HSV S < 8",
+ "bg_min_area": 0.05,
+ "top_dab_quantile": 0.9,
+ "device": "CPU",
+ "stain_p99": {
+  "g_h": 0.2545270680571192,
+  "g_d": 0.5044797263953001,
+  "q_bci_d": 2.2255187988281246,
+  "q_ext_d": 4.411512856483459
+ },
+ "external_status": "exploratory second look; nothing fitted on test"
+}

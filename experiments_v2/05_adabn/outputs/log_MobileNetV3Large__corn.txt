@@ -1,0 +1,11 @@
+MobileNetV3Large__corn: fresh vs stored  raw 6.52e-06  stain_p99 4.81e-07
+MobileNetV3Large__corn adabn: 46 BN layers re-estimated (mean |change| 0.2512); 0 dropout layers off
+MobileNetV3Large__corn adabn_p99: 46 BN layers re-estimated (mean |change| 0.2495); 0 dropout layers off
+TEST MobileNetV3Large__corn raw        acc 0.423 bal 0.261 f1 0.180 qwk 0.100 recall [0.017, 0.025, 0.0, 1.0]
+TEST MobileNetV3Large__corn stain_p99  acc 0.600 bal 0.431 f1 0.424 qwk 0.405 recall [0.392, 0.354, 0.009, 0.967]
+TEST MobileNetV3Large__corn adabn      acc 0.571 bal 0.407 f1 0.388 qwk 0.474 recall [0.377, 0.13, 0.135, 0.984]
+TEST MobileNetV3Large__corn adabn_p99  acc 0.670 bal 0.519 f1 0.498 qwk 0.666 recall [0.597, 0.158, 0.324, 0.996]
+DEV  MobileNetV3Large__corn adabn      bal 0.364 f1 0.288 qwk 0.242
+DEV  MobileNetV3Large__corn adabn_p99  bal 0.459 f1 0.405 qwk 0.444
+DEV  MobileNetV3Large__corn raw        bal 0.253 f1 0.133 qwk 0.074
+DEV  MobileNetV3Large__corn stain_p99  bal 0.399 f1 0.365 qwk 0.348

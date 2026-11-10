@@ -5,8 +5,25 @@
 ## Deployment Summary
 
 The FYP3 edge deployment targets two complementary hardware platforms:
-1. **Physical Mobile Smartphone (Primary Point-of-Care Target)**: **Samsung Galaxy M35 5G** (`SM-M356B`, Android 16, Exynos 1380 5nm SoC, 6GB RAM). Includes fully functional native Android application (`HER2 Mobile Edge`, `android_app/`) running TFLite 2.16.1 with XNNPACK. Achieves **78.91 ms (12.67 FPS)** on FP16 and **21.71 ms (46.06 FPS)** on INT8 with 4-thread Cortex-A78 pinning, completely unthrottled at 28.9°C. See `deployment/MOBILE_BENCHMARK_REPORT.md`.
-2. **Physical Embedded Single-Board Computer (Comparative Baseline)**: **Raspberry Pi 4 Model B Rev 1.4** (Quad Cortex-A72 @ 1.80 GHz, 4GB RAM, Debian 13). Achieves 444.1 ms median latency (2 threads, 191.5 MB RAM, 100.0% agreement); 4 threads achieved 353.5 ms but incurred soft thermal throttling at 84.2°C (`0x80008`). See `deployment/PI4_BENCHMARK_REPORT.md`.
+1. **Android smartphones (point-of-care target).** Samsung Galaxy M35 5G (`SM-M356B`, Exynos 1380, Android 17) and
+   Realme 6 (`RMX2001`, Helio G90T, Android 11). The app is `HER2 Edge Classifier` v1.1 (`android_app/`,
+   `deployment/apk/HER2_Mobile_Edge.apk`).
+   - Runtime: TFLite 2.16.1 with XNNPACK, CPU only.
+   - Preprocessing is bit-exact with training (Lanczos 512 → bilinear 448).
+   - Measured 10 Nov 2026, deployed 448 px FP16, median network latency: **81.4 ms** (Samsung, 4 threads) and
+     **139.1 ms** (Realme, 8 threads).
+   - On the full BCI test split, both phones reproduce the validated predictions on **758/758 tiles** (accuracy 0.975).
+   - INT8 is 3–4× faster but failed the accuracy gate (agreement 0.928). It is labelled "speed test only".
+   - No power was measured. Android exposes no throttle flag; temperatures are battery temperatures.
+   - See `deployment/MOBILE_BENCHMARK_REPORT.md`.
+2. **Raspberry Pi 4 Model B Rev 1.4 (comparison baseline).** 4× Cortex-A72 at 1.8 GHz, 4 GB, Debian 13,
+   `ai_edge_litert`.
+   - Measured 10 Nov 2026 with an official-rating supply: deployed FP16 **336.5 ms** at 4 threads (437.0 ms at 2).
+   - SoC at most 62.8 °C; `throttled=0x0` throughout.
+   - INT8 104.1 ms, but platform-dependent and below the accuracy gate (agreement with Keras 0.908 on 120 tiles).
+   - The 31 Oct run (353.5 ms at 4 threads, 84.2 °C, soft temperature limit `0x80008`) is kept in
+     `benchmark_results/` for reference.
+   - See `deployment/PI4_BENCHMARK_REPORT.md`.
 
 ## Two separate modes
 

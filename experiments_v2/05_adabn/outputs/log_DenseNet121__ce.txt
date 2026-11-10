@@ -1,0 +1,11 @@
+DenseNet121__ce: fresh vs stored  raw 1.25e-06  stain_p99 2.98e-08
+DenseNet121__ce adabn: 121 BN layers re-estimated (mean |change| 0.0335); 0 dropout layers off
+DenseNet121__ce adabn_p99: 121 BN layers re-estimated (mean |change| 0.0334); 0 dropout layers off
+TEST DenseNet121__ce raw        acc 0.419 bal 0.260 f1 0.176 qwk 0.032 recall [0.009, 0.041, 0.0, 0.991]
+TEST DenseNet121__ce stain_p99  acc 0.624 bal 0.410 f1 0.382 qwk 0.765 recall [0.944, 0.0, 0.0, 0.698]
+TEST DenseNet121__ce adabn      acc 0.513 bal 0.361 f1 0.343 qwk 0.407 recall [0.391, 0.041, 0.144, 0.867]
+TEST DenseNet121__ce adabn_p99  acc 0.648 bal 0.490 f1 0.446 qwk 0.715 recall [0.751, 0.028, 0.315, 0.865]
+DEV  DenseNet121__ce adabn      bal 0.377 f1 0.330 qwk 0.371
+DEV  DenseNet121__ce adabn_p99  bal 0.449 f1 0.394 qwk 0.569
+DEV  DenseNet121__ce raw        bal 0.252 f1 0.122 qwk 0.018
+DEV  DenseNet121__ce stain_p99  bal 0.439 f1 0.384 qwk 0.747

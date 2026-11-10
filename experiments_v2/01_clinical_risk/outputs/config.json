@@ -1,0 +1,189 @@
+{
+ "experiment": "01_clinical_risk",
+ "seed": 2027,
+ "n_boot": 2000,
+ "n_sensitivity": 2000,
+ "taxonomy": {
+  "positive_missed (3+ -> 0/1+)": [
+   [
+    3,
+    0
+   ],
+   [
+    3,
+    1
+   ]
+  ],
+  "equivocal_missed (2+ -> 0/1+)": [
+   [
+    2,
+    0
+   ],
+   [
+    2,
+    1
+   ]
+  ],
+  "ish_bypassed (2+ -> 3+)": [
+   [
+    2,
+    3
+   ]
+  ],
+  "false_positive (0/1+ -> 3+)": [
+   [
+    0,
+    3
+   ],
+   [
+    1,
+    3
+   ]
+  ],
+  "unnecessary_ish (0/1+ -> 2+)": [
+   [
+    0,
+    2
+   ],
+   [
+    1,
+    2
+   ]
+  ],
+  "positive_undercalled (3+ -> 2+)": [
+   [
+    3,
+    2
+   ]
+  ],
+  "zero_vs_low (0 <-> 1+)": [
+   [
+    0,
+    1
+   ],
+   [
+    1,
+    0
+   ]
+  ]
+ },
+ "nominal_costs": {
+  "c_low": 1.0,
+  "c_extra_ish": 2.0,
+  "c_under": 2.0,
+  "c_bypass": 4.0,
+  "c_miss_ish": 6.0,
+  "c_fp": 8.0,
+  "c_fn": 10.0
+ },
+ "scenarios": {
+  "S0_linear": [
+   [
+    0.0,
+    1.0,
+    2.0,
+    3.0
+   ],
+   [
+    1.0,
+    0.0,
+    1.0,
+    2.0
+   ],
+   [
+    2.0,
+    1.0,
+    0.0,
+    1.0
+   ],
+   [
+    3.0,
+    2.0,
+    1.0,
+    0.0
+   ]
+  ],
+  "S1_quadratic": [
+   [
+    0.0,
+    1.0,
+    4.0,
+    9.0
+   ],
+   [
+    1.0,
+    0.0,
+    1.0,
+    4.0
+   ],
+   [
+    4.0,
+    1.0,
+    0.0,
+    1.0
+   ],
+   [
+    9.0,
+    4.0,
+    1.0,
+    0.0
+   ]
+  ],
+  "S2_workflow": [
+   [
+    0.0,
+    1.0,
+    2.0,
+    8.0
+   ],
+   [
+    1.0,
+    0.0,
+    2.0,
+    8.0
+   ],
+   [
+    6.0,
+    6.0,
+    0.0,
+    4.0
+   ],
+   [
+    10.0,
+    10.0,
+    2.0,
+    0.0
+   ]
+  ],
+  "S3_workflow_her2low": [
+   [
+    0.0,
+    4.0,
+    2.0,
+    8.0
+   ],
+   [
+    4.0,
+    0.0,
+    2.0,
+    8.0
+   ],
+   [
+    6.0,
+    6.0,
+    0.0,
+    4.0
+   ],
+   [
+    10.0,
+    10.0,
+    2.0,
+    0.0
+   ]
+  ]
+ },
+ "sensitivity_rule": "each workflow cost drawn uniformly in [0.5, 1.5] x nominal, independently",
+ "bci_ci": "fragment-cluster bootstrap",
+ "external_ci": "filename-run bootstrap (no slide IDs: optimistic)",
+ "test_status": "BCI test report-only; external test = exploratory second look (previously examined)"
+}

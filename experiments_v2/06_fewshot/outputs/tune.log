@@ -1,0 +1,51 @@
+support pool per class [1366, 799, 222, 1113]
+tune head k=10 seed=101 {'lr': 0.001, 'steps': 50}: R_cal bal 0.671 f1 0.631 qwk 0.892 (5s)
+tune head k=10 seed=102 {'lr': 0.001, 'steps': 50}: R_cal bal 0.724 f1 0.683 qwk 0.907 (1s)
+tune head k=10 seed=103 {'lr': 0.001, 'steps': 50}: R_cal bal 0.597 f1 0.551 qwk 0.860 (1s)
+tune head k=10 seed=101 {'lr': 0.001, 'steps': 200}: R_cal bal 0.694 f1 0.655 qwk 0.904 (2s)
+tune head k=10 seed=102 {'lr': 0.001, 'steps': 200}: R_cal bal 0.781 f1 0.730 qwk 0.920 (1s)
+tune head k=10 seed=103 {'lr': 0.001, 'steps': 200}: R_cal bal 0.635 f1 0.584 qwk 0.872 (2s)
+tune head k=10 seed=101 {'lr': 0.01, 'steps': 50}: R_cal bal 0.710 f1 0.677 qwk 0.899 (1s)
+tune head k=10 seed=102 {'lr': 0.01, 'steps': 50}: R_cal bal 0.788 f1 0.714 qwk 0.905 (1s)
+tune head k=10 seed=103 {'lr': 0.01, 'steps': 50}: R_cal bal 0.678 f1 0.625 qwk 0.886 (1s)
+tune head k=10 seed=101 {'lr': 0.01, 'steps': 200}: R_cal bal 0.731 f1 0.704 qwk 0.911 (2s)
+tune head k=10 seed=102 {'lr': 0.01, 'steps': 200}: R_cal bal 0.793 f1 0.719 qwk 0.906 (1s)
+tune head k=10 seed=103 {'lr': 0.01, 'steps': 200}: R_cal bal 0.688 f1 0.635 qwk 0.890 (1s)
+tune partial k=10 seed=101 {'lr': 0.0001, 'steps': 30}: R_cal bal 0.827 f1 0.768 qwk 0.927 (52s)
+tune partial k=10 seed=102 {'lr': 0.0001, 'steps': 30}: R_cal bal 0.837 f1 0.786 qwk 0.933 (64s)
+tune partial k=10 seed=103 {'lr': 0.0001, 'steps': 30}: R_cal bal 0.783 f1 0.727 qwk 0.924 (64s)
+tune partial k=10 seed=101 {'lr': 0.0001, 'steps': 100}: R_cal bal 0.821 f1 0.740 qwk 0.914 (103s)
+tune partial k=10 seed=102 {'lr': 0.0001, 'steps': 100}: R_cal bal 0.839 f1 0.777 qwk 0.930 (100s)
+tune partial k=10 seed=103 {'lr': 0.0001, 'steps': 100}: R_cal bal 0.791 f1 0.728 qwk 0.923 (101s)
+tune partial k=10 seed=101 {'lr': 0.001, 'steps': 30}: R_cal bal 0.883 f1 0.854 qwk 0.966 (411s)
+tune partial k=10 seed=102 {'lr': 0.001, 'steps': 30}: R_cal bal 0.879 f1 0.849 qwk 0.960 (42s)
+tune partial k=10 seed=103 {'lr': 0.001, 'steps': 30}: R_cal bal 0.833 f1 0.778 qwk 0.932 (46s)
+tune partial k=10 seed=101 {'lr': 0.001, 'steps': 100}: R_cal bal 0.735 f1 0.643 qwk 0.880 (59s)
+tune partial k=10 seed=102 {'lr': 0.001, 'steps': 100}: R_cal bal 0.873 f1 0.817 qwk 0.953 (57s)
+tune partial k=10 seed=103 {'lr': 0.001, 'steps': 100}: R_cal bal 0.788 f1 0.720 qwk 0.910 (67s)
+tune full k=10 seed=101 {'lr': 1e-05, 'steps': 30}: R_cal bal 0.604 f1 0.556 qwk 0.782 (70s)
+tune full k=10 seed=102 {'lr': 1e-05, 'steps': 30}: R_cal bal 0.662 f1 0.638 qwk 0.863 (88s)
+tune full k=10 seed=103 {'lr': 1e-05, 'steps': 30}: R_cal bal 0.604 f1 0.561 qwk 0.821 (87s)
+tune full k=10 seed=101 {'lr': 1e-05, 'steps': 100}: R_cal bal 0.764 f1 0.696 qwk 0.887 (196s)
+tune full k=10 seed=102 {'lr': 1e-05, 'steps': 100}: R_cal bal 0.807 f1 0.770 qwk 0.929 (556s)
+tune full k=10 seed=103 {'lr': 1e-05, 'steps': 100}: R_cal bal 0.713 f1 0.670 qwk 0.901 (186s)
+tune full k=10 seed=101 {'lr': 0.0001, 'steps': 30}: R_cal bal 0.835 f1 0.745 qwk 0.898 (98s)
+tune full k=10 seed=102 {'lr': 0.0001, 'steps': 30}: R_cal bal 0.881 f1 0.843 qwk 0.952 (104s)
+tune full k=10 seed=103 {'lr': 0.0001, 'steps': 30}: R_cal bal 0.841 f1 0.789 qwk 0.944 (97s)
+tune full k=10 seed=101 {'lr': 0.0001, 'steps': 100}: R_cal bal 0.882 f1 0.819 qwk 0.937 (267s)
+tune full k=10 seed=102 {'lr': 0.0001, 'steps': 100}: R_cal bal 0.904 f1 0.874 qwk 0.964 (238s)
+tune full k=10 seed=103 {'lr': 0.0001, 'steps': 100}: R_cal bal 0.842 f1 0.788 qwk 0.945 (505s)
+ regime                          cfg     mean      std  steps
+   full {"lr": 0.0001, "steps": 100} 0.876124 0.031459    100
+   full  {"lr": 0.0001, "steps": 30} 0.852284 0.024921     30
+   full  {"lr": 1e-05, "steps": 100} 0.761706 0.046998    100
+   full   {"lr": 1e-05, "steps": 30} 0.623282 0.033828     30
+   head  {"lr": 0.001, "steps": 200} 0.703552 0.073459    200
+   head   {"lr": 0.001, "steps": 50} 0.664216 0.063506     50
+   head   {"lr": 0.01, "steps": 200} 0.737042 0.052778    200
+   head    {"lr": 0.01, "steps": 50} 0.725059 0.056502     50
+partial {"lr": 0.0001, "steps": 100} 0.817405 0.024254    100
+partial  {"lr": 0.0001, "steps": 30} 0.815689 0.028727     30
+partial  {"lr": 0.001, "steps": 100} 0.798761 0.069691    100
+partial   {"lr": 0.001, "steps": 30} 0.865070 0.027680     30
+chosen: {'full': {'lr': 0.0001, 'steps': 100}, 'head': {'lr': 0.01, 'steps': 200}, 'partial': {'lr': 0.001, 'steps': 30}}

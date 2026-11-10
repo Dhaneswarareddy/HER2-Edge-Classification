@@ -1,0 +1,9 @@
+fp32 t1: median 755.0 ms, p95 758.3, rss 202 MB, agree(mac same prec) 1.000, temp=49.1'C throttled=0x0
+fp32 t2: median 435.7 ms, p95 441.9, rss 202 MB, agree(mac same prec) 1.000, temp=55.5'C throttled=0x0
+fp32 t4: median 334.5 ms, p95 346.1, rss 202 MB, agree(mac same prec) 1.000, temp=62.8'C throttled=0x0
+fp16 t1: median 761.8 ms, p95 770.3, rss 250 MB, agree(mac same prec) 1.000, temp=50.1'C throttled=0x0
+fp16 t2: median 437.0 ms, p95 442.5, rss 250 MB, agree(mac same prec) 1.000, temp=56.9'C throttled=0x0
+fp16 t4: median 336.5 ms, p95 349.2, rss 250 MB, agree(mac same prec) 1.000, temp=61.8'C throttled=0x0
+int8 t1: median 361.3 ms, p95 362.3, rss 151 MB, agree(mac same prec) 0.950, temp=47.7'C throttled=0x0
+int8 t2: median 187.9 ms, p95 189.2, rss 151 MB, agree(mac same prec) 0.950, temp=54.5'C throttled=0x0
+int8 t4: median 104.1 ms, p95 112.8, rss 151 MB, agree(mac same prec) 0.950, temp=61.8'C throttled=0x0

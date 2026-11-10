@@ -1,0 +1,4 @@
+=== EfficientNetV2B0__ce__partial  params=5,924,436 batch=32 ===
+  [head] ep   1 loss 1.2761 | val loss 1.1440 acc 0.4773 qwk 0.1565 f1 0.2930 | lr 1.00e-03 11s *
+  [finetune] ep   2 loss 1.1724 | val loss 1.1092 acc 0.5282 qwk 0.2341 f1 0.3441 | lr 5.62e-05 16s *
+DONE partial: best epoch 2 / 2  val qwk 0.2341 acc 0.5282 | test qwk 0.3186 acc 0.5409 (0.5 min)
