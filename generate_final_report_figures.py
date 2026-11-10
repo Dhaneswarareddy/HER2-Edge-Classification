@@ -138,7 +138,7 @@ effects_order = [
     ("E2 resolution", "MobileNetV3S: Resolution (448px vs 224px, b8)"),
     ("E2 batch", "MobileNetV3S: Batch Size (b8 vs b32, 224px)"),
     ("E4 init_fyp2", "EffNetV2B0: Synthetic Init vs ImageNet"),
-    ("E5 mix_fyp2", "EffNetV2B0: 25% Synthetic Mixed Training")
+    ("E5 mix_fyp2", "EffNetV2B0: Synthetic Mixed Training (+1,680 GAN tiles)")
 ]
 
 fig, ax = plt.subplots(figsize=(10, 5))
@@ -171,7 +171,7 @@ ax.set_yticks(y_indices)
 ax.set_yticklabels([name for _, name in effects_order])
 ax.invert_yaxis()
 ax.set_xlabel("Paired Difference in Quadratic Weighted Kappa (Δ QWK)")
-ax.set_title("Figure 2: Paired Effects Forest Plot with Slide-Fragment Resampled 95% CIs", fontweight="bold", pad=12)
+ax.set_title("Figure 2: Paired effects with slide-fragment bootstrap 95% CIs\n(* = validation CI excludes 0; validation is the decision split)", fontweight="bold", pad=12)
 ax.grid(True, axis="x")
 ax.legend(loc="lower right", framealpha=0.95)
 despine(ax)
@@ -183,7 +183,7 @@ for i, (v, (lo, hi)) in enumerate(zip(val_deltas, val_cis)):
                 color="#1f77b4", fontweight="bold", va="center")
 
 fig.tight_layout()
-fig.savefig(OUT_DIR / "fig2_paired_effects_forest.png", dpi=300)
+fig.savefig(OUT_DIR / "fig2_paired_effects_forest.png", dpi=300, bbox_inches="tight")
 plt.close(fig)
 
 # ==============================================================================

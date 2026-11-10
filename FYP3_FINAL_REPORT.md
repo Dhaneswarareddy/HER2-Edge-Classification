@@ -337,7 +337,7 @@ test 448 px input with batch 8 (`hires`), against a batch-matched 224 px control
 
 - **E4 (`init_fyp2`).** EfficientNetV2B0 initialised from the FYP2 synthetic model, then the same two-stage training on
   BCI.
-- **E5 (`mix_fyp2`).** ImageNet initialisation; each batch has 75% BCI and 25% FYP2 synthetic tiles.
+- **E5 (`mix_fyp2`).** ImageNet initialisation; FYP2's 1,680 synthetic training tiles added to the 3,388 BCI training tiles and shuffled together (≈33% synthetic on average, not a fixed ratio per batch).
 
 ### Table 4: Synthetic pretraining and mixing (BCI)
 
@@ -345,7 +345,7 @@ test 448 px input with batch 8 (`hires`), against a batch-matched 224 px control
 |---|---|---|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
 | **Standard baseline** | ImageNet | 100% BCI | 0.895 | 0.875 | 0.893 | 0.869 | 0.926 | 0.917 | 0.915 |
 | E4 (`init_fyp2`) | FYP2 synthetic | 100% BCI | 0.902 | 0.881 | 0.887 | 0.854 | 0.920 | 0.919 | 0.894 |
-| E5 (`mix_fyp2`) | ImageNet | 75% BCI + 25% FYP2 | 0.884 | 0.877 | 0.879 | 0.847 | 0.917 | 0.915 | 0.910 |
+| E5 (`mix_fyp2`) | ImageNet | BCI + 1,680 FYP2 (≈33%) | 0.884 | 0.877 | 0.879 | 0.847 | 0.917 | 0.915 | 0.910 |
 
 ### Table 5: Paired effects vs baseline
 
@@ -375,15 +375,15 @@ accuracy 0.260–0.381. They over-call 3+: 43%–94% of all tiles are predicted 
 | DenseNet121 224 | 0.419 | 0.260 | 0.176 | 0.032 | 93.1% |
 
 ### 12.2 Stain and image differences
-Stain was measured relative to each tile's own illumination (Ruifrok–Johnston vectors), per class
-(`final_reports/tables/cross_dataset_features_by_class.csv`):
+Stain was measured relative to each tile's own illumination (Ruifrok–Johnston vectors). Values are the per-class
+**median over tiles** of each tile's mean optical density (`final_reports/tables/cross_dataset_features_by_class.csv`):
 
 | Feature | Dataset | 0 | 1+ | 2+ | 3+ |
 |---|---|:---:|:---:|:---:|:---:|
-| Mean DAB | BCI | 0.09 | 0.09 | 0.12 | 0.49 |
-| Mean DAB | HER2-IHC-40x | 0.05 | 0.16 | 0.31 | 1.29 |
-| Mean haematoxylin | BCI | 0.08 | 0.02 | 0.03 | 0.03 |
-| Mean haematoxylin | HER2-IHC-40x | 0.29 | 0.11 | 0.17 | 0.09 |
+| DAB | BCI | 0.09 | 0.09 | 0.12 | 0.49 |
+| DAB | HER2-IHC-40x | 0.05 | 0.16 | 0.31 | 1.29 |
+| Haematoxylin | BCI | 0.08 | 0.02 | 0.03 | 0.03 |
+| Haematoxylin | HER2-IHC-40x | 0.29 | 0.11 | 0.17 | 0.09 |
 
 - **Haematoxylin is 3.4–7× stronger in HER2-IHC-40x**, not depressed.
 - DAB is higher for 1+, 2+ and 3+ (2–3×), and lower for class 0.
@@ -436,7 +436,7 @@ flowchart TD
 ### 12.4 FYP2 synthetic-trained networks on the external set
 `final_reports/cross_dataset_audit.md` gives the comparison:
 - The FYP2 networks, trained only on GAN tiles and without calibration, reach balanced accuracy **0.61–0.73**.
-- The BCI networks reach 0.41–0.53 with HARMONISE.
+- The 224 px BCI networks reach 0.41–0.53 with HARMONISE (the 448 px model drops to 0.186).
 - In clinical-cost terms, the FYP2 ResNet50 has the lowest expected cost of all configurations (§15.1).
 
 Probable explanation: HER2-IHC-40x was hue-filtered per class, and FYP2's GAN classes differ strongly in DAB colour
@@ -666,7 +666,8 @@ Every experiment below has its own folder with scripts, outputs and a README (`e
 - **BCI test results.**
   - 448 px: 0.12 [0.06, 0.22] vs 224 px: 0.31 [0.20, 0.48].
   - Paired Δ −0.19 [−0.33, −0.09].
-  - The 448 px model has the lowest cost in 100% of cost draws.
+  - In the ±50% cost-weight sensitivity analysis (BCI **validation**, all 20 runs), the 448 px model has the lowest
+    cost in 100% of draws.
 - **External.** The FYP2 ResNet50 (raw) has the lowest cost (0.54) in 100% of draws.
 - **What HARMONISE does to the 224 px EfficientNetV2B0's errors:**
   - negatives called 3+ fall from 758 to 64;
@@ -683,7 +684,8 @@ Every experiment below has its own folder with scripts, outputs and a README (`e
 ### 15.3 Grad-CAM (`03_gradcam`)
 - **Scope.** 448 and 224 px models; BCI and external; correct and wrong tiles; 7,057 tiles with statistics. The maps are
   7×7 or 14×14, so they cannot resolve membranes.
-- **3+ calls.** Correct 3+ calls attend to strongly brown regions: DAB ratio 1.22–1.42, background ratio 0.55–0.75.
+- **3+ calls.** Correct 3+ calls attend to strongly brown regions: DAB ratio 1.23–1.29 and background ratio 0.66–0.75
+  on BCI; 1.22–1.42 and 0.55–0.69 on the external sets.
 - **External 1+ calls.** Correct external 1+ calls attend to glass and pale areas (background ratio 1.07–1.23), a
   likely shortcut.
 - **BCI errors cluster on sparse tiles.** 55–63% of errors are > 50% background, vs 32% of correct tiles.
@@ -693,7 +695,9 @@ Every experiment below has its own folder with scripts, outputs and a README (`e
 - **Defocus (448 px model):**
   - blur σ = 0.9 µm costs 0.17, vs 0.03 at 224 px;
   - σ = 1.8 µm costs 0.42, with tiles pushed to 2+.
-- **Negligible effect:** JPEG ≥ 70, sensor noise, and ±20% DAB or haematoxylin.
+- **Negligible effect:** JPEG ≥ 70, sensor noise, ±20% DAB, and haematoxylin ×1.2.
+- **Small but real:** haematoxylin ×0.8 costs about 3 points of balanced accuracy (−0.031 at 448 px, −0.030 at
+  224 px; both CIs exclude 0).
 
 ### 15.5 AdaBN (`05_adabn`; 5 networks, unlabelled 1,500-tile fit pool)
 - **Against raw input** it improves test balanced accuracy on every network: +0.06 to +0.23, all CIs > 0.

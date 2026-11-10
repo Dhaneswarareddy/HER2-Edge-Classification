@@ -38,3 +38,4 @@ experiments_v2/_cache/
 experiments_v2/07_ablation/runs_smoke/
 experiments_v2/08_edge/pi_bundle/tiles120.npz
 experiments_v2/08_edge/pi_bundle/models/
+experiments_v2/09_resolution_e6_e7/smoke/

@@ -110,14 +110,14 @@
 - **Main Message**: Synthetic cGAN pretraining and mixing gave no measurable change on BCI; on the colour-separable external set, synthetic-trained networks did best.
 - **Key Bullet Points**:
   - E4 (`init_fyp2`): EfficientNetV2B0 initialised from the FYP2 synthetic model, then the same two-stage training on BCI.
-  - E5 (`mix_fyp2`): ImageNet initialisation; each batch has 75% BCI tiles and 25% FYP2 synthetic tiles.
+  - E5 (`mix_fyp2`): ImageNet initialisation; FYP2's 1,680 synthetic training tiles added to the 3,388 BCI training tiles and shuffled together (≈33% synthetic on average, not a fixed ratio per batch).
   - E4 paired effect: $\Delta\text{Val QWK} = -0.015$, $95\%\text{ CI } [-0.075, +0.042]$ (CI spans zero).
   - E5 paired effect: $\Delta\text{Val QWK} = -0.023$, $95\%\text{ CI } [-0.073, +0.020]$ (CI spans zero).
   - Conclusion on BCI: FYP2's synthetic images did not help.
-  - Caveat on HER2-IHC-40x: FYP2 synthetic-trained networks reach balanced accuracy 0.61–0.73 without calibration, better than every BCI network (0.41–0.53 with HARMONISE). The external set was hue-filtered per class and is unusually separable by DAB colour (a 6-feature stain rule fitted on FYP2 reaches accuracy 0.89), so this reflects colour separability, not better tissue understanding.
+  - Caveat on HER2-IHC-40x: FYP2 synthetic-trained networks reach balanced accuracy 0.61–0.73 without calibration, better than every BCI network (224 px networks 0.41–0.53 with HARMONISE; the 448 px model 0.186). The external set was hue-filtered per class and is unusually separable by DAB colour (a 6-feature stain rule fitted on FYP2 reaches accuracy 0.89), so this reflects colour separability, not better tissue understanding.
 - **Recommended Visual**: Forest plot subsection from `final_report_figures/fig2_paired_effects_forest.png` highlighting E4 and E5 confidence intervals crossing zero.
 - **Speaker Script**:
-  > "We also asked whether FYP2's synthetic images could serve as a pretraining prior. In E4 we initialised EfficientNetV2B0 from the synthetic model; in E5 we mixed 25% synthetic tiles into every batch. Both gave negative point estimates on validation QWK, minus 0.015 and minus 0.023, with confidence intervals crossing zero: no measurable change on BCI. There is one important twist. On the external dataset, the networks trained only on synthetic images actually scored better than any BCI network. The likely reason is that the external release selected tiles per class by colour, and FYP2's GAN classes also differ strongly in brown DAB colour. So the correct conclusion is narrow: synthetic training did not transfer to BCI, and colour-selected external benchmarks reward colour shortcuts."
+  > "We also asked whether FYP2's synthetic images could serve as a pretraining prior. In E4 we initialised EfficientNetV2B0 from the synthetic model; in E5 we added FYP2's 1,680 synthetic training tiles to the BCI training set, about a third of the training pool. Both gave negative point estimates on validation QWK, minus 0.015 and minus 0.023, with confidence intervals crossing zero: no measurable change on BCI. There is one important twist. On the external dataset, the networks trained only on synthetic images actually scored better than any BCI network. The likely reason is that the external release selected tiles per class by colour, and FYP2's GAN classes also differ strongly in brown DAB colour. So the correct conclusion is narrow: synthetic training did not transfer to BCI, and colour-selected external benchmarks reward colour shortcuts."
 
 ---
 
@@ -143,7 +143,7 @@
 - **Main Message**: The external set differs in both stains and in image scale: DAB is 2–3× higher in 1+, 2+ and 3+, haematoxylin is 3.4–7× stronger, and tiles are blurrier with larger stain blobs.
 - **Key Bullet Points**:
   - Ruifrok–Johnston colour deconvolution of optical density (OD), measured relative to each tile's own illumination, per class.
-  - Mean DAB (classes 0/1+/2+/3+): BCI 0.09/0.09/0.12/0.49 vs HER2-IHC-40x 0.05/0.16/0.31/1.29; lower for class 0, 2–3× higher for 1+, 2+ and 3+.
+  - Median tile DAB (classes 0/1+/2+/3+): BCI 0.09/0.09/0.12/0.49 vs HER2-IHC-40x 0.05/0.16/0.31/1.29; lower for class 0, 2–3× higher for 1+, 2+ and 3+.
   - Haematoxylin is 3.4–7× stronger in HER2-IHC-40x (0.09–0.29 vs 0.02–0.08), not depressed.
   - External tiles are blurrier (sharpness 68–766 vs 554–2,279) and have larger detected stain blobs (5–14 px vs 2–3 px), consistent with a different magnification.
   - A network that learned "more brown = higher score" on BCI therefore over-calls on the external set.
@@ -246,10 +246,10 @@
 - **Slide Title**: Extended Evaluation: Clinical Cost, Uncertainty, Explanation, Robustness and Adaptation
 - **Main Message**: In-domain, the 448 px model has the lowest clinical cost and supports referral but is sensitive to defocus; across laboratories, a few labelled tiles beat every unsupervised fix.
 - **Key Bullet Points**:
-  - **Clinical cost** (illustrative workflow weights, ±50% sensitivity): BCI test 448 px 0.12 [0.06, 0.22] vs 224 px 0.31 [0.20, 0.48], paired Δ −0.19 [−0.33, −0.09]; 448 px cheapest in 100% of cost draws. Externally, the FYP2 ResNet50 (raw) has the lowest cost (0.54).
+  - **Clinical cost** (illustrative workflow weights, ±50% sensitivity): BCI test 448 px 0.12 [0.06, 0.22] vs 224 px 0.31 [0.20, 0.48], paired Δ −0.19 [−0.33, −0.09]; 448 px cheapest in 100% of cost draws (sensitivity analysis on BCI validation, all 20 runs). Externally, the FYP2 ResNet50 (raw) has the lowest cost (0.54).
   - **Uncertainty**: BCI test ECE 0.010–0.078. 448 px model at 93.7% coverage: accuracy 0.975 → 0.989, catching 58% of errors while referring 3.7% of 2+ tiles. Externally, 50.5% of 2+ tiles are referred at 70% coverage.
-  - **Grad-CAM** (7,057 tiles; 7×7/14×14 maps cannot resolve membranes): correct 3+ calls attend to strongly brown regions (DAB ratio 1.22–1.42); correct external 1+ calls attend to glass and pale areas (background ratio 1.07–1.23), a likely shortcut.
-  - **Robustness**: brightness ±15% costs 12–19 points of balanced accuracy; the 448 px model is defocus-sensitive (blur σ = 0.9 µm costs 0.17 vs 0.03 at 224 px; σ = 1.8 µm costs 0.42). JPEG ≥ 70, sensor noise and ±20% stain changes have negligible effect.
+  - **Grad-CAM** (7,057 tiles; 7×7/14×14 maps cannot resolve membranes): correct 3+ calls attend to strongly brown regions (DAB ratio 1.23–1.29 on BCI, 1.22–1.42 externally); correct external 1+ calls attend to glass and pale areas (background ratio 1.07–1.23), a likely shortcut.
+  - **Robustness**: brightness ±15% costs 12–19 points of balanced accuracy; the 448 px model is defocus-sensitive (blur σ = 0.9 µm costs 0.17 vs 0.03 at 224 px; σ = 1.8 µm costs 0.42). JPEG ≥ 70, sensor noise, ±20% DAB and haematoxylin ×1.2 have negligible effect; haematoxylin ×0.8 costs about 3 points.
   - **AdaBN** (5 networks): +0.06 to +0.23 test balanced accuracy over raw input; against HARMONISE it is network-dependent (−0.13 MobileNetV3Small, tie for 224 px EfficientNetV2B0, +0.33 for the 448 px model). Best unsupervised external balanced accuracy ≈ 0.52–0.53.
   - **Few-shot** (224 px EfficientNetV2B0, full fine-tuning, 5 support draws): k = 1 per class 0.544 ± 0.024; **k = 5: 0.782 ± 0.053** (QWK 0.918); k = 20: 0.845 ± 0.048. Zero-shot 0.301, HARMONISE 0.503, AdaBN 0.522.
   - **Ablation**: frozen ImageNet backbone with a linear head costs 0.193 val accuracy and 0.267 val QWK; an MLP head does not help; unfreezing only `block6` + `top` costs 0.089 val QWK.

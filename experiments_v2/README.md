@@ -54,7 +54,8 @@ results and limitations. Corrections to the existing reports are in `REPORT_CORR
 
 **1. Clinical risk** (`01_clinical_risk/`)
 - BCI test expected workflow cost (S2): 448 px 0.12 [0.06, 0.22] vs 224 px 0.31 [0.20, 0.48]. Paired Δ test
-  −0.19 [−0.33, −0.09]. 448 px is cheapest in 100% of cost draws.
+  −0.19 [−0.33, −0.09]. In the cost-weight sensitivity analysis (BCI validation), 448 px is cheapest in
+  100% of draws.
 - External, 224 px EfficientNetV2B0:
   - stain_p99 cuts negatives-called-3+ from 758 to 64;
   - but sends 595 of 974 negatives (61%) to 2+ and misses 36 2+ tiles.
@@ -67,7 +68,8 @@ results and limitations. Corrections to the existing reports are in `REPORT_CORR
 - T fitted on R_cal cuts external ECE from 0.205 to 0.099.
 
 **3. Grad-CAM** (`03_gradcam/`)
-- Correct 3+ attention follows strong DAB and avoids glass in both domains (DAB ratio 1.22–1.42).
+- Correct 3+ attention follows strong DAB and avoids glass in both domains (DAB ratio 1.23–1.29 on BCI, 1.22–1.42
+  externally).
 - Correct external 1+ calls attend to glass and pale areas (bg ratio 1.07–1.23): a likely shortcut.
 - Errors cluster on sparse tiles (> 50% background in 55–63% of BCI errors vs 32% of correct tiles).
 - Side finding: a uint8 round trip of stain_p99 inputs changes 1.4% of predictions (max |Δp| 0.15).
@@ -75,7 +77,8 @@ results and limitations. Corrections to the existing reports are in `REPORT_CORR
 **4. Robustness** (`04_robustness/`)
 - Brightness ±15% costs 12–19 points of balanced accuracy for both models.
 - The 448 px model is defocus-sensitive: blur σ = 2 px costs 0.17 vs 0.03 at 224 px, and σ = 4 px costs 0.42.
-- JPEG ≥ 70, sensor noise and ±20% stain changes have a negligible effect.
+- JPEG ≥ 70, sensor noise, ±20% DAB and haematoxylin ×1.2 have a negligible effect; haematoxylin ×0.8 costs about
+  3 points of balanced accuracy (CIs exclude 0).
 
 **5. AdaBN** (`05_adabn/`)
 - Better than raw on all 5 networks: test balanced accuracy +0.06 to +0.23, every CI above 0.
@@ -121,7 +124,7 @@ results and limitations. Corrections to the existing reports are in `REPORT_CORR
 | 5 | `05_adabn/outputs/fig_adabn.png` | `summary_test.csv`, `summary_dev.csv`, `summary_paired_test.csv`, `checks.csv`, `adabn_<run>.json` |
 | 6 | `06_fewshot/outputs/fig_fewshot_data_efficiency.png` | `final_results.csv`, `final_summary_by_k.csv`, `reference_methods.csv`, `gain_over_zero_shot_test.csv`, `tuning_*.csv/json` |
 | 7 | `07_ablation/outputs/fig_ablation.png` | `ablation_table.csv`, `ablation_paired.csv` |
-| 8 | (none) | `08_edge/outputs/precision_accuracy.csv`, `android_preprocessing_check.csv`, `mac_latency_run{1,2}.csv` |
+| 8 | `08_edge/outputs/fig_edge_benchmark.png` (= report Fig. 7) | `08_edge/outputs/precision_accuracy.csv`, `edge_latency_table.csv`, `ondevice_<device>/summary.json`, `android_preprocessing_check.csv`, `mac_latency_run{1,2}.csv` |
 
 ## D. Implementation files
 
@@ -137,7 +140,7 @@ results and limitations. Corrections to the existing reports are in `REPORT_CORR
 | `06_fewshot/run_fewshot.py`, `analyze_fewshot.py` | Experiment 6 |
 | `07_ablation/train_ablation.py`, `analyze_ablation.py` | Experiment 7 (new checkpoints in `07_ablation/runs/`) |
 | `08_edge/mac_prepare.py`, `mac_latency.py`, `android_benchmark.py`, `pi_bundle/pi_precision_benchmark.py` | Experiment 8 |
-| `REPORT_CORRECTIONS_v2.md` | 31 numbered items: errors, unsupported measurements, methodological corrections, suggested wording |
+| `REPORT_CORRECTIONS_v2.md` | 50 numbered items (item 30 withdrawn): errors, unsupported measurements, methodological corrections, suggested wording |
 
 All scripts run with the project interpreter (`Final_Year_Project/Codes/Project/bin/python`, TF 2.15). 448 px and
 Grad-CAM work runs on CPU, because tensorflow-metal hangs at 448 px on this Mac. Training uses the Mac GPU.

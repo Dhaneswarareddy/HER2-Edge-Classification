@@ -87,6 +87,18 @@ rises (0.772 → 0.805).
 | 42 | C | Fig. 6 annotation | "At 50% coverage: 79% of 2+ discarded" | Target 0.5 realised 0.44 coverage (margin signal) on development tiles | Annotation states the realised coverage |
 | 43 | C | Android app | TFLite 2.16.1 JNI library not 16 KB page-aligned (Android 15+ warning) | Both test phones use 4 KB pages, so it runs | Disclosed; a LiteRT upgrade would need re-validation |
 
+**Items 44–50: found by an independent re-check against the primary result files (10 Nov 2026, night). All applied.**
+
+| # | Sev. | Where | Wrong | Source says | Applied |
+|---|---|---|---|---|---|
+| 44 | A | Report §11 + Table 4, outline Slide 7, Fig. 2 label, submission README | E5 "each batch has 75% BCI and 25% FYP2" | `src/train_variant.py` appends FYP2's 1,680 training tiles to the 3,388 BCI tiles and shuffles one pool: ≈33% synthetic on average, no fixed ratio | Described as such; Fig. 2 regenerated (title clipping also fixed) |
+| 45 | B | Report §15.1, outline Slide 15, `experiments_v2/README.md` | "448 px cheapest in 100% of cost draws" placed under BCI test results | `01_clinical_risk/outputs/cost_sensitivity.json` has the sensitivity analysis on BCI **validation** only | Labelled as a validation result |
+| 46 | B | Report §15.3, outline, `experiments_v2/README.md` | Correct 3+ DAB ratio "1.22–1.42" as an in-domain statement | `03_gradcam/outputs/cam_stats_summary.csv`: BCI 1.23 / 1.29; 1.22–1.42 includes the external sets | Split into BCI and external ranges |
+| 47 | B | Report §15.4, outline, `experiments_v2/README.md` | "±20% stain changes: negligible" | `04_robustness/outputs/robustness_results.csv`: haematoxylin ×0.8 costs −0.031 (448 px) / −0.030 (224 px) balanced accuracy, CIs exclude 0 | Stated as a small but real effect |
+| 48 | B | Report §12.4, outline Slide 7 | "BCI networks reach 0.41–0.53 with HARMONISE" | Covers the 224 px networks only; the 448 px model reaches 0.186 | Qualified |
+| 49 | C | Report §12.2 table, outline Slide 9 | "Mean DAB / mean haematoxylin" | `cross_dataset_features_by_class.csv` holds the per-class **median** over tiles of each tile's mean OD (Fig. 3's axis label was already correct) | Relabelled |
+| 50 | C | `PROJECT_STATUS_AND_ROADMAP.md` §7 | Robustness slide numbers vs figure | `fig_robustness.png` plots macro-F1; the quoted numbers are balanced accuracy | Noted on the slide row |
+
 ## 3. Wording to soften
 
 | Line | Current | Suggested |
