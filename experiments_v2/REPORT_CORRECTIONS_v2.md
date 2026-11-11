@@ -67,7 +67,7 @@ rises (0.772 → 0.805).
 | 23 | B | Three runs ended at the 45-epoch cap, not by early stopping | `history.csv`: ResNet50 CE (best 43/45), MobileNetV3Large CORN (best 45/45), EfficientNetV2B0 hires (best 38/45) | State it. The 448 px model may be under-trained relative to its comparator |
 | 24 | B | Failed and retried runs | DenseNet121 CORN segfaulted once (`train_DenseNet121__corn_segfault1.log`); the retry ended with rc 133 after writing results. EfficientNetV2B0 lowbatch deadlocked once. `evaluate_all` hung once | Mention in the methods (reproducibility) |
 | 25 | B | `results/REPORT.md`, `selection.json`, `metrics_all.csv`, `overfitting.csv` predate E1–E5 | 16 of 20 grouped runs. The four newest runs have no overfitting verdict | State that these files are stale, or regenerate them into a new location |
-| 26 | B | E6 (DenseNet121 at 448 px) and E7 (1024 px) planned but not run | `NEXT_EXPERIMENTS.md` | List as not done |
+| 26 | B | E6 (DenseNet121 at 448 px) and E7 (1024 px) planned but not run | `NEXT_EXPERIMENTS.md` | List as not done. **Update 11 Nov 2026:** both have now been run (`09_resolution_e6_e7/`, next-semester material); neither met its pre-registered rule |
 | 27 | B | External test status | Examined in diagnostics, then evaluated by HARMONISE-1, and again in `experiments_v2` | Every external result must say "previously examined split", never "untouched" |
 
 ## 2b. Further items found while applying the corrections (10 Nov 2026)

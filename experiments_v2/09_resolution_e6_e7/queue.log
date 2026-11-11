@@ -1,0 +1,7 @@
+2026-11-10 22:25:07 start DenseNet121__ce__hires
+2026-11-11 07:49:47 end DenseNet121__ce__hires rc=0 DONE DenseNet121__ce__hires: best epoch 41  val qwk 0.8609 acc 0.9188 f1 0.9085 | test qwk 0.9486 acc 0.9578  (562.1 min)
+2026-11-11 07:49:47 start DenseNet121__ce__lowbatch
+2026-11-11 10:40:43 end DenseNet121__ce__lowbatch rc=0 DONE DenseNet121__ce__lowbatch: best epoch 34  val qwk 0.8224 acc 0.8927 f1 0.8899 | test qwk 0.9152 acc 0.9393  (169.9 min)
+2026-11-11 10:40:43 start MobileNetV3Small__ce__hires1024
+2026-11-11 16:12:21 end MobileNetV3Small__ce__hires1024 rc=0 DONE MobileNetV3Small__ce__hires1024: best epoch 40  val qwk 0.9030 acc 0.9409 f1 0.9370 | test qwk 0.9450 acc 0.9617  (323.1 min)
+E6E7 FINISHED 2026-11-11 16:12:21

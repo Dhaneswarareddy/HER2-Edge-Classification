@@ -24,8 +24,9 @@ Android phones and a Raspberry Pi 4B.
   `results/metrics_all.csv`, `results/selection.json`, `deployment/benchmark_results/*.csv` without a `2026-11-10` date,
   and `final_report_figures/fig7_raspberry_pi4_hardware_benchmark.png` (superseded 31 Oct run).
 - **Phone power** (`experiments_v2/10_power/`) is measured but is next-semester material; quote it only from that
-  folder's README, with its limits. **E6/E7** (`experiments_v2/09_resolution_e6_e7/`) have no results yet; describe them
-  only as next-semester work in progress.
+  folder's README, with its limits. **E6/E7** (`experiments_v2/09_resolution_e6_e7/`) finished 11 Nov 2026 and are also
+  next-semester material. Neither met its pre-registered rule. Quote them only from that folder's README, never as
+  "the resolution effect generalises".
 - **Validation is the decision split.** BCI test numbers are reported once and were never used for selection.
   Validation figures are the fairer headline (primary model: val acc 0.950, QWK 0.935; test acc 0.975, QWK 0.959).
 - **The external test split (HER2-IHC-40x, 1,847 tiles) was examined before.** Never call it untouched or held out;

@@ -1,6 +1,6 @@
 # Project Status and Roadmap: every experiment in pipeline order, with the semester split
 
-**Snapshot: 10 November 2026.** This is the single place that lists every experiment done in the HER2 project, in the
+**Snapshot: 10 November 2026; E6/E7 results added 11 November 2026.** This is the single place that lists every experiment done in the HER2 project, in the
 order a reader should meet them (data → preprocessing → training → evaluation → cross-laboratory generalisation →
 deployment). It records what each step found, where the evidence is, and which steps belong to this semester's
 submission and which to next semester's.
@@ -40,11 +40,11 @@ needed before anything in the next semester's part makes sense, and each part te
 |---|---|---|
 | Story | From synthetic to real tissue: a validated, leakage-controlled BCI classifier, what drives its accuracy, and how trustworthy it is in-domain | Does it work elsewhere? Cross-laboratory failure, its causes and fixes; then deployment, on-device verification, speed and energy |
 | Stages | A Data, B Model development, C In-domain evaluation | D Cross-laboratory generalisation, E Deployment and edge, F New experiments |
-| Status | All 14 steps complete | Steps 15–30 complete (Step 30, phone power, measured 10 Nov); Steps 31–32 running; Step 33 onward planned |
+| Status | All 14 steps complete | Steps 15–32 complete (Step 30 phone power, 10 Nov; Steps 31–32 E6/E7, 11 Nov); Step 33 onward planned |
 | Headline result | 448 px EfficientNetV2B0: BCI test acc 0.975, QWK 0.959; resolution effect confirmed against a batch-matched control | Zero-shot collapse (bal. acc 0.26–0.38); 5 labelled tiles per class recover 0.78; app reproduces the model on 758/758 tiles; 81–337 ms per tile |
 
 E6 and E7 belong to Stage B by topic (they extend the resolution study), but they were started after the snapshot, so
-they are next-semester work by the owner's decision (§4, Step 31–32).
+they are next-semester work by the owner's decision (§4, Steps 31–32). Neither met its pre-registered rule.
 
 ---
 
@@ -262,8 +262,8 @@ Status: ✅ complete · 🔄 running · ⏳ planned. "Where" points to the evide
 
 ### Stage F — New experiments and future work (next semester)
 
-**Step 31. E6 — resolution effect on a heavier network (DenseNet121)** 🔄 — see §4.
-**Step 32. E7 — native-resolution input (MobileNetV3Small, 896 px)** 🔄 queued — see §4.
+**Step 31. E6 — resolution effect on a heavier network (DenseNet121)** ✅ (11 Nov 2026; rule not met) — see §4.
+**Step 32. E7 — native-resolution input (MobileNetV3Small, 896 px)** ✅ (11 Nov 2026; rule not met) — see §4.
 **Step 33 onward** — the planned work in §6.
 
 ---
@@ -305,9 +305,36 @@ Status: ✅ complete · 🔄 running · ⏳ planned. "Where" points to the evide
   and `__ce__lowbatch`.
 - **Method.** Unchanged FYP3 training code (`src/train_variant.py`), seed 42, validation-only selection; outputs
   isolated in `experiments_v2/09_resolution_e6_e7/runs/`.
-- **Status at this snapshot.** E6 `hires` started 10 Nov 2026 22:25 on the M1 Mac; expected total ≈ 14–16 h for E6
-  and 3–5 h for E7. Results are committed to both repositories when they finish. **No result exists yet; nothing about
-  E6/E7 outcomes may be reported until then.**
+- **Status: complete** (10 Nov 22:25 → 11 Nov 16:12, M1 Mac; one seed per arm). Next-semester material.
+- **Results** (BCI grouped split; paired 95% fragment-cluster bootstrap CI; source
+  `experiments_v2/09_resolution_e6_e7/outputs/e6e7_table.csv`, `e6e7_paired.csv`):
+
+  | | Run | Val acc / QWK | Test acc / QWK |
+  |---|---|---|---|
+  | E6 | DenseNet121 448 px, batch 4 | 0.919 / 0.861 | 0.958 / 0.949 |
+  | E6 | DenseNet121 224 px, batch 4 (control) | 0.893 / 0.822 | 0.939 / 0.915 |
+  | E7 | MobileNetV3Small 896 px, batch 2 | 0.941 / 0.903 | 0.962 / 0.945 |
+  | E7 | MobileNetV3Small 448 px, batch 8 (E2 run, comparator) | 0.898 / 0.865 | 0.908 / 0.874 |
+
+  | Pre-registered pair | Δ val QWK [95% CI] | Rule (CI excludes 0) | Report-only: Δ test QWK |
+  |---|---|---|---|
+  | E6: 448 vs 224 px, both batch 4 | +0.038 [−0.008, +0.078] | **not met** | +0.033 [+0.004, +0.078] |
+  | E7: 896 vs 448 px | +0.038 [−0.005, +0.090] | **not met** | +0.071 [+0.033, +0.135] |
+
+- **Findings.**
+  - Higher resolution was ahead by about +0.04 val QWK in both comparisons, but neither CI excludes 0, so neither counts.
+  - Val accuracy (E6, E7) and val balanced accuracy (E7) have CIs above 0, and so do the test QWKs. These are secondary
+    or report-only metrics.
+  - Correct wording: "a consistent, small, unconfirmed advantage". Not "the resolution effect generalises".
+  - The primary model is unchanged. EfficientNetV2B0 448 px (val QWK 0.935) beats every E6/E7 run on validation.
+- **Limits.**
+  - One seed per arm; training variance is not covered.
+  - DenseNet121 448 px (best epoch 41/45) and MobileNetV3Small 896 px (40/45) ended at the 45-epoch cap.
+  - E7's 448 px comparator early-stopped at epoch 25 (best 15) and used batch 8 rather than 2.
+  - BCI only; no external evaluation; the 896 px model was not timed on any device.
+  - Comparisons against the 224 px MobileNetV3Small runs favour 896 px clearly, but they were not pre-registered.
+    Treat them as a hypothesis for the multi-seed repeats (Step 34).
+  - Details: `experiments_v2/09_resolution_e6_e7/README.md`.
 
 ---
 
@@ -340,7 +367,7 @@ Status: ✅ complete · 🔄 running · ⏳ planned. "Where" points to the evide
 |---|---|---|---|---|
 | 33 | A Data | Obtain slide-identified data (or slide IDs for HER2-IHC-40x) and a **third laboratory** held out completely | Unbiased external test; slide-level CIs | Data access |
 | 34 | B Training | Multi-seed repeats (≥ 3 seeds) of the primary model and key controls | Training variance is currently unmeasured | ~4 h per 448 px seed on the M1 |
-| 35 | B Training | Finish and analyse E6 / E7 (Steps 31–32) | Generality of the resolution effect | Running |
+| 35 | B Training | Multi-seed repeat of the E6 / E7 pairs (Steps 31–32), with matched epochs and batch | Both showed +0.04 val QWK, unconfirmed with one seed | ~10 h (DenseNet121 448 px) and ~5 h (896 px) per seed |
 | 36 | B Training | Stain/brightness/blur augmentation aimed at the measured weaknesses | Brightness ±15% and defocus are the biggest in-domain risks | ~4 h per run |
 | 37 | C Evaluation | Pathologist review of error cases and Grad-CAM maps | Clinical validity of the explanations | Pathologist time |
 | 38 | C Evaluation | Slide-level aggregation of tile scores | Clinical scoring is per slide | Needs Step 33 |

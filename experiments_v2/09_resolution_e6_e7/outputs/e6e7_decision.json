@@ -1,0 +1,18 @@
+{
+ "E6: DN121 hires 448 px, batch 4 vs DN121 lowbatch 224 px, batch 4": {
+  "delta_val_qwk": 0.0385,
+  "ci95": [
+   -0.0077,
+   0.0783
+  ],
+  "rule_met": false
+ },
+ "E7: MNV3S hires1024 896 px, batch 2 vs MNV3S hires 448 px, batch 8": {
+  "delta_val_qwk": 0.0376,
+  "ci95": [
+   -0.0051,
+   0.0899
+  ],
+  "rule_met": false
+ }
+}

@@ -189,5 +189,6 @@ Grad-CAM work runs on CPU, because tensorflow-metal hangs at 448 px on this Mac.
    material). Pi power and an external-meter check of the phone values need a USB-C power meter.
 2. **App packaging.** The app's TFLite 2.16.1 library is not 16 KB page-aligned, which Android 15+ devices with 16 KB
    pages will need. A LiteRT upgrade would need re-validation with `08_edge/ondevice_validation.py`.
-3. **E6 and E7** from `NEXT_EXPERIMENTS.md` started on 10 Nov 2026 (`09_resolution_e6_e7/`, running).
+3. **E6 and E7** from `NEXT_EXPERIMENTS.md` were run on 10–11 Nov 2026 (`09_resolution_e6_e7/`, next-semester material).
+   Neither met its pre-registered rule: Δ val QWK +0.038 [−0.008, +0.078] (E6) and +0.038 [−0.005, +0.090] (E7).
    **Not attempted:** slide-level aggregation.
